@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "draft",
+      "camelcase": "Draft",
+      "title": "Draft",
+      "scope": "source.draft",
+      "file-types": [
+        "draft"
+      ],
+      "injection-regex": "^draft$",
+      "class-name": "TreeSitterDraft"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for the Draft story-writing language.",
+    "authors": [
+      {
+        "name": "anti-precog",
+        "email": "rreejjmmaann@gmail.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-draft"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

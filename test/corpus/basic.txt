@@ -1,0 +1,52 @@
+====================
+Simple paragraphs
+====================
+Paragraph 1.
+Paragraph 2.
+Paragraph 3.
+
+------
+
+(document
+  (narrative)
+  (narrative)
+  (narrative))
+
+=====================
+Paragraps with dashes
+=====================
+Paragraph — inclusion — paragraph.
+
+------
+
+(document
+  (narrative))
+
+=====================
+Dialogues
+=====================
+
+— dialogue.
+— dialogue — narrative.
+— dialogue — narrative — dialogue.
+— dialogue — narrative — dialogue — narrative.
+
+------
+
+(document
+  (dialog
+	(speech))
+  (dialog
+	(speech)
+	(narrative))
+  (dialog
+	(speech)
+	(narrative)
+	(speech))
+  (dialog
+	(speech)
+	(narrative)
+	(speech)
+	(narrative)))
+
+
