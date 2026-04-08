@@ -22,9 +22,9 @@ Paragraph — inclusion — paragraph.
 (document
   (narrative))
 
-=====================
+=========
 Dialogues
-=====================
+=========
 
 — dialogue.
 — dialogue — narrative.
@@ -49,4 +49,27 @@ Dialogues
 	(speech)
 	(narrative)))
 
+========
+Comments
+========
 
+ Comment
+	Comment
+
+------
+
+(document
+  (comment)
+  (comment))
+ 
+====
+Tags
+====
+
+#Comment
+
+------
+
+(document
+  (tag))
+ 

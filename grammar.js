@@ -3,14 +3,16 @@ module.exports = grammar({
 
   rules: {
     document: ($) =>
-      repeat(choice($.section, $.narrative, $.dialog, $.comment)),
+      repeat(
+        choice($.section, $.narrative, $.dialog, $.comment, seq($.tag, $._eol)),
+      ),
 
     section: ($) =>
       prec.right(
         seq(
           alias($.name_section, $.name),
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog)),
+          repeat(choice($.narrative, $.comment, $.dialog, seq($.tag, $._eol))),
           optional($.stop_section),
         ),
       ),
@@ -19,6 +21,7 @@ module.exports = grammar({
     stop_section: ($) => "<\n",
 
     comment: ($) => /[ \t]+[^>\n]*\n/,
+    tag: ($) => /[#]+[^\n]+/,
     narrative: ($) =>
       seq(
         /[^\t>—\n]/, // pierwszy znak NIE może być —, >, \t, \n

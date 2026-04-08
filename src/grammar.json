@@ -22,6 +22,19 @@
           {
             "type": "SYMBOL",
             "name": "comment"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "tag"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_eol"
+              }
+            ]
           }
         ]
       }
@@ -91,6 +104,10 @@
     "comment": {
       "type": "PATTERN",
       "value": "[ \\t]+[^>\\n]*\\n"
+    },
+    "tag": {
+      "type": "PATTERN",
+      "value": "[#]+[^\\n]+"
     },
     "narrative": {
       "type": "SEQ",

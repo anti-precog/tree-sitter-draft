@@ -42,6 +42,10 @@
         {
           "type": "section",
           "named": true
+        },
+        {
+          "type": "tag",
+          "named": true
         }
       ]
     }
@@ -101,6 +105,10 @@
   },
   {
     "type": "stop_section",
+    "named": true
+  },
+  {
+    "type": "tag",
     "named": true
   },
   {
