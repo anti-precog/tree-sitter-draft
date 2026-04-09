@@ -44,7 +44,7 @@
           "named": true
         },
         {
-          "type": "tag",
+          "type": "tag_line",
           "named": true
         }
       ]
@@ -82,6 +82,10 @@
         {
           "type": "stop_section",
           "named": true
+        },
+        {
+          "type": "tag_line",
+          "named": true
         }
       ]
     }
@@ -90,6 +94,29 @@
     "type": "speech",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "tag_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dialog",
+          "named": true
+        },
+        {
+          "type": "narrative",
+          "named": true
+        },
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "\n",

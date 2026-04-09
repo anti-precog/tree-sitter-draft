@@ -3,31 +3,27 @@ module.exports = grammar({
 
   rules: {
     document: ($) =>
-      repeat(
-        choice($.section, $.narrative, $.dialog, $.comment, seq($.tag, $._eol)),
-      ),
+      repeat(choice($.section, $.narrative, $.dialog, $.comment, $.tag_line)),
 
     section: ($) =>
       prec.right(
         seq(
           alias($.name_section, $.name),
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog, seq($.tag, $._eol))),
+          repeat(choice($.narrative, $.comment, $.dialog, $.tag_line)),
           optional($.stop_section),
         ),
       ),
+
+    tag_line: ($) =>
+      prec.right(seq($.tag, $._eol, choice($.narrative, $.dialog))),
 
     name_section: ($) => />[^\n]+/,
     stop_section: ($) => "<\n",
 
     comment: ($) => /[ \t]+[^>\n]*\n/,
     tag: ($) => /[#]+[^\n]+/,
-    narrative: ($) =>
-      seq(
-        /[^\t>—\n]/, // pierwszy znak NIE może być —, >, \t, \n
-        optional(/[^\t>\n]+/), // reszta może zawierać — (ale nie >, \t, \n)
-        $._eol,
-      ),
+    narrative: ($) => seq(/[^\t>—\n]/, optional(/[^\t>\n]+/), $._eol),
 
     dialog: ($) =>
       choice(

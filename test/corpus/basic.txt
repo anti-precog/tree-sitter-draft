@@ -66,10 +66,12 @@ Comments
 Tags
 ====
 
-#Comment
+#tag
+narrative
 
 ------
-
 (document
-  (tag))
+  (tag_line
+    (tag)
+      (narrative)))
  
