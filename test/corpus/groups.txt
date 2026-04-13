@@ -1,0 +1,75 @@
+============
+Single group
+============
+
+@ Group
+Paragraph.
+
+------
+
+(document
+  (group
+    (head)
+    (narrative)))
+
+=============
+No full group
+=============
+
+No grouped paragraph.
+@ Group
+Paragraph.
+
+------
+
+(document
+  (narrative)
+  (group
+    (head)
+    (narrative)))
+
+
+===============
+Multiple groups
+===============
+
+@ Group I
+Paragraph.
+@ Group II
+Paragraph.
+
+------
+
+(document
+  (group
+    (head)
+    (narrative))
+  (group
+    (head)
+    (narrative)))
+
+
+==========================
+Multiple not full groups
+==========================
+
+@ Group I
+Paragraph.
+@
+No grouped paragraph.
+@ Group II
+Paragraph.
+
+------
+
+(document
+  (group
+    (head)
+    (narrative)
+    (end))
+  (narrative)
+  (group
+    (head)
+    (narrative)))
+
+

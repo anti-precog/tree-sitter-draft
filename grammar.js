@@ -3,26 +3,27 @@ module.exports = grammar({
 
   rules: {
     document: ($) =>
-      repeat(choice($.section, $.narrative, $.dialog, $.comment, $.tag_line)),
+      repeat(choice($.group, $.narrative, $.dialog, $.comment, $._tag_group)),
 
-    section: ($) =>
+    group: ($) =>
       prec.right(
         seq(
-          alias($.name_section, $.name),
+          alias($.group_data, $.head),
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog, $.tag_line)),
-          optional($.stop_section),
+          repeat(choice($.narrative, $.comment, $.dialog, $._tag_group)),
+          optional(seq($.end, $._eol)),
         ),
       ),
 
-    tag_line: ($) =>
-      prec.right(seq($.tag, $._eol, choice($.narrative, $.dialog))),
+    _tag_group: ($) =>
+      prec.right(seq($.tags, $._eol, optional(choice($.narrative, $.dialog)))),
+    tags: ($) => repeat1($.tag),
 
-    name_section: ($) => />[^\n]+/,
-    stop_section: ($) => "<\n",
+    group_data: ($) => /@[^\n]+/,
+    end: ($) => "@",
 
     comment: ($) => /[ \t]+[^>\n]*\n/,
-    tag: ($) => /[#]+[^\n]+/,
+    tag: ($) => /[#]+[^#\n]+/,
     narrative: ($) => seq(/[^\t>—\n]/, optional(/[^\t>\n]+/), $._eol),
 
     dialog: ($) =>

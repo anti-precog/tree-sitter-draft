@@ -1,0 +1,86 @@
+=============
+Tag paragraph
+=============
+
+#tag
+Tagged paragraph
+
+------
+(document
+  (tags
+    (tag))
+  (narrative))
+ 
+==========
+Tag dialog
+==========
+
+#tag
+— dialog.
+
+------
+(document
+  (tags
+    (tag))
+   (dialog
+	 (speech)))
+  
+=========
+Empty tag
+=========
+
+#tag
+
+------
+(document
+  (tags
+    (tag)))
+
+==========
+Blank tags
+==========
+
+#tag
+#tag2
+
+#tag3
+ Comment
+
+------
+(document
+  (tags
+  	(tag))
+  (tags
+  	(tag))
+  (tags
+  	(tag))
+  (comment))
+
+=============
+Multiple tags
+=============
+
+#tag1 #tag2 #tag3 #tag4
+Tagged paragraph
+
+------
+(document
+  (tags
+    (tag)
+    (tag)
+    (tag)
+    (tag))
+  (narrative))
+
+===================
+Blank multiple tags
+===================
+
+#tag1 #tag2 #tag3
+
+------
+(document
+  (tags
+    (tag)
+    (tag)
+    (tag)))

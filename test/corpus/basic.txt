@@ -1,20 +1,63 @@
-====================
-Simple paragraphs
-====================
-Paragraph 1.
-Paragraph 2.
-Paragraph 3.
+==================
+Document structure
+==================
+
+Simple paragraph.
+	Comment.
+— dialogue.
+#tag
+Tagged paragraph.
 
 ------
 
 (document
   (narrative)
+  (comment)
+  (dialog
+    (speech))
+  (tags
+    (tag))
+  (narrative))
+
+===============
+Group structure
+===============
+
+@ Group
+Simple paragraph.
+	Comment.
+— dialogue.
+#tag
+Tagged paragraph.
+
+------
+
+(document
+  (group
+  (head)
+    (narrative)
+    (comment)
+    (dialog
+      (speech))
+    (tags
+      (tag))
+	(narrative)))
+
+===================
+Simple 2 paragraphs
+===================
+Paragraph 1.
+Paragraph 2.
+
+------
+
+(document
   (narrative)
   (narrative))
 
-=====================
-Paragraps with dashes
-=====================
+====================
+Paragrap with dashes
+====================
 Paragraph — inclusion — paragraph.
 
 ------
@@ -30,6 +73,7 @@ Dialogues
 — dialogue — narrative.
 — dialogue — narrative — dialogue.
 — dialogue — narrative — dialogue — narrative.
+— dialogue — narrative — dialogue — narrative — dialogue.
 
 ------
 
@@ -47,7 +91,13 @@ Dialogues
 	(speech)
 	(narrative)
 	(speech)
-	(narrative)))
+	(narrative))
+  (dialog
+	(speech)
+	(narrative)
+	(speech)
+	(narrative)
+	(speech)))
 
 ========
 Comments
@@ -66,12 +116,16 @@ Comments
 Tags
 ====
 
+narrative
 #tag
+tagged narrative
 narrative
 
 ------
 (document
-  (tag_line
-    (tag)
-      (narrative)))
+  (narrative)
+  (tags
+    (tag))
+  (narrative)
+  (narrative))
  

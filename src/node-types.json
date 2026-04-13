@@ -36,27 +36,22 @@
           "named": true
         },
         {
+          "type": "group",
+          "named": true
+        },
+        {
           "type": "narrative",
           "named": true
         },
         {
-          "type": "section",
-          "named": true
-        },
-        {
-          "type": "tag_line",
+          "type": "tags",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "narrative",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "section",
+    "type": "group",
     "named": true,
     "fields": {},
     "children": {
@@ -72,7 +67,11 @@
           "named": true
         },
         {
-          "type": "name",
+          "type": "end",
+          "named": true
+        },
+        {
+          "type": "head",
           "named": true
         },
         {
@@ -80,15 +79,16 @@
           "named": true
         },
         {
-          "type": "stop_section",
-          "named": true
-        },
-        {
-          "type": "tag_line",
+          "type": "tags",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "narrative",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "speech",
@@ -96,21 +96,13 @@
     "fields": {}
   },
   {
-    "type": "tag_line",
+    "type": "tags",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "dialog",
-          "named": true
-        },
-        {
-          "type": "narrative",
-          "named": true
-        },
         {
           "type": "tag",
           "named": true
@@ -127,11 +119,11 @@
     "named": true
   },
   {
-    "type": "name",
+    "type": "end",
     "named": true
   },
   {
-    "type": "stop_section",
+    "type": "head",
     "named": true
   },
   {
