@@ -15,9 +15,10 @@ Tagged paragraph.
   (comment)
   (dialog
     (speech))
-  (tags
-    (tag))
-  (narrative))
+  (subgroup
+    (tags
+      (tag))
+    (narrative)))
 
 ===============
 Group structure
@@ -39,9 +40,10 @@ Tagged paragraph.
     (comment)
     (dialog
       (speech))
-    (tags
-      (tag))
-	(narrative)))
+	(subgroup
+      (tags
+        (tag))
+	  (narrative))))
 
 ===================
 Simple 2 paragraphs
@@ -124,8 +126,9 @@ narrative
 ------
 (document
   (narrative)
-  (tags
-    (tag))
-  (narrative)
+  (subgroup
+    (tags
+      (tag))
+    (narrative))
   (narrative))
  

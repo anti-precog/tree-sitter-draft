@@ -7,9 +7,10 @@ Tagged paragraph
 
 ------
 (document
-  (tags
-    (tag))
-  (narrative))
+  (subgroup
+    (tags
+      (tag))
+    (narrative)))
  
 ==========
 Tag dialog
@@ -20,10 +21,11 @@ Tag dialog
 
 ------
 (document
-  (tags
-    (tag))
-   (dialog
-	 (speech)))
+  (subgroup
+    (tags
+      (tag))
+     (dialog
+	   (speech))))
   
 =========
 Empty tag
@@ -33,8 +35,9 @@ Empty tag
 
 ------
 (document
-  (tags
-    (tag)))
+  (subgroup
+    (tags
+      (tag))))
 
 ==========
 Blank tags
@@ -48,12 +51,15 @@ Blank tags
 
 ------
 (document
-  (tags
-  	(tag))
-  (tags
-  	(tag))
-  (tags
-  	(tag))
+  (subgroup
+    (tags
+  	  (tag)))
+  (subgroup
+    (tags
+  	  (tag)))
+  (subgroup
+    (tags
+  	  (tag)))
   (comment))
 
 =============
@@ -65,12 +71,13 @@ Tagged paragraph
 
 ------
 (document
-  (tags
-    (tag)
-    (tag)
-    (tag)
-    (tag))
-  (narrative))
+  (subgroup
+    (tags
+      (tag)
+      (tag)
+      (tag)
+      (tag))
+    (narrative)))
 
 ===================
 Blank multiple tags
@@ -80,7 +87,8 @@ Blank multiple tags
 
 ------
 (document
-  (tags
-    (tag)
-    (tag)
-    (tag)))
+  (subgroup
+    (tags
+      (tag)
+      (tag)
+      (tag))))

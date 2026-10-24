@@ -25,7 +25,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "_tag_group"
+            "name": "subgroup"
           }
         ]
       }
@@ -40,7 +40,7 @@
             "type": "ALIAS",
             "content": {
               "type": "SYMBOL",
-              "name": "group_data"
+              "name": "start_group"
             },
             "named": true,
             "value": "head"
@@ -68,7 +68,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_tag_group"
+                  "name": "subgroup"
                 }
               ]
             }
@@ -80,8 +80,13 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "end"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "break_group"
+                    },
+                    "named": true,
+                    "value": "stop"
                   },
                   {
                     "type": "SYMBOL",
@@ -97,7 +102,15 @@
         ]
       }
     },
-    "_tag_group": {
+    "start_group": {
+      "type": "PATTERN",
+      "value": "@[^\\n]+"
+    },
+    "break_group": {
+      "type": "STRING",
+      "value": "@"
+    },
+    "subgroup": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
@@ -142,21 +155,13 @@
         "name": "tag"
       }
     },
-    "group_data": {
+    "tag": {
       "type": "PATTERN",
-      "value": "@[^\\n]+"
-    },
-    "end": {
-      "type": "STRING",
-      "value": "@"
+      "value": "[#]+[^#\\n]+"
     },
     "comment": {
       "type": "PATTERN",
       "value": "[ \\t]+[^>\\n]*\\n"
-    },
-    "tag": {
-      "type": "PATTERN",
-      "value": "[#]+[^#\\n]+"
     },
     "narrative": {
       "type": "SEQ",

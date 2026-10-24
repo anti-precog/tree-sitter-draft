@@ -44,7 +44,7 @@
           "named": true
         },
         {
-          "type": "tags",
+          "type": "subgroup",
           "named": true
         }
       ]
@@ -67,10 +67,6 @@
           "named": true
         },
         {
-          "type": "end",
-          "named": true
-        },
-        {
           "type": "head",
           "named": true
         },
@@ -79,7 +75,11 @@
           "named": true
         },
         {
-          "type": "tags",
+          "type": "stop",
+          "named": true
+        },
+        {
+          "type": "subgroup",
           "named": true
         }
       ]
@@ -94,6 +94,29 @@
     "type": "speech",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "subgroup",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dialog",
+          "named": true
+        },
+        {
+          "type": "narrative",
+          "named": true
+        },
+        {
+          "type": "tags",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "tags",
@@ -119,11 +142,11 @@
     "named": true
   },
   {
-    "type": "end",
+    "type": "head",
     "named": true
   },
   {
-    "type": "head",
+    "type": "stop",
     "named": true
   },
   {
