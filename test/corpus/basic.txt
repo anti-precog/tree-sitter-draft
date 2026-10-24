@@ -5,8 +5,8 @@ Document structure
 Simple paragraph.
 	Comment.
 — dialogue.
-#tag
-Tagged paragraph.
+!note
+Marked paragraph.
 
 ------
 
@@ -15,21 +15,20 @@ Tagged paragraph.
   (comment)
   (dialog
     (speech))
-  (subgroup
-    (tags
-      (tag))
+  (marker
+    (type)
     (narrative)))
 
 ===============
 Group structure
 ===============
 
-@ Group
+# Group
 Simple paragraph.
 	Comment.
 — dialogue.
-#tag
-Tagged paragraph.
+!note
+Marked paragraph.
 
 ------
 
@@ -40,9 +39,8 @@ Tagged paragraph.
     (comment)
     (dialog
       (speech))
-	(subgroup
-      (tags
-        (tag))
+	(marker
+      (type)
 	  (narrative))))
 
 ===================
@@ -114,21 +112,21 @@ Comments
   (comment)
   (comment))
  
-====
-Tags
-====
+=======
+Markers
+=======
 
 narrative
-#tag
-tagged narrative
+!note info about note
+markered narrative
 narrative
 
 ------
 (document
   (narrative)
-  (subgroup
-    (tags
-      (tag))
+  (marker
+    (type)
+    (message)
     (narrative))
   (narrative))
  

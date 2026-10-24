@@ -6,32 +6,38 @@ module.exports = grammar({
     // 1. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.subgroup)),
+      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.marker)),
 
     // ==========================================
-    // 2. GROUP BLOCK (@Thread ... @)
+    // 2. GROUP BLOCK (#Thread ... #)
     // ==========================================
     group: ($) =>
       prec.right(
         seq(
-          alias($.start_group, $.head), // group header (e.g. @ Chapter 69)
+          alias($.start_group, $.head), // group header (e.g. # Chapter 69)
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog, $.subgroup)), // inner groups are not permitted
-          optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by @ symbol
+          repeat(choice($.narrative, $.comment, $.dialog, $.marker)), // inner groups are not permitted
+          optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by # symbol
         ),
       ),
 
-    start_group: ($) => /@[^\n]+/, // start group symbol
-    break_group: ($) => "@", // end group symbol
+    start_group: ($) => /#[^\n]+/, // start group symbol
+    break_group: ($) => "#", // end group symbol
 
     // ==========================================
-    // 3. TAGS (#tag1 tag2 ...)
+    // MARKERS (!note [opcjonalny tekst])
     // ==========================================
-    subgroup: ($) =>
-      prec.right(seq($.tags, $._eol, optional(choice($.narrative, $.dialog)))),
+    marker: ($) =>
+      prec.right(seq($._info, optional(choice($.narrative, $.dialog)))),
+
+    // Nagłówek markera: słowo kluczowe + opcjonalny tytuł/opis w tej samej linii
+    _info: ($) => seq($.type, optional($.message), $._eol),
     
-    tags: ($) => repeat1($.tag),
-    tag: ($) => /[#]+[^#\n]+/,
+    // Dozwolone słowa kluczowe:
+    type: ($) => choice("!note", "!todo", "!warning", "!error"),
+
+    // Tekst po słowie kluczowym aż do znaku nowej linii
+    message: ($) => /[^\n]+/,
 
     // ==========================================
     // 4. COMMENTS

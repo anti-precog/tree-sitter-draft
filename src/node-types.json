@@ -40,11 +40,11 @@
           "named": true
         },
         {
-          "type": "narrative",
+          "type": "marker",
           "named": true
         },
         {
-          "type": "subgroup",
+          "type": "narrative",
           "named": true
         }
       ]
@@ -71,15 +71,42 @@
           "named": true
         },
         {
+          "type": "marker",
+          "named": true
+        },
+        {
           "type": "narrative",
           "named": true
         },
         {
           "type": "stop",
           "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "marker",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dialog",
+          "named": true
         },
         {
-          "type": "subgroup",
+          "type": "message",
+          "named": true
+        },
+        {
+          "type": "narrative",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -96,45 +123,28 @@
     "fields": {}
   },
   {
-    "type": "subgroup",
+    "type": "type",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dialog",
-          "named": true
-        },
-        {
-          "type": "narrative",
-          "named": true
-        },
-        {
-          "type": "tags",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "tags",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "tag",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "\n",
+    "named": false
+  },
+  {
+    "type": "!error",
+    "named": false
+  },
+  {
+    "type": "!note",
+    "named": false
+  },
+  {
+    "type": "!todo",
+    "named": false
+  },
+  {
+    "type": "!warning",
     "named": false
   },
   {
@@ -146,11 +156,11 @@
     "named": true
   },
   {
-    "type": "stop",
+    "type": "message",
     "named": true
   },
   {
-    "type": "tag",
+    "type": "stop",
     "named": true
   },
   {

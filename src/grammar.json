@@ -25,7 +25,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "subgroup"
+            "name": "marker"
           }
         ]
       }
@@ -68,7 +68,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "subgroup"
+                  "name": "marker"
                 }
               ]
             }
@@ -104,13 +104,13 @@
     },
     "start_group": {
       "type": "PATTERN",
-      "value": "@[^\\n]+"
+      "value": "#[^\\n]+"
     },
     "break_group": {
       "type": "STRING",
-      "value": "@"
+      "value": "#"
     },
-    "subgroup": {
+    "marker": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
@@ -118,11 +118,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "tags"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_eol"
+            "name": "_info"
           },
           {
             "type": "CHOICE",
@@ -148,16 +144,55 @@
         ]
       }
     },
-    "tags": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "tag"
-      }
+    "_info": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "message"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eol"
+        }
+      ]
     },
-    "tag": {
+    "type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "!note"
+        },
+        {
+          "type": "STRING",
+          "value": "!todo"
+        },
+        {
+          "type": "STRING",
+          "value": "!warning"
+        },
+        {
+          "type": "STRING",
+          "value": "!error"
+        }
+      ]
+    },
+    "message": {
       "type": "PATTERN",
-      "value": "[#]+[^#\\n]+"
+      "value": "[^\\n]+"
     },
     "comment": {
       "type": "PATTERN",
