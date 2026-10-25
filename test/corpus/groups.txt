@@ -2,7 +2,7 @@
 Single group
 ============
 
-- Group
+ Group
 Paragraph.
 
 ------
@@ -17,7 +17,7 @@ No full group
 =============
 
 No grouped paragraph.
-- Group
+ Group
 Paragraph.
 
 ------
@@ -33,9 +33,9 @@ Paragraph.
 Multiple groups
 ===============
 
-- Group I
+ Group I
 Paragraph.
-- Group II
+ Group II
 Paragraph.
 
 ------
@@ -53,11 +53,11 @@ Paragraph.
 Multiple not full groups
 ==========================
 
-- Group I
+ Group I
 Paragraph.
 -
 No grouped paragraph.
-- Group II
+ Group II
 Paragraph.
 
 ------

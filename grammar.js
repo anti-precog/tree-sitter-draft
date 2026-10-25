@@ -9,25 +9,25 @@ module.exports = grammar({
       repeat(choice($.group, $.narrative, $.dialog, $.comment, $.header, $._summary_wrap)),
 
     // ==========================================
-    // 2. GROUP BLOCK (-Thread ... -)
+    // 2. GROUP BLOCK ( Thread ... -)
     // ==========================================
     group: ($) =>
       prec.right(
         seq(
-          alias($.start_group, $.head), // group header (e.g. - Chapter 69)
+          alias($.start_group, $.head), // group header (e.g.   Chapter 69)
           $._eol,
           repeat(choice($.narrative, $.comment, $.dialog, $.header, $._summary_wrap)), // inner groups are not permitted
-          optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by - symbol
+          optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by space symbol
         ),
       ),
 
-    start_group: ($) => /-[^\n]+/, // start group symbol
+    start_group: ($) => / [^\n]+/, // start group symbol
     break_group: ($) => "-", // end group symbol
 
     // ==========================================
     // 4. COMMENTS
     // ==========================================
-    comment: ($) => /[ \t]+[^>\n]*\n/, // Start with space or tabulator
+    comment: ($) => /[!\t]+[^>\n]*\n/, // Start with space or tabulator
 
     // ==========================================
     // 5. SIMPLE TEXT

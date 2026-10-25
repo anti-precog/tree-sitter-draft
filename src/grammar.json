@@ -112,7 +112,7 @@
     },
     "start_group": {
       "type": "PATTERN",
-      "value": "-[^\\n]+"
+      "value": " [^\\n]+"
     },
     "break_group": {
       "type": "STRING",
@@ -120,7 +120,7 @@
     },
     "comment": {
       "type": "PATTERN",
-      "value": "[ \\t]+[^>\\n]*\\n"
+      "value": "[!\\t]+[^>\\n]*\\n"
     },
     "narrative": {
       "type": "SEQ",

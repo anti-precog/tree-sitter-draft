@@ -22,7 +22,7 @@ Simple paragraph.
 Group structure
 ===============
 
-- Group
+ Group
 > Title
 Simple paragraph.
 	Comment.
@@ -101,7 +101,7 @@ Dialogues
 Comments
 ========
 
- Comment
+	Comment
 	Comment
 
 ------
