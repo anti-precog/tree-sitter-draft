@@ -94,11 +94,6 @@
     }
   },
   {
-    "type": "header",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "narrative",
     "named": true,
     "fields": {}
@@ -118,10 +113,6 @@
     "named": false
   },
   {
-    "type": ">",
-    "named": false
-  },
-  {
     "type": "@",
     "named": false
   },
@@ -131,6 +122,10 @@
   },
   {
     "type": "head",
+    "named": true
+  },
+  {
+    "type": "header",
     "named": true
   },
   {

@@ -6,7 +6,7 @@ module.exports = grammar({
     // 1. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.header, $._summary_content)),
+      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.header, $._summary_wrap)),
 
     // ==========================================
     // 2. GROUP BLOCK (#Thread ... #)
@@ -16,7 +16,7 @@ module.exports = grammar({
         seq(
           alias($.start_group, $.head), // group header (e.g. # Chapter 69)
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog, $.header, $._summary_content)), // inner groups are not permitted
+          repeat(choice($.narrative, $.comment, $.dialog, $.header, $._summary_wrap)), // inner groups are not permitted
           optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by # symbol
         ),
       ),
@@ -37,12 +37,12 @@ module.exports = grammar({
     // ==========================================
     // 5. HEADERS
     // ==========================================
-    header: ($) => seq(">", /[^\n]+/, $._eol),
+    header: ($) => /[>]+[^\n]*\n/, // Start with >
 
     // ==========================================
     // 6. SUMMARY
     // ==========================================
-    _summary_content: ($) => seq($.summary, $._eol),
+    _summary_wrap: ($) => seq($.summary, $._eol),
     summary: ($) => seq("@", /[^\n]*/),
 
     // ==========================================
