@@ -116,11 +116,11 @@
     },
     "break_group": {
       "type": "STRING",
-      "value": "-"
+      "value": "~"
     },
     "comment": {
       "type": "PATTERN",
-      "value": "[!\\t]+[^>\\n]*\\n"
+      "value": "[!?-]+[^>\\n]*\\n"
     },
     "narrative": {
       "type": "SEQ",

@@ -9,7 +9,7 @@ module.exports = grammar({
       repeat(choice($.group, $.narrative, $.dialog, $.comment, $.header, $._summary_wrap)),
 
     // ==========================================
-    // 2. GROUP BLOCK ( Thread ... -)
+    // 2. GROUP BLOCK ( Thread ... .)
     // ==========================================
     group: ($) =>
       prec.right(
@@ -17,17 +17,17 @@ module.exports = grammar({
           alias($.start_group, $.head), // group header (e.g.   Chapter 69)
           $._eol,
           repeat(choice($.narrative, $.comment, $.dialog, $.header, $._summary_wrap)), // inner groups are not permitted
-          optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by space symbol
+          optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group
         ),
       ),
 
     start_group: ($) => / [^\n]+/, // start group symbol
-    break_group: ($) => "-", // end group symbol
+    break_group: ($) => "~", // end group symbol
 
     // ==========================================
     // 4. COMMENTS
     // ==========================================
-    comment: ($) => /[!\t]+[^>\n]*\n/, // Start with space or tabulator
+    comment: ($) => /[!?-]+[^>\n]*\n/, // Start with space or tabulator
 
     // ==========================================
     // 5. SIMPLE TEXT

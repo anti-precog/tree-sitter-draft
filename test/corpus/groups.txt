@@ -55,7 +55,7 @@ Multiple not full groups
 
  Group I
 Paragraph.
--
+~
 No grouped paragraph.
  Group II
 Paragraph.
