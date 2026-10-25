@@ -22,10 +22,6 @@
           {
             "type": "SYMBOL",
             "name": "comment"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "marker"
           }
         ]
       }
@@ -65,10 +61,6 @@
                 {
                   "type": "SYMBOL",
                   "name": "dialog"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "marker"
                 }
               ]
             }
@@ -109,90 +101,6 @@
     "break_group": {
       "type": "STRING",
       "value": "#"
-    },
-    "marker": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_info"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "narrative"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "dialog"
-                  }
-                ]
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "_info": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "type"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "message"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_eol"
-        }
-      ]
-    },
-    "type": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "!note"
-        },
-        {
-          "type": "STRING",
-          "value": "!todo"
-        },
-        {
-          "type": "STRING",
-          "value": "!warning"
-        },
-        {
-          "type": "STRING",
-          "value": "!error"
-        }
-      ]
-    },
-    "message": {
-      "type": "PATTERN",
-      "value": "[^\\n]+"
     },
     "comment": {
       "type": "PATTERN",

@@ -40,10 +40,6 @@
           "named": true
         },
         {
-          "type": "marker",
-          "named": true
-        },
-        {
           "type": "narrative",
           "named": true
         }
@@ -71,42 +67,11 @@
           "named": true
         },
         {
-          "type": "marker",
-          "named": true
-        },
-        {
           "type": "narrative",
           "named": true
         },
         {
           "type": "stop",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "marker",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dialog",
-          "named": true
-        },
-        {
-          "type": "message",
-          "named": true
-        },
-        {
-          "type": "narrative",
-          "named": true
-        },
-        {
-          "type": "type",
           "named": true
         }
       ]
@@ -123,28 +88,7 @@
     "fields": {}
   },
   {
-    "type": "type",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "\n",
-    "named": false
-  },
-  {
-    "type": "!error",
-    "named": false
-  },
-  {
-    "type": "!note",
-    "named": false
-  },
-  {
-    "type": "!todo",
-    "named": false
-  },
-  {
-    "type": "!warning",
     "named": false
   },
   {
@@ -153,10 +97,6 @@
   },
   {
     "type": "head",
-    "named": true
-  },
-  {
-    "type": "message",
     "named": true
   },
   {

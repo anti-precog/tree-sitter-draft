@@ -6,7 +6,7 @@ module.exports = grammar({
     // 1. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.marker)),
+      repeat(choice($.group, $.narrative, $.dialog, $.comment)),
 
     // ==========================================
     // 2. GROUP BLOCK (#Thread ... #)
@@ -16,28 +16,13 @@ module.exports = grammar({
         seq(
           alias($.start_group, $.head), // group header (e.g. # Chapter 69)
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog, $.marker)), // inner groups are not permitted
+          repeat(choice($.narrative, $.comment, $.dialog)), // inner groups are not permitted
           optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by # symbol
         ),
       ),
 
     start_group: ($) => /#[^\n]+/, // start group symbol
     break_group: ($) => "#", // end group symbol
-
-    // ==========================================
-    // MARKERS (!note [opcjonalny tekst])
-    // ==========================================
-    marker: ($) =>
-      prec.right(seq($._info, optional(choice($.narrative, $.dialog)))),
-
-    // Nagłówek markera: słowo kluczowe + opcjonalny tytuł/opis w tej samej linii
-    _info: ($) => seq($.type, optional($.message), $._eol),
-    
-    // Dozwolone słowa kluczowe:
-    type: ($) => choice("!note", "!todo", "!warning", "!error"),
-
-    // Tekst po słowie kluczowym aż do znaku nowej linii
-    message: ($) => /[^\n]+/,
 
     // ==========================================
     // 4. COMMENTS
