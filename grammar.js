@@ -6,7 +6,7 @@ module.exports = grammar({
     // 1. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.group, $.narrative, $.dialog, $.comment)),
+      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.header)),
 
     // ==========================================
     // 2. GROUP BLOCK (#Thread ... #)
@@ -16,7 +16,7 @@ module.exports = grammar({
         seq(
           alias($.start_group, $.head), // group header (e.g. # Chapter 69)
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog)), // inner groups are not permitted
+          repeat(choice($.narrative, $.comment, $.dialog, $.header)), // inner groups are not permitted
           optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by # symbol
         ),
       ),
@@ -35,7 +35,12 @@ module.exports = grammar({
     narrative: ($) => seq(/[^\t>—\n]/, optional(/[^\t>\n]+/), $._eol), // Simple line of paragraph which is not dialog
 
     // ==========================================
-    // 5. DIALOGS
+    // 5. HEADERS
+    // ==========================================
+    header: ($) => seq(">", /[^\n]+/, $._eol),
+
+    // ==========================================
+    // 6. DIALOGS
     // ==========================================
     dialog: ($) =>
       choice(
@@ -73,7 +78,7 @@ module.exports = grammar({
       ),
 
     // ==========================================
-    // 6. HIDDEN HELPERS
+    // 7. HIDDEN HELPERS
     // ==========================================
     _open_dialog: ($) => seq("—", /[^—\n]+/, "—"),
     _end_dialog: ($) => seq("—", /[^—\n]+/, $._eol),

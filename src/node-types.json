@@ -40,6 +40,10 @@
           "named": true
         },
         {
+          "type": "header",
+          "named": true
+        },
+        {
           "type": "narrative",
           "named": true
         }
@@ -67,6 +71,10 @@
           "named": true
         },
         {
+          "type": "header",
+          "named": true
+        },
+        {
           "type": "narrative",
           "named": true
         },
@@ -76,6 +84,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "header",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "narrative",
@@ -89,6 +102,10 @@
   },
   {
     "type": "\n",
+    "named": false
+  },
+  {
+    "type": ">",
     "named": false
   },
   {

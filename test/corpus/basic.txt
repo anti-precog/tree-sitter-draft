@@ -2,6 +2,7 @@
 Document structure
 ==================
 
+> Title
 Simple paragraph.
 	Comment.
 — dialogue.
@@ -9,6 +10,7 @@ Simple paragraph.
 ------
 
 (document
+  (header)
   (narrative)
   (comment)
   (dialog
@@ -19,6 +21,7 @@ Group structure
 ===============
 
 # Group
+> Title
 Simple paragraph.
 	Comment.
 — dialogue.
@@ -28,6 +31,7 @@ Simple paragraph.
 (document
   (group
   (head)
+    (header)
     (narrative)
     (comment)
     (dialog
@@ -101,4 +105,18 @@ Comments
 (document
   (comment)
   (comment))
+ 
+
+=======
+Headers
+=======
+
+> Title 1
+>Title 2
+
+------
+
+(document
+  (header)
+  (header))
  
