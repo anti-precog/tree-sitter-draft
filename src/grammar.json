@@ -112,11 +112,11 @@
     },
     "start_group": {
       "type": "PATTERN",
-      "value": "#[^\\n]+"
+      "value": "-[^\\n]+"
     },
     "break_group": {
       "type": "STRING",
-      "value": "#"
+      "value": "-"
     },
     "comment": {
       "type": "PATTERN",
