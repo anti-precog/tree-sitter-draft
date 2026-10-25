@@ -6,7 +6,7 @@ module.exports = grammar({
     // 1. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.header)),
+      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.header, $._summary_content)),
 
     // ==========================================
     // 2. GROUP BLOCK (#Thread ... #)
@@ -16,7 +16,7 @@ module.exports = grammar({
         seq(
           alias($.start_group, $.head), // group header (e.g. # Chapter 69)
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog, $.header)), // inner groups are not permitted
+          repeat(choice($.narrative, $.comment, $.dialog, $.header, $._summary_content)), // inner groups are not permitted
           optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group by # symbol
         ),
       ),
@@ -32,7 +32,7 @@ module.exports = grammar({
     // ==========================================
     // 5. SIMPLE TEXT
     // ==========================================
-    narrative: ($) => seq(/[^\t>—\n]/, optional(/[^\t>\n]+/), $._eol), // Simple line of paragraph which is not dialog
+    narrative: ($) => seq(/[^\t>—\n@]/, optional(/[^\t>\n]+/), $._eol), // Simple line of paragraph which is not dialog
 
     // ==========================================
     // 5. HEADERS
@@ -40,7 +40,13 @@ module.exports = grammar({
     header: ($) => seq(">", /[^\n]+/, $._eol),
 
     // ==========================================
-    // 6. DIALOGS
+    // 6. SUMMARY
+    // ==========================================
+    _summary_content: ($) => seq($.summary, $._eol),
+    summary: ($) => seq("@", /[^\n]*/),
+
+    // ==========================================
+    // 7. DIALOGS
     // ==========================================
     dialog: ($) =>
       choice(
@@ -78,7 +84,7 @@ module.exports = grammar({
       ),
 
     // ==========================================
-    // 7. HIDDEN HELPERS
+    // 8. HIDDEN HELPERS
     // ==========================================
     _open_dialog: ($) => seq("—", /[^—\n]+/, "—"),
     _end_dialog: ($) => seq("—", /[^—\n]+/, $._eol),

@@ -46,6 +46,10 @@
         {
           "type": "narrative",
           "named": true
+        },
+        {
+          "type": "summary",
+          "named": true
         }
       ]
     }
@@ -81,6 +85,10 @@
         {
           "type": "stop",
           "named": true
+        },
+        {
+          "type": "summary",
+          "named": true
         }
       ]
     }
@@ -101,11 +109,20 @@
     "fields": {}
   },
   {
+    "type": "summary",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\n",
     "named": false
   },
   {
     "type": ">",
+    "named": false
+  },
+  {
+    "type": "@",
     "named": false
   },
   {
