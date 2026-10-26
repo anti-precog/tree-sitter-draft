@@ -3,20 +3,33 @@ module.exports = grammar({
 
   rules: {
     // ==========================================
-    // 1. MAIN DOCUMENT ROOT
+    // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.group, $.narrative, $.dialog, $.comment, $.header, $._summary_wrap)),
+      repeat(choice($.section, $.group, $.narrative, $.dialog, $.comment, $._summary_wrap)),
 
     // ==========================================
-    // 2. GROUP BLOCK ( Thread ... .)
+    // 1. SECTION BLOCK
+    // ==========================================
+    section: ($) =>
+      prec.right(
+        seq(
+          $.header, // section header (> Chapter 69)
+          repeat(choice($.group, $.narrative, $.dialog, $.comment, $._summary_wrap)), // inner groups are not permitted
+        ),
+      ),
+
+    header: ($) => /[>]+[^\n]*\n/, // Start with >
+
+    // ==========================================
+    // 2. GROUP BLOCK
     // ==========================================
     group: ($) =>
       prec.right(
         seq(
           alias($.start_group, $.head), // group header (e.g.   Chapter 69)
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog, $.header, $._summary_wrap)), // inner groups are not permitted
+          repeat(choice($.narrative, $.comment, $.dialog, $._summary_wrap)), // inner groups are not permitted
           optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group
         ),
       ),
@@ -32,12 +45,7 @@ module.exports = grammar({
     // ==========================================
     // 5. SIMPLE TEXT
     // ==========================================
-    narrative: ($) => seq(/[^\t>—\n@]/, optional(/[^\t>\n]+/), $._eol), // Simple line of paragraph which is not dialog
-
-    // ==========================================
-    // 5. HEADERS
-    // ==========================================
-    header: ($) => /[>]+[^\n]*\n/, // Start with >
+    narrative: ($) => seq(/[^ \t>—\n@]/, optional(/[^\t>\n]+/), $._eol), // Simple line of paragraph which is not dialog
 
     // ==========================================
     // 6. SUMMARY

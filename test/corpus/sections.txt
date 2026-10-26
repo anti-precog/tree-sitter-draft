@@ -1,0 +1,109 @@
+==============
+Empty section
+==============
+
+> SECTION
+
+------
+
+(document
+  (section
+    (header)))
+
+
+==============
+Simple section
+==============
+
+> SECTION
+Paragraph.
+— dialogue
+
+------
+
+(document
+  (section
+    (header)
+	(narrative)
+    (dialog
+      (speech))))
+
+
+==================
+Not all in SECTION
+==================
+
+Paragraph.
+> SECTION
+Paragraph in section.
+
+------
+
+(document
+  (narrative)
+  (section
+    (header)
+    (narrative)))
+
+================
+Multiple SECTION
+================
+
+> SECTION
+Paragraph.
+> SECTION
+Paragraph.
+
+------
+
+(document
+  (section
+    (header)
+    (narrative))
+  (section
+    (header)
+    (narrative)))
+
+==================
+Section with group
+==================
+
+> SECTION
+Paragraph.
+ Group
+~
+Paragraph.
+
+------
+
+(document
+  (section
+  (header)
+  (narrative)
+  (group
+    (head)
+	(stop))
+  (narrative)))
+
+=============================
+Section with not closed group
+=============================
+
+> SECTION
+Paragraph.
+ Group
+Paragraph.
+
+------
+
+(document
+  (section
+  (header)
+  (narrative)
+  (group
+    (head)
+    (narrative))))
+
+
+
+

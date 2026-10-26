@@ -9,6 +9,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "section"
+          },
+          {
+            "type": "SYMBOL",
             "name": "group"
           },
           {
@@ -25,14 +29,55 @@
           },
           {
             "type": "SYMBOL",
-            "name": "header"
-          },
-          {
-            "type": "SYMBOL",
             "name": "_summary_wrap"
           }
         ]
       }
+    },
+    "section": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "header"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "group"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "narrative"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "dialog"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "comment"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_summary_wrap"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "header": {
+      "type": "PATTERN",
+      "value": "[>]+[^\\n]*\\n"
     },
     "group": {
       "type": "PREC_RIGHT",
@@ -69,10 +114,6 @@
                 {
                   "type": "SYMBOL",
                   "name": "dialog"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "header"
                 },
                 {
                   "type": "SYMBOL",
@@ -127,7 +168,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[^\\t>—\\n@]"
+          "value": "[^ \\t>—\\n@]"
         },
         {
           "type": "CHOICE",
@@ -146,10 +187,6 @@
           "name": "_eol"
         }
       ]
-    },
-    "header": {
-      "type": "PATTERN",
-      "value": "[>]+[^\\n]*\\n"
     },
     "_summary_wrap": {
       "type": "SEQ",

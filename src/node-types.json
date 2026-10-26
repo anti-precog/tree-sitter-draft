@@ -40,11 +40,11 @@
           "named": true
         },
         {
-          "type": "header",
+          "type": "narrative",
           "named": true
         },
         {
-          "type": "narrative",
+          "type": "section",
           "named": true
         },
         {
@@ -75,10 +75,6 @@
           "named": true
         },
         {
-          "type": "header",
-          "named": true
-        },
-        {
           "type": "narrative",
           "named": true
         },
@@ -97,6 +93,41 @@
     "type": "narrative",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "dialog",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "header",
+          "named": true
+        },
+        {
+          "type": "narrative",
+          "named": true
+        },
+        {
+          "type": "summary",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "speech",

@@ -12,9 +12,9 @@ Paragraph.
     (head)
     (narrative)))
 
-=============
-No full group
-=============
+================
+Not all in group
+================
 
 No grouped paragraph.
  Group
@@ -27,6 +27,43 @@ Paragraph.
   (group
     (head)
     (narrative)))
+
+================
+Group in section 
+================
+
+> SECTION
+ Group
+Paragraph.
+
+------
+
+(document
+  (section
+    (header)
+    (group
+      (head)
+      (narrative))))
+
+========================
+Group breaked by section
+========================
+
+ Group
+Paragraph.
+> SECTION
+Paragraph.
+
+------
+
+(document
+  (group
+    (head)
+    (narrative))
+  (section
+    (header)
+    (narrative)))
+
 
 
 ===============
@@ -49,8 +86,30 @@ Paragraph.
     (narrative)))
 
 
+================================
+Multiple groups with empty break
+================================
+
+ Group I
+Paragraph.
+~
+ Group II
+Paragraph.
+
+------
+
+(document
+  (group
+    (head)
+    (narrative)
+    (stop))
+  (group
+    (head)
+    (narrative)))
+
+
 ==========================
-Multiple not full groups
+Multiple groups with break
 ==========================
 
  Group I
@@ -71,5 +130,18 @@ Paragraph.
   (group
     (head)
     (narrative)))
+
+====================
+Breaker not in group
+====================
+
+Paragraph.
+~
+
+------
+
+(document
+  (narrative)
+  (narrative))
 
 
