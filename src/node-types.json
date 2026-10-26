@@ -135,16 +135,7 @@
     "fields": {}
   },
   {
-    "type": "summary",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "\n",
-    "named": false
-  },
-  {
-    "type": "@",
     "named": false
   },
   {
@@ -157,6 +148,10 @@
   },
   {
     "type": "header",
+    "named": true
+  },
+  {
+    "type": "summary",
     "named": true
   },
   {

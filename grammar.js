@@ -6,7 +6,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.section, $.group, $.narrative, $.dialog, $.comment, $._summary_wrap)),
+      repeat(choice($.section, $.group, $.narrative, $.dialog, $.comment, $.summary)),
 
     // ==========================================
     // 1. SECTION BLOCK
@@ -15,7 +15,7 @@ module.exports = grammar({
       prec.right(
         seq(
           $.title, // section title (> Chapter 69)
-          repeat(choice($.group, $.narrative, $.dialog, $.comment, $._summary_wrap)), // inner groups are not permitted
+          repeat(choice($.group, $.narrative, $.dialog, $.comment, $.summary)), // inner groups are not permitted
         ),
       ),
 
@@ -29,29 +29,34 @@ module.exports = grammar({
         seq(
           $.header, // group header (e.g.   Chapter 69)
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog, $._summary_wrap)), // inner groups are not permitted
+          repeat(choice($.narrative, $.comment, $.dialog, $.summary)), // inner groups are not permitted
           optional(seq($.footer, $._eol)), // optional end of group
         ),
       ),
 
-    header: ($) => / [^\n]+/, // start group symbol
-    footer: ($) => "~", // end group symbol
+    header: ($) => / [^\n]+/, // start wtich space
+    footer: ($) => "~", // stop with ~
 
     // ==========================================
     // 4. COMMENTS
     // ==========================================
-    comment: ($) => /[!?-]+[^>\n]*\n/, // Start with space or tabulator
+    comment: ($) => /[!?-]+[^\n]*\n/, // Start with symbols ! or ? or -
 
     // ==========================================
     // 5. SIMPLE TEXT
     // ==========================================
-    narrative: ($) => seq(/[^ \t>—\n@]/, optional(/[^\t>\n]+/), $._eol), // Simple line of paragraph which is not dialog
+//    narrative: ($) => seq(/[^ \t?!-#>—\n@]/, optional(/[^\t>\n]+/), $._eol), // Simple line of paragraph which is not dialog
+    narrative: ($) => seq(/[^—\n]/, optional(/[^\n]+/), $._eol), // Simple line of paragraph which is not dialog
 
     // ==========================================
     // 6. SUMMARY
     // ==========================================
-    _summary_wrap: ($) => seq($.summary, $._eol),
-    summary: ($) => seq("@", /[^\n]*/),
+    
+    //_summary_wrap: ($) => seq($.summary, $._eol),
+    //summary: ($) => seq("@", /[^\n]*/),
+
+    // uwaga!:
+    summary: ($) => /[@]+[^\n]*\n/, // Start with symbol @
 
     // ==========================================
     // 7. DIALOGS
