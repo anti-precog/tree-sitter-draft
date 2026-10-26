@@ -8,7 +8,7 @@ Empty section
 
 (document
   (section
-    (header)))
+    (title)))
 
 
 ==============
@@ -23,7 +23,7 @@ Paragraph.
 
 (document
   (section
-    (header)
+    (title)
 	(narrative)
     (dialog
       (speech))))
@@ -42,7 +42,7 @@ Paragraph in section.
 (document
   (narrative)
   (section
-    (header)
+    (title)
     (narrative)))
 
 ================
@@ -58,10 +58,10 @@ Paragraph.
 
 (document
   (section
-    (header)
+    (title)
     (narrative))
   (section
-    (header)
+    (title)
     (narrative)))
 
 ==================
@@ -78,11 +78,11 @@ Paragraph.
 
 (document
   (section
-  (header)
+  (title)
   (narrative)
   (group
-    (head)
-	(stop))
+    (header)
+	(footer))
   (narrative)))
 
 =============================
@@ -98,10 +98,10 @@ Paragraph.
 
 (document
   (section
-  (header)
+  (title)
   (narrative)
   (group
-    (head)
+    (header)
     (narrative))))
 
 

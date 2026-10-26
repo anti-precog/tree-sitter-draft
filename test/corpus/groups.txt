@@ -9,7 +9,7 @@ Paragraph.
 
 (document
   (group
-    (head)
+    (header)
     (narrative)))
 
 ================
@@ -25,7 +25,7 @@ Paragraph.
 (document
   (narrative)
   (group
-    (head)
+    (header)
     (narrative)))
 
 ================
@@ -40,9 +40,9 @@ Paragraph.
 
 (document
   (section
-    (header)
+    (title)
     (group
-      (head)
+      (header)
       (narrative))))
 
 ========================
@@ -58,10 +58,10 @@ Paragraph.
 
 (document
   (group
-    (head)
+    (header)
     (narrative))
   (section
-    (header)
+    (title)
     (narrative)))
 
 
@@ -79,10 +79,10 @@ Paragraph.
 
 (document
   (group
-    (head)
+    (header)
     (narrative))
   (group
-    (head)
+    (header)
     (narrative)))
 
 
@@ -100,11 +100,11 @@ Paragraph.
 
 (document
   (group
-    (head)
+    (header)
     (narrative)
-    (stop))
+    (footer))
   (group
-    (head)
+    (header)
     (narrative)))
 
 
@@ -123,12 +123,12 @@ Paragraph.
 
 (document
   (group
-    (head)
+    (header)
     (narrative)
-    (stop))
+    (footer))
   (narrative)
   (group
-    (head)
+    (header)
     (narrative)))
 
 ====================

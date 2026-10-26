@@ -71,15 +71,15 @@
           "named": true
         },
         {
-          "type": "head",
+          "type": "footer",
+          "named": true
+        },
+        {
+          "type": "header",
           "named": true
         },
         {
           "type": "narrative",
-          "named": true
-        },
-        {
-          "type": "stop",
           "named": true
         },
         {
@@ -115,15 +115,15 @@
           "named": true
         },
         {
-          "type": "header",
-          "named": true
-        },
-        {
           "type": "narrative",
           "named": true
         },
         {
           "type": "summary",
+          "named": true
+        },
+        {
+          "type": "title",
           "named": true
         }
       ]
@@ -152,7 +152,7 @@
     "named": true
   },
   {
-    "type": "head",
+    "type": "footer",
     "named": true
   },
   {
@@ -160,7 +160,7 @@
     "named": true
   },
   {
-    "type": "stop",
+    "type": "title",
     "named": true
   },
   {

@@ -14,12 +14,12 @@ module.exports = grammar({
     section: ($) =>
       prec.right(
         seq(
-          $.header, // section header (> Chapter 69)
+          $.title, // section title (> Chapter 69)
           repeat(choice($.group, $.narrative, $.dialog, $.comment, $._summary_wrap)), // inner groups are not permitted
         ),
       ),
 
-    header: ($) => /[>]+[^\n]*\n/, // Start with >
+    title: ($) => /[>]+[^\n]*\n/, // Start with >
 
     // ==========================================
     // 2. GROUP BLOCK
@@ -27,15 +27,15 @@ module.exports = grammar({
     group: ($) =>
       prec.right(
         seq(
-          alias($.start_group, $.head), // group header (e.g.   Chapter 69)
+          $.header, // group header (e.g.   Chapter 69)
           $._eol,
           repeat(choice($.narrative, $.comment, $.dialog, $._summary_wrap)), // inner groups are not permitted
-          optional(seq(alias($.break_group, $.stop), $._eol)), // optional end of group
+          optional(seq($.footer, $._eol)), // optional end of group
         ),
       ),
 
-    start_group: ($) => / [^\n]+/, // start group symbol
-    break_group: ($) => "~", // end group symbol
+    header: ($) => / [^\n]+/, // start group symbol
+    footer: ($) => "~", // end group symbol
 
     // ==========================================
     // 4. COMMENTS

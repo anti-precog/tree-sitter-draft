@@ -10,7 +10,7 @@ Paragraph.
 
 (document
   (section
-    (header)
+    (title)
     (narrative)
     (dialog
       (speech))))
@@ -29,7 +29,7 @@ Simple paragraph.
 
 (document
   (group
-  (head)
+  (header)
     (narrative)
     (comment)
     (dialog
