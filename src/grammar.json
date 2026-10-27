@@ -147,7 +147,7 @@
     },
     "footer": {
       "type": "STRING",
-      "value": "~"
+      "value": "<"
     },
     "comment": {
       "type": "PATTERN",

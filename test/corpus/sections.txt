@@ -71,7 +71,7 @@ Section with group
 # SECTION
 Paragraph.
 > Group
-~
+<
 Paragraph.
 
 ------

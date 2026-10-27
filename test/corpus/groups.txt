@@ -92,7 +92,7 @@ Multiple groups with empty break
 
 > Group I
 Paragraph.
-~
+<
 > Group II
 Paragraph.
 
@@ -114,7 +114,7 @@ Multiple groups with break
 
 > Group I
 Paragraph.
-~
+<
 No grouped paragraph.
 > Group II
 Paragraph.

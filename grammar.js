@@ -37,7 +37,7 @@ module.exports = grammar({
       ),
 
     header: ($) => />[^\n]+/, // start wtich >
-    footer: ($) => "~", // stop with ~
+    footer: ($) => "<", // stop with <
 
     // ==========================================
     // 4. COMMENTS

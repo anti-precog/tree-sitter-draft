@@ -284,9 +284,9 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (eof) ADVANCE(16);
       if (lookahead == '\n') SKIP(0);
       if (lookahead == '#') ADVANCE(23);
+      if (lookahead == '<') ADVANCE(19);
       if (lookahead == '>') ADVANCE(25);
       if (lookahead == '@') ADVANCE(24);
-      if (lookahead == '~') ADVANCE(19);
       if (lookahead == 0x2014) ADVANCE(29);
       if (lookahead == '\t' ||
           lookahead == ' ') ADVANCE(6);
