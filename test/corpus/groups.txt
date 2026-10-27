@@ -2,7 +2,7 @@
 Single group
 ============
 
- Group
+> Group
 Paragraph.
 
 ------
@@ -17,7 +17,7 @@ Not all in group
 ================
 
 No grouped paragraph.
- Group
+> Group
 Paragraph.
 
 ------
@@ -32,8 +32,8 @@ Paragraph.
 Group in section 
 ================
 
-> SECTION
- Group
+# SECTION
+> Group
 Paragraph.
 
 ------
@@ -49,9 +49,9 @@ Paragraph.
 Group breaked by section
 ========================
 
- Group
+> Group
 Paragraph.
-> SECTION
+# SECTION
 Paragraph.
 
 ------
@@ -70,9 +70,9 @@ Paragraph.
 Multiple groups
 ===============
 
- Group I
+> Group I
 Paragraph.
- Group II
+> Group II
 Paragraph.
 
 ------
@@ -90,10 +90,10 @@ Paragraph.
 Multiple groups with empty break
 ================================
 
- Group I
+> Group I
 Paragraph.
 ~
- Group II
+> Group II
 Paragraph.
 
 ------
@@ -112,11 +112,11 @@ Paragraph.
 Multiple groups with break
 ==========================
 
- Group I
+> Group I
 Paragraph.
 ~
 No grouped paragraph.
- Group II
+> Group II
 Paragraph.
 
 ------

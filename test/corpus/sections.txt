@@ -2,7 +2,7 @@
 Empty section
 ==============
 
-> SECTION
+# SECTION
 
 ------
 
@@ -15,7 +15,7 @@ Empty section
 Simple section
 ==============
 
-> SECTION
+# SECTION
 Paragraph.
 — dialogue
 
@@ -34,7 +34,7 @@ Not all in SECTION
 ==================
 
 Paragraph.
-> SECTION
+# SECTION
 Paragraph in section.
 
 ------
@@ -49,9 +49,9 @@ Paragraph in section.
 Multiple SECTION
 ================
 
-> SECTION
+# SECTION
 Paragraph.
-> SECTION
+# SECTION
 Paragraph.
 
 ------
@@ -68,9 +68,9 @@ Paragraph.
 Section with group
 ==================
 
-> SECTION
+# SECTION
 Paragraph.
- Group
+> Group
 ~
 Paragraph.
 
@@ -89,9 +89,9 @@ Paragraph.
 Section with not closed group
 =============================
 
-> SECTION
+# SECTION
 Paragraph.
- Group
+> Group
 Paragraph.
 
 ------
