@@ -143,11 +143,11 @@
     },
     "header": {
       "type": "PATTERN",
-      "value": ">[^\\n]+"
+      "value": ">[^\\n]*"
     },
     "footer": {
-      "type": "STRING",
-      "value": "<"
+      "type": "PATTERN",
+      "value": "<[^\\n]*"
     },
     "comment": {
       "type": "PATTERN",

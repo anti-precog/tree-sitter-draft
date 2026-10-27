@@ -12,6 +12,36 @@ Paragraph.
     (header)
     (narrative)))
 
+===================
+Group without label
+===================
+
+>
+Paragraph.
+
+------
+
+(document
+  (group
+    (header)
+    (narrative)))
+
+=================
+Footer with label
+=================
+
+>
+Paragraph.
+< message
+
+------
+
+(document
+  (group
+    (header)
+    (narrative)
+	(footer)))
+
 ================
 Not all in group
 ================

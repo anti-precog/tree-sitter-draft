@@ -35,9 +35,8 @@ module.exports = grammar({
           optional(seq($.footer, $._eol)), // optional end of group
         ),
       ),
-
-    header: ($) => />[^\n]+/, // start wtich >
-    footer: ($) => "<", // stop with <
+    header: ($) => />[^\n]*/, // start witch >
+    footer: ($) => /<[^\n]*/, // start witch <
 
     // ==========================================
     // 4. COMMENTS
