@@ -26,10 +26,6 @@
           {
             "type": "SYMBOL",
             "name": "comment"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "summary"
           }
         ]
       }
@@ -64,10 +60,6 @@
                 {
                   "type": "SYMBOL",
                   "name": "comment"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "summary"
                 }
               ]
             }
@@ -109,10 +101,6 @@
                 {
                   "type": "SYMBOL",
                   "name": "dialog"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "summary"
                 }
               ]
             }
@@ -177,10 +165,6 @@
           "name": "_eol"
         }
       ]
-    },
-    "summary": {
-      "type": "PATTERN",
-      "value": "[@]+[^\\n]*\\n"
     },
     "dialog": {
       "type": "CHOICE",

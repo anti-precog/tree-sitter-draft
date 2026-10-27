@@ -46,10 +46,6 @@
         {
           "type": "section",
           "named": true
-        },
-        {
-          "type": "summary",
-          "named": true
         }
       ]
     }
@@ -80,10 +76,6 @@
         },
         {
           "type": "narrative",
-          "named": true
-        },
-        {
-          "type": "summary",
           "named": true
         }
       ]
@@ -119,10 +111,6 @@
           "named": true
         },
         {
-          "type": "summary",
-          "named": true
-        },
-        {
           "type": "title",
           "named": true
         }
@@ -148,10 +136,6 @@
   },
   {
     "type": "header",
-    "named": true
-  },
-  {
-    "type": "summary",
     "named": true
   },
   {
