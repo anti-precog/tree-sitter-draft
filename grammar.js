@@ -42,12 +42,12 @@ module.exports = grammar({
     // ==========================================
     // 4. COMMENTS
     // ==========================================
-    comment: ($) => /[!?-]+[^\n]*\n/, // Start with symbols ! or ? or -
+    comment: ($) => /[ \t]+[^\n]*\n/, // Start with whitespace
 
     // ==========================================
     // 5. SIMPLE TEXT
     // ==========================================
-    narrative: ($) => seq(/[^—\n]/, optional(/[^\n]+/), $._eol), // Simple line of paragraph which is not dialog
+    narrative: ($) => seq(/[^ \t—\n]/, optional(/[^\n]+/), $._eol), // Simple line of paragraph which is not dialog
 
     // ==========================================
     // 6. SUMMARY

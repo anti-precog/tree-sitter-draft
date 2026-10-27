@@ -151,14 +151,14 @@
     },
     "comment": {
       "type": "PATTERN",
-      "value": "[!?-]+[^\\n]*\\n"
+      "value": "[ \\t]+[^\\n]*\\n"
     },
     "narrative": {
       "type": "SEQ",
       "members": [
         {
           "type": "PATTERN",
-          "value": "[^—\\n]"
+          "value": "[^ \\t—\\n]"
         },
         {
           "type": "CHOICE",

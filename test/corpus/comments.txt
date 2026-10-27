@@ -1,0 +1,47 @@
+==================
+Space Margin Comment
+==================
+
+ Comment
+
+------
+
+(document
+  (comment))
+
+==================
+Multiple Space Comment
+==================
+
+  Comment
+
+------
+
+(document
+  (comment))
+
+
+==================
+Tab Margin Comment
+==================
+
+	Comment
+
+------
+
+(document
+  (comment))
+
+
+==================
+Multiple Tab Comment
+==================
+
+		Comment
+
+------
+
+(document
+  (comment))
+
+

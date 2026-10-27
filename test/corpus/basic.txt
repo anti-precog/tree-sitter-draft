@@ -21,7 +21,7 @@ Group structure
 
 > Group
 Simple paragraph.
-?Comment.
+ Comment.
 — dialogue.
 @summary
 
@@ -96,8 +96,8 @@ Dialogues
 Comments
 ========
 
-!Comment
-?Comment
+	Comment
+ Comment
 
 ------
 
