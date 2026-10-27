@@ -367,7 +367,7 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[ \\t]*\\n"
     }
   ],
   "conflicts": [],
