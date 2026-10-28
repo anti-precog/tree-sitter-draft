@@ -1,57 +1,20 @@
-# Rust artifacts
-target/
-Cargo.lock
-
-# Node artifacts
-build/
-prebuilds/
+# Zależności Node.js (nigdy nie wrzucamy do repozytorium)
 node_modules/
-package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Swift artifacts
-.build/
-Package.resolved
-
-# Go artifacts
-_obj/
-
-# Python artifacts
-.venv/
-dist/
-*.egg-info
-*.whl
-
-# C artifacts
-*.a
+# Skompilowane biblioteki dynamiczne i obiekty (lokalne testy)
 *.so
-*.so.*
 *.dylib
 *.dll
-*.pc
-*.exp
-*.lib
-
-# Zig artifacts
-.zig-cache/
-zig-cache/
-zig-out/
-
-# Example dirs
-/examples/*/
-
-# Grammar volatiles
-*.wasm
-*.obj
 *.o
+*.a
 
-# Archives
-*.tar.gz
-*.tgz
-*.zip
-
-# Norg notes
-*.norg
-
-# Other
-*.draft
-highlights.scm
+# Katalogi budowania i robocze Tree-sittera oraz edytorów
+/build/
+/.tree-sitter/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
