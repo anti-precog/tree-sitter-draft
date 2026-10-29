@@ -14,7 +14,6 @@ A TreeSitter grammar for [Draft](https://github.com/anti-precog/draft.nvim).
 - necessary for outline.nvim [external provider](https://github.com/anti-precog/outline-draft-provider.nvim)
 
 # Structure
-
 ```
 ==================        ===============
 Section structure         Group structure
@@ -33,7 +32,16 @@ Paragraph.                Simple paragraph.
     (dialog                   (comment)
       (speech))))             (dialog
                                 (speech))))
+=======
+```draft
+# Section
+> group header
 
+Paragraph.
+— dialog
+    comment
+
+< group footer
 ```
 
 # Setup for nvim

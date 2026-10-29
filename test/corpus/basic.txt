@@ -5,6 +5,7 @@ Document structure
 # CHAPTER
 Paragraph.
 — dialogue.
+*
 
 ------
 
@@ -13,7 +14,8 @@ Paragraph.
     (title)
     (narrative)
     (dialog
-      (speech))))
+      (speech))
+	(asterix)))
 
 ===============
 Group structure

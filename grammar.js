@@ -8,7 +8,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.section, $.group, $.narrative, $.dialog, $.comment)),
+      repeat(choice($.section, $.group, $.narrative, $.dialog, $.asterix, $.comment)),
 
     // ==========================================
     // 1. SECTION BLOCK
@@ -17,7 +17,7 @@ module.exports = grammar({
       prec.right(
         seq(
           $.title, // section title (# Chapter 69)
-          repeat(choice($.group, $.narrative, $.dialog, $.comment)), // inner groups are not permitted
+          repeat(choice($.group, $.narrative, $.dialog, $.asterix, $.comment)), // inner groups are not permitted
         ),
       ),
 
@@ -31,7 +31,7 @@ module.exports = grammar({
         seq(
           $.header, // group header (e.g.   Chapter 69)
           $._eol,
-          repeat(choice($.narrative, $.comment, $.dialog)), // inner groups are not permitted
+          repeat(choice($.narrative, $.comment, $.dialog, $.asterix)), // inner groups are not permitted
           optional(seq($.footer, $._eol)), // optional end of group
         ),
       ),
@@ -44,9 +44,14 @@ module.exports = grammar({
     comment: ($) => /[ \t]+[^\n]*\n/, // Start with whitespace
 
     // ==========================================
+    // 4. SEPARATOR
+    // ==========================================
+    asterix: ($) => /\*{1,3}\n/,
+
+    // ==========================================
     // 5. SIMPLE TEXT
     // ==========================================
-    narrative: ($) => seq(/[^ \t—\n]/, optional(/[^\n]+/), $._eol), // Simple line of paragraph which is not dialog
+    narrative: ($) => seq(/[^ \t—*\n]/, optional(/[^\n]+/), $._eol), // Simple line of paragraph which is not dialog
 
     // ==========================================
     // 7. DIALOGS
