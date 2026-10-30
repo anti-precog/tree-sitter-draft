@@ -1,0 +1,21 @@
+==============================
+Comments & groups juxtapostion
+==============================
+
+ komentarz 1
+ komentarz 1
+> otwarcie I
+> otwarcie II
+< zamknięcie
+
+------
+
+(document
+  (comment)
+  (comment)
+  (group
+    (header))
+  (group
+    (header)
+    (footer)))
+

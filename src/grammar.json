@@ -204,7 +204,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[^ \\t—*\\n]"
+          "value": "[^ \\t—*><\\n]"
         },
         {
           "type": "CHOICE",

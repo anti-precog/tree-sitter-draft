@@ -64,7 +64,7 @@ module.exports = grammar({
     // ==========================================
     // 5. SIMPLE TEXT
     // ==========================================
-    narrative: ($) => seq(/[^ \t—*\n]/, optional(/[^\n]+/), $._eol), // Simple line of paragraph which is not dialog
+    narrative: ($) => seq(/[^ \t—*><\n]/, optional(/[^\n]+/), $._eol), // Simple line of paragraph which is not dialog
 
     // ==========================================
     // 7. DIALOGS
