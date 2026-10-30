@@ -104,6 +104,44 @@ Paragraph.
     (header)
     (narrative))))
 
+========================
+Section beetwen comments
+========================
+ comment
+# SECTION
+ comment
+
+------
+
+(document
+  (comment)
+  (section
+  (title)
+    (comment)))
+
+
+
+=====================
+Section with comments
+=====================
+ comment
+ comment
+# SECTION
+ comment
+ comment
+
+------
+
+(document
+  (comment)
+  (comment)
+  (section
+  (title)
+    (comment)
+    (comment)))
+
+
+
 
 
 

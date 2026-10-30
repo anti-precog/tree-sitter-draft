@@ -175,6 +175,7 @@ Paragraph.
     (narrative)
 	(footer)))
 
+
 ==========================
 Mirror group without label
 ==========================
@@ -309,4 +310,41 @@ Paragraph.
     (header)
     (narrative)
 	(footer)))
+
+=====================
+Multiple empty groups
+=====================
+
+> Group I
+> Group II
+> Group III
+
+------
+
+(document
+  (group
+    (header))
+  (group
+    (header))
+  (group
+    (header)))
+
+
+============================
+Multiple empty mirror groups
+============================
+
+< Group I
+< Group II
+< Group III
+
+------
+
+(document
+  (group
+    (footer))
+  (group
+    (footer))
+  (group
+    (footer)))
 

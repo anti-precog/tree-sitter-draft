@@ -1,6 +1,6 @@
 module.exports = grammar({
   name: "draft",
-// Jawna deklaracja, że konflikty między document/section a group są celowe
+
   conflicts: ($) => [
     [$.document, $.group],
     [$.section, $.group],
@@ -34,18 +34,14 @@ module.exports = grammar({
     group: ($) =>
       prec.right(
         choice(
-          // Wariant A: Zaczyna się od nagłówka, w środku treść, opcjonalnie kończy się stopką
           seq(
             $.header,
             $._eol,
             repeat(choice($.narrative, $.comment, $.dialog, $.asterix)),
             optional(seq($.footer, $._eol)),
           ),
-          // Wariant B: Nie ma nagłówka, ale JEST stopka na końcu. 
-          // Klucz: zawartość grupy znajduje się PRZED stopką, ale ograniczamy ją tak, 
-          // aby nie "podkradała" elementów z wyższego poziomu (document/section).
           seq(
-            repeat1(choice($.narrative, $.comment, $.dialog, $.asterix)),
+            repeat(choice($.narrative, $.comment, $.dialog, $.asterix)),
             $.footer,
             $._eol,
           ),
