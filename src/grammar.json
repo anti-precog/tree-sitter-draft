@@ -83,58 +83,100 @@
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "header"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_eol"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "narrative"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "comment"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "dialog"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "asterix"
-                }
-              ]
-            }
-          },
-          {
-            "type": "CHOICE",
+            "type": "SEQ",
             "members": [
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "footer"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_eol"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "header"
               },
               {
-                "type": "BLANK"
+                "type": "SYMBOL",
+                "name": "_eol"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "narrative"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "comment"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dialog"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "asterix"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "footer"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_eol"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "narrative"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "comment"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dialog"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "asterix"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "footer"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_eol"
               }
             ]
           }
@@ -370,7 +412,16 @@
       "value": "[ \\t]*\\n"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "document",
+      "group"
+    ],
+    [
+      "section",
+      "group"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

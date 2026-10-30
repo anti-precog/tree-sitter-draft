@@ -161,17 +161,152 @@ Paragraph.
     (header)
     (narrative)))
 
-====================
-Breaker not in group
-====================
+===================
+Single mirror group
+===================
 
 Paragraph.
-~
+< Group
+
+------
+
+(document
+  (group
+    (narrative)
+	(footer)))
+
+==========================
+Mirror group without label
+==========================
+
+Paragraph.
+<
+
+------
+
+(document
+  (group
+    (narrative)
+	(footer)))
+
+
+=======================
+Not all in mirror group
+=======================
+
+No grouped paragraph.
+>
+Paragraph.
+< Group
 
 ------
 
 (document
   (narrative)
-  (narrative))
+  (group
+    (header)
+    (narrative)
+	(footer)))
 
+=======================
+Mirror group in section 
+=======================
+
+# SECTION
+Paragraph.
+< Group
+
+------
+
+(document
+  (section
+    (title)
+    (group
+      (narrative)
+	  (footer))))
+
+===============================
+Mirror group breaked by section
+===============================
+
+Paragraph.
+# SECTION
+Paragraph.
+< Group
+
+------
+
+(document
+  (narrative)
+  (section
+    (title)
+	(group
+	  (narrative)
+	  (footer))))
+
+
+======================
+Multiple mirror groups
+======================
+
+Paragraph.
+< Group I
+Paragraph.
+< Group II
+
+------
+
+(document
+  (group
+    (narrative)
+	(footer))
+  (group
+    (narrative)
+	(footer)))
+
+
+========================================
+Multiple mirrors groups with empty break
+========================================
+
+Paragraph.
+< Group I
+>
+Paragraph.
+< Group II
+
+------
+
+(document
+  (group
+    (narrative)
+    (footer))
+  (group
+    (header)
+    (narrative)
+	(footer)))
+
+
+=================================
+Multiple mirror groups with break
+=================================
+
+Paragraph.
+< Group I
+No grouped paragraph.
+>
+Paragraph.
+< Group II
+
+------
+
+(document
+  (group
+    (narrative)
+    (footer))
+  (narrative)
+  (group
+    (header)
+    (narrative)
+	(footer)))
 
