@@ -6,7 +6,8 @@ module.exports = grammar({
     [$.section, $.group],
   ],
 
-  extras: ($) => [/[ \t]*\n/],
+//  extras: ($) => [/[ \t]*\n/],
+  extras: ($) => [/[ \t]+/, /\n/],
 
   rules: {
     // ==========================================
@@ -62,9 +63,39 @@ module.exports = grammar({
     asterix: ($) => /\*{1,3}\n/,
 
     // ==========================================
-    // 5. SIMPLE TEXT
+    // 5. PARAGRAPS WITH QUOTES
     // ==========================================
-    paragraph: ($) => alias($._end_narrative, $.narrative), // Simple line of paragraph which is not dialog
+    
+    paragraph: ($) =>
+      choice(
+        seq(
+          alias($._open_narrative, $.narrative),
+          repeat(
+            seq(
+              alias($._open_quote, $.quote),
+              alias($._open_narrative, $.narrative)
+            )
+          ),
+          choice(
+            alias($._end_quote, $.quote),
+            $._eol
+          )
+        ),
+
+        seq(
+          alias($._open_quote, $.quote),
+          repeat(
+            seq(
+              alias($._open_narrative, $.narrative),
+              alias($._open_quote, $.quote),
+            )
+          ),
+          choice(
+            $._eol,
+            seq(alias($._open_narrative, $.narrative), $._eol),
+          )
+        )
+      ),
 
     // ==========================================
     // 7. DIALOGS
@@ -108,13 +139,18 @@ module.exports = grammar({
     // 8. HIDDEN HELPERS
     // ==========================================
 
-    _open_dialog: ($) => seq("—", /[^—\n]+/, "—"),
-    _end_dialog: ($) => seq("—", /[^—\n]+/, $._eol),
+    _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
+    _end_quote: ($) => seq($._open_quote, $._eol),
 
-    _open_tag: ($) => /[^\t>—\n]+/,
-    _end_tag: ($) => seq(/[^\t>—\n]+/, $._eol),
+    _open_dialog: ($) => seq("—", /[^„”—\n]+/, "—"),
+    _end_dialog: ($) => seq("—", /[^„”—\n]+/, $._eol),
 
-    _end_narrative: ($) => seq(/[^—\t>\n][^\n]*/, $._eol),
+    _open_tag: ($) => /[^\t>„”—\n]+/,
+    _end_tag: ($) => seq(/[^\t>„”—\n]+/, $._eol),
+
+    // inclusions are permitted
+    _open_narrative: ($) => /[^—\t>„”\n][^„”\n]+/,
+    _end_narrative: ($) => seq(/[^—\t>„”\n][^„”\n]*/, $._eol),
     
     _eol: ($) => "\n", // End of line
   },

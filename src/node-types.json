@@ -80,11 +80,20 @@
           "named": true
         },
         {
+          "type": "quote",
+          "named": true
+        },
+        {
           "type": "speech",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "quote",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "section",
@@ -148,6 +157,14 @@
   },
   {
     "type": "—",
+    "named": false
+  },
+  {
+    "type": "”",
+    "named": false
+  },
+  {
+    "type": "„",
     "named": false
   }
 ]

@@ -97,34 +97,6 @@ Dialogues
 	(narrative)
 	(speech)))
 
-=========
-Quotes
-=========
-
-„quote”
-„quote” narrative.
-narrative „quote”.
-narrative „quote” narrative.
-„quote” narrative „quote”
-
-------
-
-(document
-  (paragraph
-    (quote))
-  (paragraph
-    (narrative)
-    (quote))
-  (paragraph
-    (narrative)
-    (quote)
-    (narrative))
-  (paragraph
-    (quote)
-    (narrative)
-    (quote))
-
-  
 
 ========
 Comments

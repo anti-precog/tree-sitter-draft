@@ -1,0 +1,102 @@
+============
+Simple Quote
+============
+
+„quote”
+
+------
+
+(document
+  (paragraph
+    (quote)))
+
+
+====================
+Quote with narrative
+====================
+
+„quote” narrative.
+
+------
+
+(document
+  (paragraph
+	(quote)
+    (narrative)))
+
+
+====================
+Narrative with quote
+====================
+
+Narrative „quote”
+
+------
+
+(document
+  (paragraph
+	(narrative)
+    (quote)))
+
+============
+Quote inside
+============
+
+Narrative „quote” narrative.
+
+------
+
+(document
+  (paragraph
+	(narrative)
+    (quote)
+	(narrative)))
+
+======================
+Mulitple quotes inside
+======================
+
+Narrative „quote” narrative „quote” narrative.
+
+------
+
+(document
+  (paragraph
+	(narrative)
+    (quote)
+	(narrative)
+    (quote)
+	(narrative)))
+
+===========================
+Quote inside and on the end
+===========================
+
+Narrative „quote” narrative „quote”
+
+------
+
+(document
+  (paragraph
+	(narrative)
+    (quote)
+	(narrative)
+    (quote)))
+
+================
+Narrative inside
+================
+
+„quote” narrative „quote”
+
+------
+
+(document
+  (paragraph
+	(quote)
+    (narrative)
+	(quote)))
+
+
+
+
