@@ -16,7 +16,7 @@ Simple section
 ==============
 
 # SECTION
-Paragraph.
+Narrative.
 — dialogue
 
 ------
@@ -24,8 +24,9 @@ Paragraph.
 (document
   (section
     (title)
-	(narrative)
-    (dialog
+	(paragraph
+	  (narrative))
+    (paragraph
       (speech))))
 
 
@@ -33,76 +34,84 @@ Paragraph.
 Not all in SECTION
 ==================
 
-Paragraph.
+Narrative.
 # SECTION
-Paragraph in section.
+Narrative in section.
 
 ------
 
 (document
-  (narrative)
+  (paragraph
+    (narrative))
   (section
     (title)
-    (narrative)))
+    (paragraph
+	  (narrative))))
 
 ================
 Multiple SECTION
 ================
 
 # SECTION
-Paragraph.
+Narrative.
 # SECTION
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (section
     (title)
-    (narrative))
+    (paragraph
+	  (narrative)))
   (section
     (title)
-    (narrative)))
+    (paragraph
+	  (narrative))))
 
 ==================
 Section with group
 ==================
 
 # SECTION
-Paragraph.
+Narrative.
 > Group
 <
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (section
   (title)
-  (narrative)
+  (paragraph
+    (narrative))
   (group
     (header)
 	(footer))
-  (narrative)))
+  (paragraph
+    (narrative))))
 
 =============================
 Section with not closed group
 =============================
 
 # SECTION
-Paragraph.
+Narrative.
 > Group
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (section
   (title)
-  (narrative)
+  (paragraph
+    (narrative))
   (group
     (header)
-    (narrative))))
+    (paragraph
+	  (narrative)))))
 
 ========================
 Section beetwen comments

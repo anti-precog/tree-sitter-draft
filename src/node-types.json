@@ -1,24 +1,5 @@
 [
   {
-    "type": "dialog",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "narrative",
-          "named": true
-        },
-        {
-          "type": "speech",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "document",
     "named": true,
     "root": true,
@@ -36,15 +17,11 @@
           "named": true
         },
         {
-          "type": "dialog",
-          "named": true
-        },
-        {
           "type": "group",
           "named": true
         },
         {
-          "type": "narrative",
+          "type": "paragraph",
           "named": true
         },
         {
@@ -71,10 +48,6 @@
           "named": true
         },
         {
-          "type": "dialog",
-          "named": true
-        },
-        {
           "type": "footer",
           "named": true
         },
@@ -83,7 +56,7 @@
           "named": true
         },
         {
-          "type": "narrative",
+          "type": "paragraph",
           "named": true
         }
       ]
@@ -93,6 +66,25 @@
     "type": "narrative",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "paragraph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "narrative",
+          "named": true
+        },
+        {
+          "type": "speech",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "section",
@@ -111,15 +103,11 @@
           "named": true
         },
         {
-          "type": "dialog",
-          "named": true
-        },
-        {
           "type": "group",
           "named": true
         },
         {
-          "type": "narrative",
+          "type": "paragraph",
           "named": true
         },
         {

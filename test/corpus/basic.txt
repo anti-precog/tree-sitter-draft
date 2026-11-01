@@ -3,7 +3,7 @@ Document structure
 ==================
 
 # CHAPTER
-Paragraph.
+Narrative.
 — dialogue.
 *
 
@@ -12,8 +12,9 @@ Paragraph.
 (document
   (section
     (title)
-    (narrative)
-    (dialog
+    (paragraph
+	  (narrative))
+    (paragraph
       (speech))
 	(asterix)))
 
@@ -22,7 +23,7 @@ Group structure
 ===============
 
 > Group
-Simple paragraph.
+Simple narrative.
  Comment.
 — dialogue.
 
@@ -31,32 +32,36 @@ Simple paragraph.
 (document
   (group
   (header)
-    (narrative)
+    (paragraph
+	  (narrative))
     (comment)
-    (dialog
+    (paragraph
       (speech))))
 
 ===================
 Simple 2 paragraphs
 ===================
-Paragraph 1.
-Paragraph 2.
+Narrative 1.
+Narrative 2.
 
 ------
 
 (document
-  (narrative)
-  (narrative))
+  (paragraph
+    (narrative))
+  (paragraph
+    (narrative)))
 
 ====================
 Paragrap with dashes
 ====================
-Paragraph — inclusion — paragraph.
+Narrative — inclusion — narrative.
 
 ------
 
 (document
-  (narrative))
+  (paragraph
+    (narrative)))
 
 =========
 Dialogues
@@ -71,26 +76,55 @@ Dialogues
 ------
 
 (document
-  (dialog
+  (paragraph
 	(speech))
-  (dialog
+  (paragraph
 	(speech)
 	(narrative))
-  (dialog
+  (paragraph
 	(speech)
 	(narrative)
 	(speech))
-  (dialog
+  (paragraph
 	(speech)
 	(narrative)
 	(speech)
 	(narrative))
-  (dialog
+  (paragraph
 	(speech)
 	(narrative)
 	(speech)
 	(narrative)
 	(speech)))
+
+=========
+Quotes
+=========
+
+„quote”
+„quote” narrative.
+narrative „quote”.
+narrative „quote” narrative.
+„quote” narrative „quote”
+
+------
+
+(document
+  (paragraph
+    (quote))
+  (paragraph
+    (narrative)
+    (quote))
+  (paragraph
+    (narrative)
+    (quote)
+    (narrative))
+  (paragraph
+    (quote)
+    (narrative)
+    (quote))
+
+  
 
 ========
 Comments

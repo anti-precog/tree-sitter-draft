@@ -3,35 +3,37 @@ Single group
 ============
 
 > Group
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (group
     (header)
-    (narrative)))
+    (paragraph
+	  (narrative))))
 
 ===================
 Group without label
 ===================
 
 >
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (group
     (header)
-    (narrative)))
+	(paragraph
+      (narrative))))
 
 =================
 Footer with label
 =================
 
 >
-Paragraph.
+Narrative.
 < message
 
 ------
@@ -39,24 +41,27 @@ Paragraph.
 (document
   (group
     (header)
-    (narrative)
+    (paragraph
+	  (narrative))
 	(footer)))
 
 ================
 Not all in group
 ================
 
-No grouped paragraph.
+No grouped narrative.
 > Group
-Paragraph.
+Narrative.
 
 ------
 
 (document
-  (narrative)
+  (paragraph
+    (narrative))
   (group
     (header)
-    (narrative)))
+    (paragraph
+	  (narrative))))
 
 ================
 Group in section 
@@ -64,7 +69,7 @@ Group in section
 
 # SECTION
 > Group
-Paragraph.
+Narrative.
 
 ------
 
@@ -73,27 +78,29 @@ Paragraph.
     (title)
     (group
       (header)
-      (narrative))))
+      (paragraph
+	    (narrative)))))
 
 ========================
 Group breaked by section
 ========================
 
 > Group
-Paragraph.
+Narrative.
 # SECTION
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (group
     (header)
-    (narrative))
+    (paragraph
+	  (narrative)))
   (section
     (title)
-    (narrative)))
-
+    (paragraph
+	  (narrative))))
 
 
 ===============
@@ -101,19 +108,21 @@ Multiple groups
 ===============
 
 > Group I
-Paragraph.
+Narrative.
 > Group II
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (group
     (header)
-    (narrative))
+    (paragraph
+	  (narrative)))
   (group
     (header)
-    (narrative)))
+    (paragraph
+	  (narrative))))
 
 
 ================================
@@ -121,21 +130,23 @@ Multiple groups with empty break
 ================================
 
 > Group I
-Paragraph.
+Narrative.
 <
 > Group II
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (group
     (header)
-    (narrative)
+    (paragraph
+	  (narrative))
     (footer))
   (group
     (header)
-    (narrative)))
+    (paragraph
+	  (narrative))))
 
 
 ==========================
@@ -143,36 +154,40 @@ Multiple groups with break
 ==========================
 
 > Group I
-Paragraph.
+Narrative.
 <
-No grouped paragraph.
+No grouped narrative.
 > Group II
-Paragraph.
+Narrative.
 
 ------
 
 (document
   (group
     (header)
-    (narrative)
+    (paragraph
+	  (narrative))
     (footer))
-  (narrative)
+  (paragraph
+    (narrative))
   (group
     (header)
-    (narrative)))
+    (paragraph
+	  (narrative))))
 
 ===================
 Single mirror group
 ===================
 
-Paragraph.
+Narrative.
 < Group
 
 ------
 
 (document
   (group
-    (narrative)
+    (paragraph
+	  (narrative))
 	(footer)))
 
 
@@ -180,14 +195,15 @@ Paragraph.
 Mirror group without label
 ==========================
 
-Paragraph.
+Narrative.
 <
 
 ------
 
 (document
   (group
-    (narrative)
+    (paragraph
+	  (narrative))
 	(footer)))
 
 
@@ -195,18 +211,20 @@ Paragraph.
 Not all in mirror group
 =======================
 
-No grouped paragraph.
+No grouped narrative.
 >
-Paragraph.
+Narrative.
 < Group
 
 ------
 
 (document
-  (narrative)
+  (paragraph
+    (narrative))
   (group
     (header)
-    (narrative)
+    (paragraph
+	  (narrative))
 	(footer)))
 
 =======================
@@ -214,7 +232,7 @@ Mirror group in section
 =======================
 
 # SECTION
-Paragraph.
+Narrative.
 < Group
 
 ------
@@ -223,26 +241,29 @@ Paragraph.
   (section
     (title)
     (group
-      (narrative)
+      (paragraph
+	    (narrative))
 	  (footer))))
 
 ===============================
 Mirror group breaked by section
 ===============================
 
-Paragraph.
+Narrative.
 # SECTION
-Paragraph.
+Narrative.
 < Group
 
 ------
 
 (document
-  (narrative)
+  (paragraph
+    (narrative))
   (section
     (title)
 	(group
-	  (narrative)
+	  (paragraph
+	    (narrative))
 	  (footer))))
 
 
@@ -250,19 +271,21 @@ Paragraph.
 Multiple mirror groups
 ======================
 
-Paragraph.
+Narrative.
 < Group I
-Paragraph.
+Narrative.
 < Group II
 
 ------
 
 (document
   (group
-    (narrative)
+    (paragraph
+	  (narrative))
 	(footer))
   (group
-    (narrative)
+    (paragraph
+	  (narrative))
 	(footer)))
 
 
@@ -270,21 +293,23 @@ Paragraph.
 Multiple mirrors groups with empty break
 ========================================
 
-Paragraph.
+Narrative.
 < Group I
 >
-Paragraph.
+Narrative.
 < Group II
 
 ------
 
 (document
   (group
-    (narrative)
+    (paragraph
+	  (narrative))
     (footer))
   (group
     (header)
-    (narrative)
+    (paragraph
+	  (narrative))
 	(footer)))
 
 
@@ -292,23 +317,26 @@ Paragraph.
 Multiple mirror groups with break
 =================================
 
-Paragraph.
+Narrative.
 < Group I
-No grouped paragraph.
+No grouped narrative.
 >
-Paragraph.
+Narrative.
 < Group II
 
 ------
 
 (document
   (group
-    (narrative)
+    (paragraph
+	  (narrative))
     (footer))
-  (narrative)
+  (paragraph
+    (narrative))
   (group
     (header)
-    (narrative)
+    (paragraph
+	  (narrative))
 	(footer)))
 
 =====================

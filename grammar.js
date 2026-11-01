@@ -13,7 +13,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.section, $.group, $.narrative, $.dialog, $.asterix, $.comment)),
+      repeat(choice($.section, $.group, $.paragraph, alias($.dialog_line, $.paragraph), $.asterix, $.comment)),
 
     // ==========================================
     // 1. SECTION BLOCK
@@ -22,7 +22,7 @@ module.exports = grammar({
       prec.right(
         seq(
           $.title, // section title (# Chapter 69)
-          repeat(choice($.group, $.narrative, $.dialog, $.asterix, $.comment)), // inner groups are not permitted
+          repeat(choice($.group, $.paragraph, alias($.dialog_line, $.paragraph), $.asterix, $.comment)), // inner groups are not permitted
         ),
       ),
 
@@ -37,11 +37,11 @@ module.exports = grammar({
           seq(
             $.header,
             $._eol,
-            repeat(choice($.narrative, $.comment, $.dialog, $.asterix)),
+            repeat(choice($.paragraph, $.comment, alias($.dialog_line, $.paragraph), $.asterix)),
             optional(seq($.footer, $._eol)),
           ),
           seq(
-            repeat(choice($.narrative, $.comment, $.dialog, $.asterix)),
+            repeat(choice($.paragraph, $.comment, alias($.dialog_line, $.paragraph), $.asterix)),
             $.footer,
             $._eol,
           ),
@@ -64,12 +64,12 @@ module.exports = grammar({
     // ==========================================
     // 5. SIMPLE TEXT
     // ==========================================
-    narrative: ($) => seq(/[^ \t—*><\n]/, optional(/[^\n]+/), $._eol), // Simple line of paragraph which is not dialog
+    paragraph: ($) => alias($._end_narrative, $.narrative), // Simple line of paragraph which is not dialog
 
     // ==========================================
     // 7. DIALOGS
     // ==========================================
-    dialog: ($) =>
+    dialog_line: ($) =>
       choice(
         // variant 1: Simple staement to end of line (— Hi!)
         alias($._end_dialog, $.speech),
@@ -79,7 +79,7 @@ module.exports = grammar({
           repeat1(
             seq(
               alias($._open_dialog, $.speech),
-              alias($._open_narrative, $.narrative),
+              alias($._open_tag, $.narrative),
             ),
           ),
           alias($._end_dialog, $.speech),
@@ -90,29 +90,32 @@ module.exports = grammar({
           repeat1(
             seq(
               alias($._open_dialog, $.speech),
-              alias($._open_narrative, $.narrative),
+              alias($._open_tag, $.narrative),
             ),
           ),
           alias($._open_dialog, $.speech),
-          alias($._end_narrative, $.narrative),
+          alias($._end_tag, $.narrative),
         ),
 
         // variant 4: One statments with narration on the end (— Hi — he said.)
         seq(
           alias($._open_dialog, $.speech),
-          alias($._end_narrative, $.narrative),
+          alias($._end_tag, $.narrative),
         ),
       ),
 
     // ==========================================
     // 8. HIDDEN HELPERS
     // ==========================================
+
     _open_dialog: ($) => seq("—", /[^—\n]+/, "—"),
     _end_dialog: ($) => seq("—", /[^—\n]+/, $._eol),
 
-    _open_narrative: ($) => /[^\t>—\n]+/,
-    _end_narrative: ($) => seq(/[^\t>—\n]+/, $._eol),
+    _open_tag: ($) => /[^\t>—\n]+/,
+    _end_tag: ($) => seq(/[^\t>—\n]+/, $._eol),
 
+    _end_narrative: ($) => seq(/[^—\t>\n][^\n]*/, $._eol),
+    
     _eol: ($) => "\n", // End of line
   },
 });

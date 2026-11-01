@@ -17,11 +17,16 @@
           },
           {
             "type": "SYMBOL",
-            "name": "narrative"
+            "name": "paragraph"
           },
           {
-            "type": "SYMBOL",
-            "name": "dialog"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "dialog_line"
+            },
+            "named": true,
+            "value": "paragraph"
           },
           {
             "type": "SYMBOL",
@@ -55,11 +60,16 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "narrative"
+                  "name": "paragraph"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "dialog"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "dialog_line"
+                  },
+                  "named": true,
+                  "value": "paragraph"
                 },
                 {
                   "type": "SYMBOL",
@@ -103,15 +113,20 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "narrative"
+                      "name": "paragraph"
                     },
                     {
                       "type": "SYMBOL",
                       "name": "comment"
                     },
                     {
-                      "type": "SYMBOL",
-                      "name": "dialog"
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "dialog_line"
+                      },
+                      "named": true,
+                      "value": "paragraph"
                     },
                     {
                       "type": "SYMBOL",
@@ -153,15 +168,20 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "narrative"
+                      "name": "paragraph"
                     },
                     {
                       "type": "SYMBOL",
                       "name": "comment"
                     },
                     {
-                      "type": "SYMBOL",
-                      "name": "dialog"
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "dialog_line"
+                      },
+                      "named": true,
+                      "value": "paragraph"
                     },
                     {
                       "type": "SYMBOL",
@@ -199,32 +219,16 @@
       "type": "PATTERN",
       "value": "\\*{1,3}\\n"
     },
-    "narrative": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[^ \\t—*><\\n]"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[^\\n]+"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_eol"
-        }
-      ]
+    "paragraph": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_end_narrative"
+      },
+      "named": true,
+      "value": "narrative"
     },
-    "dialog": {
+    "dialog_line": {
       "type": "CHOICE",
       "members": [
         {
@@ -257,7 +261,7 @@
                     "type": "ALIAS",
                     "content": {
                       "type": "SYMBOL",
-                      "name": "_open_narrative"
+                      "name": "_open_tag"
                     },
                     "named": true,
                     "value": "narrative"
@@ -297,7 +301,7 @@
                     "type": "ALIAS",
                     "content": {
                       "type": "SYMBOL",
-                      "name": "_open_narrative"
+                      "name": "_open_tag"
                     },
                     "named": true,
                     "value": "narrative"
@@ -318,7 +322,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_end_narrative"
+                "name": "_end_tag"
               },
               "named": true,
               "value": "narrative"
@@ -341,7 +345,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_end_narrative"
+                "name": "_end_tag"
               },
               "named": true,
               "value": "narrative"
@@ -384,16 +388,29 @@
         }
       ]
     },
-    "_open_narrative": {
+    "_open_tag": {
       "type": "PATTERN",
       "value": "[^\\t>—\\n]+"
+    },
+    "_end_tag": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[^\\t>—\\n]+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eol"
+        }
+      ]
     },
     "_end_narrative": {
       "type": "SEQ",
       "members": [
         {
           "type": "PATTERN",
-          "value": "[^\\t>—\\n]+"
+          "value": "[^—\\t>\\n][^\\n]*"
         },
         {
           "type": "SYMBOL",
