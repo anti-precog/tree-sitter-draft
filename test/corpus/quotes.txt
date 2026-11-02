@@ -7,7 +7,7 @@ Simple Quote
 ------
 
 (document
-  (paragraph
+  (quotation
     (quote)))
 
 
@@ -20,9 +20,9 @@ Quote with narrative
 ------
 
 (document
-  (paragraph
+  (quotation
 	(quote)
-    (narrative)))
+    (text)))
 
 
 ====================
@@ -34,8 +34,8 @@ Narrative „quote”
 ------
 
 (document
-  (paragraph
-	(narrative)
+  (quotation
+	(text)
     (quote)))
 
 ============
@@ -47,10 +47,10 @@ Narrative „quote” narrative.
 ------
 
 (document
-  (paragraph
-	(narrative)
+  (quotation
+	(text)
     (quote)
-	(narrative)))
+	(text)))
 
 ======================
 Mulitple quotes inside
@@ -61,12 +61,12 @@ Narrative „quote” narrative „quote” narrative.
 ------
 
 (document
-  (paragraph
-	(narrative)
+  (quotation
+	(text)
     (quote)
-	(narrative)
+	(text)
     (quote)
-	(narrative)))
+	(text)))
 
 ===========================
 Quote inside and on the end
@@ -77,10 +77,10 @@ Narrative „quote” narrative „quote”
 ------
 
 (document
-  (paragraph
-	(narrative)
+  (quotation
+	(text)
     (quote)
-	(narrative)
+	(text)
     (quote)))
 
 ================
@@ -92,9 +92,9 @@ Narrative inside
 ------
 
 (document
-  (paragraph
+  (quotation
 	(quote)
-    (narrative)
+    (text)
 	(quote)))
 
 

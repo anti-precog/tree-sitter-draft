@@ -1,5 +1,24 @@
 [
   {
+    "type": "dialog",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "speech",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "document",
     "named": true,
     "root": true,
@@ -17,11 +36,19 @@
           "named": true
         },
         {
+          "type": "dialog",
+          "named": true
+        },
+        {
           "type": "group",
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "narration",
+          "named": true
+        },
+        {
+          "type": "quotation",
           "named": true
         },
         {
@@ -48,6 +75,10 @@
           "named": true
         },
         {
+          "type": "dialog",
+          "named": true
+        },
+        {
           "type": "footer",
           "named": true
         },
@@ -56,19 +87,33 @@
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "narration",
+          "named": true
+        },
+        {
+          "type": "quotation",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "narrative",
+    "type": "narration",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
   },
   {
-    "type": "paragraph",
+    "type": "quotation",
     "named": true,
     "fields": {},
     "children": {
@@ -76,15 +121,11 @@
       "required": true,
       "types": [
         {
-          "type": "narrative",
-          "named": true
-        },
-        {
           "type": "quote",
           "named": true
         },
         {
-          "type": "speech",
+          "type": "text",
           "named": true
         }
       ]
@@ -112,11 +153,19 @@
           "named": true
         },
         {
+          "type": "dialog",
+          "named": true
+        },
+        {
           "type": "group",
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "narration",
+          "named": true
+        },
+        {
+          "type": "quotation",
           "named": true
         },
         {
@@ -128,6 +177,11 @@
   },
   {
     "type": "speech",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "text",
     "named": true,
     "fields": {}
   },

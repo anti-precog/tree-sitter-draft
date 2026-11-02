@@ -12,9 +12,9 @@ Narrative.
 (document
   (section
     (title)
-    (paragraph
-	  (narrative))
-    (paragraph
+    (narration
+	  (text))
+    (dialog
       (speech))
 	(asterix)))
 
@@ -32,10 +32,10 @@ Simple narrative.
 (document
   (group
   (header)
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
     (comment)
-    (paragraph
+    (dialog
       (speech))))
 
 ===================
@@ -47,10 +47,10 @@ Narrative 2.
 ------
 
 (document
-  (paragraph
-    (narrative))
-  (paragraph
-    (narrative)))
+  (narration
+    (text))
+  (narration
+    (text)))
 
 ====================
 Paragrap with dashes
@@ -60,8 +60,8 @@ Narrative — inclusion — narrative.
 ------
 
 (document
-  (paragraph
-    (narrative)))
+  (narration
+    (text)))
 
 =========
 Dialogues
@@ -76,25 +76,25 @@ Dialogues
 ------
 
 (document
-  (paragraph
+  (dialog
 	(speech))
-  (paragraph
+  (dialog
 	(speech)
-	(narrative))
-  (paragraph
+	(text))
+  (dialog
 	(speech)
-	(narrative)
+	(text)
 	(speech))
-  (paragraph
+  (dialog
 	(speech)
-	(narrative)
+	(text)
 	(speech)
-	(narrative))
-  (paragraph
+	(text))
+  (dialog
 	(speech)
-	(narrative)
+	(text)
 	(speech)
-	(narrative)
+	(text)
 	(speech)))
 
 

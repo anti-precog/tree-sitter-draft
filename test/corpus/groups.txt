@@ -10,8 +10,8 @@ Narrative.
 (document
   (group
     (header)
-    (paragraph
-	  (narrative))))
+    (narration
+	  (text))))
 
 ===================
 Group without label
@@ -25,8 +25,8 @@ Narrative.
 (document
   (group
     (header)
-	(paragraph
-      (narrative))))
+	(narration
+      (text))))
 
 =================
 Footer with label
@@ -41,8 +41,8 @@ Narrative.
 (document
   (group
     (header)
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
 	(footer)))
 
 ================
@@ -56,12 +56,12 @@ Narrative.
 ------
 
 (document
-  (paragraph
-    (narrative))
+  (narration
+    (text))
   (group
     (header)
-    (paragraph
-	  (narrative))))
+    (narration
+	  (text))))
 
 ================
 Group in section 
@@ -78,8 +78,8 @@ Narrative.
     (title)
     (group
       (header)
-      (paragraph
-	    (narrative)))))
+      (narration
+	    (text)))))
 
 ========================
 Group breaked by section
@@ -95,12 +95,12 @@ Narrative.
 (document
   (group
     (header)
-    (paragraph
-	  (narrative)))
+    (narration
+	  (text)))
   (section
     (title)
-    (paragraph
-	  (narrative))))
+    (narration
+	  (text))))
 
 
 ===============
@@ -117,12 +117,12 @@ Narrative.
 (document
   (group
     (header)
-    (paragraph
-	  (narrative)))
+    (narration
+	  (text)))
   (group
     (header)
-    (paragraph
-	  (narrative))))
+    (narration
+	  (text))))
 
 
 ================================
@@ -140,13 +140,13 @@ Narrative.
 (document
   (group
     (header)
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
     (footer))
   (group
     (header)
-    (paragraph
-	  (narrative))))
+    (narration
+	  (text))))
 
 
 ==========================
@@ -165,15 +165,15 @@ Narrative.
 (document
   (group
     (header)
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
     (footer))
-  (paragraph
-    (narrative))
+  (narration
+    (text))
   (group
     (header)
-    (paragraph
-	  (narrative))))
+    (narration
+	  (text))))
 
 ===================
 Single mirror group
@@ -186,8 +186,8 @@ Narrative.
 
 (document
   (group
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
 	(footer)))
 
 
@@ -202,8 +202,8 @@ Narrative.
 
 (document
   (group
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
 	(footer)))
 
 
@@ -219,12 +219,12 @@ Narrative.
 ------
 
 (document
-  (paragraph
-    (narrative))
+  (narration
+    (text))
   (group
     (header)
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
 	(footer)))
 
 =======================
@@ -241,8 +241,8 @@ Narrative.
   (section
     (title)
     (group
-      (paragraph
-	    (narrative))
+      (narration
+	    (text))
 	  (footer))))
 
 ===============================
@@ -257,13 +257,13 @@ Narrative.
 ------
 
 (document
-  (paragraph
-    (narrative))
+  (narration
+    (text))
   (section
     (title)
 	(group
-	  (paragraph
-	    (narrative))
+	  (narration
+	    (text))
 	  (footer))))
 
 
@@ -280,12 +280,12 @@ Narrative.
 
 (document
   (group
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
 	(footer))
   (group
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
 	(footer)))
 
 
@@ -303,13 +303,13 @@ Narrative.
 
 (document
   (group
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
     (footer))
   (group
     (header)
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
 	(footer)))
 
 
@@ -328,15 +328,15 @@ Narrative.
 
 (document
   (group
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
     (footer))
-  (paragraph
-    (narrative))
+  (narration
+    (text))
   (group
     (header)
-    (paragraph
-	  (narrative))
+    (narration
+	  (text))
 	(footer)))
 
 =====================

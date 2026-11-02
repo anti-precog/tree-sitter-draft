@@ -13,7 +13,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.section, $.group, $.paragraph, alias($.dialog_line, $.paragraph), $.asterix, $.comment)),
+      repeat(choice($.section, $.group, $.narration, $.quotation, $.dialog, $.asterix, $.comment)),
 
     // ==========================================
     // 1. SECTION BLOCK
@@ -22,7 +22,7 @@ module.exports = grammar({
       prec.right(
         seq(
           $.title, // section title (# Chapter 69)
-          repeat(choice($.group, $.paragraph, alias($.dialog_line, $.paragraph), $.asterix, $.comment)),
+          repeat(choice($.group, $.narration, $.quotation, $.dialog, $.asterix, $.comment)),
         ),
       ),
 
@@ -37,11 +37,11 @@ module.exports = grammar({
           seq(
             $.header,
             $._eol,
-            repeat(choice($.paragraph, $.comment, alias($.dialog_line, $.paragraph), $.asterix)),
+            repeat(choice($.narration, $.quotation, $.comment, $.dialog, $.asterix)),
             optional(seq($.footer, $._eol)),
           ),
           seq(
-            repeat(choice($.paragraph, $.comment, alias($.dialog_line, $.paragraph), $.asterix)),
+            repeat(choice($.narration, $.quotation, $.comment, $.dialog, $.asterix)),
             $.footer,
             $._eol,
           ),
@@ -58,71 +58,58 @@ module.exports = grammar({
     asterix: ($) => /\*{1,3}\n/,
 
     // ==========================================
-    // 4. PARAGRAPHS WITH QUOTES
+    // 4. PARAGRAPHS
     // ==========================================
-    paragraph: ($) =>
-      choice(
-        seq(
-          alias($._open_narrative, $.narrative),
-          repeat(
-            seq(
-              alias($._open_quote, $.quote),
-              alias($._open_narrative, $.narrative)
-            )
-          ),
-          choice(
-            alias($._end_quote, $.quote),
-            $._eol
-          )
-        ),
+    // only text, any quotes and any speech
+    narration: ($) => seq($.text, $._eol),
 
-        seq(
-          alias($._open_quote, $.quote),
-          repeat(
-            seq(
-              alias($._open_narrative, $.narrative),
-              alias($._open_quote, $.quote),
-            )
-          ),
-          choice(
-            $._eol,
-            seq(alias($._open_narrative, $.narrative), $._eol),
-          )
+    // at least one quote
+    quotation: ($) => seq(
+      choice(
+        seq($.text, alias($._open_quote, $.quote)),
+        alias($._open_quote, $.quote)
+      ),
+      repeat(
+        choice(
+          $.text,
+          alias($._open_quote, $.quote)
         )
       ),
+      $._eol
+    ),
 
     // ==========================================
     // 5. DIALOGS
     // ==========================================
-    dialog_line: ($) =>
+    dialog: ($) =>
       seq(
         repeat(
           seq(
-            alias($._open_dialog, $.speech),
-            alias($._open_tag, $.narrative),
+            alias($._open_speech, $.speech),
+            alias($._open_text, $.text),
           ),
         ),
         choice(
-          alias($._end_dialog, $.speech),
+          alias($._end_speech, $.speech),
           seq(
-            alias($._open_dialog, $.speech),
-            alias($._end_tag, $.narrative),
+            alias($._open_speech, $.speech),
+            alias($._end_text, $.text),
           ),
         ),
       ),
+
     // ==========================================
     // 6. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    _end_quote: ($) => seq($._open_quote, $._eol),
+    text: ($) => /[^—#\t>„”\n][^„”\n]*/,
 
-    _open_dialog: ($) => seq("—", /[^„”—\n]+/, "—"),
-    _end_dialog: ($) => seq("—", /[^„”—\n]+/, $._eol),
+    _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
+    _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),
 
-    _open_tag: ($) => /[^\t>„”—\n]+/,
-    _end_tag: ($) => seq(/[^\t>„”—\n]+/, $._eol),
+    _open_text: ($) => /[^\t>„”—\n]+/,
+    _end_text: ($) => seq(/[^\t>„”—\n]+/, $._eol),
 
-    _open_narrative: ($) => /[^—#\t>„”\n][^„”\n]*/,
     
     _eol: ($) => "\n",
   },

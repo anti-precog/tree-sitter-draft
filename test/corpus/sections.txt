@@ -24,9 +24,9 @@ Narrative.
 (document
   (section
     (title)
-	(paragraph
-	  (narrative))
-    (paragraph
+	(narration
+	  (text))
+    (dialog
       (speech))))
 
 
@@ -41,12 +41,12 @@ Narrative in section.
 ------
 
 (document
-  (paragraph
-    (narrative))
+  (narration
+    (text))
   (section
     (title)
-    (paragraph
-	  (narrative))))
+    (narration
+	  (text))))
 
 ================
 Multiple SECTION
@@ -62,12 +62,12 @@ Narrative.
 (document
   (section
     (title)
-    (paragraph
-	  (narrative)))
+    (narration
+	  (text)))
   (section
     (title)
-    (paragraph
-	  (narrative))))
+    (narration
+	  (text))))
 
 ==================
 Section with group
@@ -84,13 +84,13 @@ Narrative.
 (document
   (section
   (title)
-  (paragraph
-    (narrative))
+  (narration
+    (text))
   (group
     (header)
 	(footer))
-  (paragraph
-    (narrative))))
+  (narration
+    (text))))
 
 =============================
 Section with not closed group
@@ -106,12 +106,12 @@ Narrative.
 (document
   (section
   (title)
-  (paragraph
-    (narrative))
+  (narration
+    (text))
   (group
     (header)
-    (paragraph
-	  (narrative)))))
+    (narration
+	  (text)))))
 
 ========================
 Section beetwen comments

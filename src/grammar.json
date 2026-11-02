@@ -17,16 +17,15 @@
           },
           {
             "type": "SYMBOL",
-            "name": "paragraph"
+            "name": "narration"
           },
           {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "dialog_line"
-            },
-            "named": true,
-            "value": "paragraph"
+            "type": "SYMBOL",
+            "name": "quotation"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "dialog"
           },
           {
             "type": "SYMBOL",
@@ -60,16 +59,15 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "paragraph"
+                  "name": "narration"
                 },
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "dialog_line"
-                  },
-                  "named": true,
-                  "value": "paragraph"
+                  "type": "SYMBOL",
+                  "name": "quotation"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "dialog"
                 },
                 {
                   "type": "SYMBOL",
@@ -113,20 +111,19 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "paragraph"
+                      "name": "narration"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "quotation"
                     },
                     {
                       "type": "SYMBOL",
                       "name": "comment"
                     },
                     {
-                      "type": "ALIAS",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "dialog_line"
-                      },
-                      "named": true,
-                      "value": "paragraph"
+                      "type": "SYMBOL",
+                      "name": "dialog"
                     },
                     {
                       "type": "SYMBOL",
@@ -168,20 +165,19 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "paragraph"
+                      "name": "narration"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "quotation"
                     },
                     {
                       "type": "SYMBOL",
                       "name": "comment"
                     },
                     {
-                      "type": "ALIAS",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "dialog_line"
-                      },
-                      "named": true,
-                      "value": "paragraph"
+                      "type": "SYMBOL",
+                      "name": "dialog"
                     },
                     {
                       "type": "SYMBOL",
@@ -219,70 +215,43 @@
       "type": "PATTERN",
       "value": "\\*{1,3}\\n"
     },
-    "paragraph": {
-      "type": "CHOICE",
+    "narration": {
+      "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
+          "type": "SYMBOL",
+          "name": "text"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eol"
+        }
+      ]
+    },
+    "quotation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_open_narrative"
-              },
-              "named": true,
-              "value": "narrative"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_open_quote"
-                    },
-                    "named": true,
-                    "value": "quote"
-                  },
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_open_narrative"
-                    },
-                    "named": true,
-                    "value": "narrative"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "CHOICE",
+              "type": "SEQ",
               "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "text"
+                },
                 {
                   "type": "ALIAS",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_end_quote"
+                    "name": "_open_quote"
                   },
                   "named": true,
                   "value": "quote"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_eol"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
+            },
             {
               "type": "ALIAS",
               "content": {
@@ -291,65 +260,37 @@
               },
               "named": true,
               "value": "quote"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_open_narrative"
-                    },
-                    "named": true,
-                    "value": "narrative"
-                  },
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_open_quote"
-                    },
-                    "named": true,
-                    "value": "quote"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_eol"
-                },
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "ALIAS",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "_open_narrative"
-                      },
-                      "named": true,
-                      "value": "narrative"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "_eol"
-                    }
-                  ]
-                }
-              ]
             }
           ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "text"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_open_quote"
+                },
+                "named": true,
+                "value": "quote"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eol"
         }
       ]
     },
-    "dialog_line": {
+    "dialog": {
       "type": "SEQ",
       "members": [
         {
@@ -361,7 +302,7 @@
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_open_dialog"
+                  "name": "_open_speech"
                 },
                 "named": true,
                 "value": "speech"
@@ -370,10 +311,10 @@
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_open_tag"
+                  "name": "_open_text"
                 },
                 "named": true,
-                "value": "narrative"
+                "value": "text"
               }
             ]
           }
@@ -385,7 +326,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_end_dialog"
+                "name": "_end_speech"
               },
               "named": true,
               "value": "speech"
@@ -397,7 +338,7 @@
                   "type": "ALIAS",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_open_dialog"
+                    "name": "_open_speech"
                   },
                   "named": true,
                   "value": "speech"
@@ -406,10 +347,10 @@
                   "type": "ALIAS",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_end_tag"
+                    "name": "_end_text"
                   },
                   "named": true,
-                  "value": "narrative"
+                  "value": "text"
                 }
               ]
             }
@@ -434,20 +375,11 @@
         }
       ]
     },
-    "_end_quote": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_open_quote"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_eol"
-        }
-      ]
+    "text": {
+      "type": "PATTERN",
+      "value": "[^—#\\t>„”\\n][^„”\\n]*"
     },
-    "_open_dialog": {
+    "_open_speech": {
       "type": "SEQ",
       "members": [
         {
@@ -464,7 +396,7 @@
         }
       ]
     },
-    "_end_dialog": {
+    "_end_speech": {
       "type": "SEQ",
       "members": [
         {
@@ -481,11 +413,11 @@
         }
       ]
     },
-    "_open_tag": {
+    "_open_text": {
       "type": "PATTERN",
       "value": "[^\\t>„”—\\n]+"
     },
-    "_end_tag": {
+    "_end_text": {
       "type": "SEQ",
       "members": [
         {
@@ -497,10 +429,6 @@
           "name": "_eol"
         }
       ]
-    },
-    "_open_narrative": {
-      "type": "PATTERN",
-      "value": "[^—#\\t>„”\\n][^„”\\n]*"
     },
     "_eol": {
       "type": "STRING",
