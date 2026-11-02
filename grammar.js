@@ -6,7 +6,6 @@ module.exports = grammar({
     [$.section, $.group],
   ],
 
-//  extras: ($) => [/[ \t]*\n/],
   extras: ($) => [/[ \t]+/, /\n/],
 
   rules: {
@@ -23,13 +22,13 @@ module.exports = grammar({
       prec.right(
         seq(
           $.title, // section title (# Chapter 69)
-          repeat(choice($.group, $.paragraph, alias($.dialog_line, $.paragraph), $.asterix, $.comment)), // inner groups are not permitted
+          repeat(choice($.group, $.paragraph, alias($.dialog_line, $.paragraph), $.asterix, $.comment)),
         ),
       ),
 
-    title: ($) => /[#]+[^\n]*\n/, // Start with #
+    title: ($) => /[#]+[^\n]*\n/,
 
-    // ============================ ==============
+    // ==========================================
     // 2. GROUP BLOCK
     // ==========================================
     group: ($) =>
@@ -47,25 +46,20 @@ module.exports = grammar({
             $._eol,
           ),
         ),
-    ),
+      ),
 
-    header: ($) => />[^\n]*/, // start witch >
-    footer: ($) => /<[^\n]*/, // start witch <
-
-    // ==========================================
-    // 4. COMMENTS
-    // ==========================================
-    comment: ($) => /[ \t]+[^\n]*\n/, // Start with whitespace
+    header: ($) => />[^\n]*/,
+    footer: ($) => /<[^\n]*/,
 
     // ==========================================
-    // 4. SEPARATOR
+    // 3. COMMENTS & SEPARATORS
     // ==========================================
+    comment: ($) => /[ \t]+[^\n]*\n/,
     asterix: ($) => /\*{1,3}\n/,
 
     // ==========================================
-    // 5. PARAGRAPS WITH QUOTES
+    // 4. PARAGRAPHS WITH QUOTES
     // ==========================================
-    
     paragraph: ($) =>
       choice(
         seq(
@@ -98,14 +92,11 @@ module.exports = grammar({
       ),
 
     // ==========================================
-    // 7. DIALOGS
+    // 5. DIALOGS
     // ==========================================
     dialog_line: ($) =>
       choice(
-        // variant 1: Simple staement to end of line (— Hi!)
         alias($._end_dialog, $.speech),
-
-        // variant 2: Multiple stetements cut by narratives. (— Hi — he said — what is up?)
         seq(
           repeat1(
             seq(
@@ -115,8 +106,6 @@ module.exports = grammar({
           ),
           alias($._end_dialog, $.speech),
         ),
-
-        // variant 3: Multiple statments with narration on the end (— Hi — he said — what is up? — he smail.)
         seq(
           repeat1(
             seq(
@@ -127,8 +116,6 @@ module.exports = grammar({
           alias($._open_dialog, $.speech),
           alias($._end_tag, $.narrative),
         ),
-
-        // variant 4: One statments with narration on the end (— Hi — he said.)
         seq(
           alias($._open_dialog, $.speech),
           alias($._end_tag, $.narrative),
@@ -136,9 +123,8 @@ module.exports = grammar({
       ),
 
     // ==========================================
-    // 8. HIDDEN HELPERS
+    // 6. HIDDEN HELPERS
     // ==========================================
-
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
     _end_quote: ($) => seq($._open_quote, $._eol),
 
@@ -148,10 +134,8 @@ module.exports = grammar({
     _open_tag: ($) => /[^\t>„”—\n]+/,
     _end_tag: ($) => seq(/[^\t>„”—\n]+/, $._eol),
 
-    // inclusions are permitted
-    _open_narrative: ($) => /[^—\t>„”\n][^„”\n]+/,
-    _end_narrative: ($) => seq(/[^—\t>„”\n][^„”\n]*/, $._eol),
+    _open_narrative: ($) => /[^—\t>„”\n][^„”\n]*/,
     
-    _eol: ($) => "\n", // End of line
+    _eol: ($) => "\n",
   },
 });

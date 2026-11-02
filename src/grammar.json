@@ -558,20 +558,7 @@
     },
     "_open_narrative": {
       "type": "PATTERN",
-      "value": "[^—\\t>„”\\n][^„”\\n]+"
-    },
-    "_end_narrative": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[^—\\t>„”\\n][^„”\\n]*"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_eol"
-        }
-      ]
+      "value": "[^—\\t>„”\\n][^„”\\n]*"
     },
     "_eol": {
       "type": "STRING",
