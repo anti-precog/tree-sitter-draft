@@ -350,46 +350,37 @@
       ]
     },
     "dialog_line": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
+          "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "_end_dialog"
-          },
-          "named": true,
-          "value": "speech"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_open_dialog"
+                },
+                "named": true,
+                "value": "speech"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_open_tag"
+                },
+                "named": true,
+                "value": "narrative"
+              }
+            ]
+          }
         },
         {
-          "type": "SEQ",
+          "type": "CHOICE",
           "members": [
-            {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_open_dialog"
-                    },
-                    "named": true,
-                    "value": "speech"
-                  },
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_open_tag"
-                    },
-                    "named": true,
-                    "value": "narrative"
-                  }
-                ]
-              }
-            },
             {
               "type": "ALIAS",
               "content": {
@@ -398,78 +389,29 @@
               },
               "named": true,
               "value": "speech"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
+            },
             {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_open_dialog"
-                    },
-                    "named": true,
-                    "value": "speech"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_open_dialog"
                   },
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_open_tag"
-                    },
-                    "named": true,
-                    "value": "narrative"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_open_dialog"
-              },
-              "named": true,
-              "value": "speech"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_end_tag"
-              },
-              "named": true,
-              "value": "narrative"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_open_dialog"
-              },
-              "named": true,
-              "value": "speech"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_end_tag"
-              },
-              "named": true,
-              "value": "narrative"
+                  "named": true,
+                  "value": "speech"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_end_tag"
+                  },
+                  "named": true,
+                  "value": "narrative"
+                }
+              ]
             }
           ]
         }

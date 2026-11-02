@@ -95,33 +95,21 @@ module.exports = grammar({
     // 5. DIALOGS
     // ==========================================
     dialog_line: ($) =>
-      choice(
-        alias($._end_dialog, $.speech),
-        seq(
-          repeat1(
-            seq(
-              alias($._open_dialog, $.speech),
-              alias($._open_tag, $.narrative),
-            ),
+      seq(
+        repeat(
+          seq(
+            alias($._open_dialog, $.speech),
+            alias($._open_tag, $.narrative),
           ),
+        ),
+        choice(
           alias($._end_dialog, $.speech),
-        ),
-        seq(
-          repeat1(
-            seq(
-              alias($._open_dialog, $.speech),
-              alias($._open_tag, $.narrative),
-            ),
+          seq(
+            alias($._open_dialog, $.speech),
+            alias($._end_tag, $.narrative),
           ),
-          alias($._open_dialog, $.speech),
-          alias($._end_tag, $.narrative),
-        ),
-        seq(
-          alias($._open_dialog, $.speech),
-          alias($._end_tag, $.narrative),
         ),
       ),
-
     // ==========================================
     // 6. HIDDEN HELPERS
     // ==========================================
