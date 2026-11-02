@@ -122,7 +122,7 @@ module.exports = grammar({
     _open_tag: ($) => /[^\t>„”—\n]+/,
     _end_tag: ($) => seq(/[^\t>„”—\n]+/, $._eol),
 
-    _open_narrative: ($) => /[^—\t>„”\n][^„”\n]*/,
+    _open_narrative: ($) => /[^—#\t>„”\n][^„”\n]*/,
     
     _eol: ($) => "\n",
   },

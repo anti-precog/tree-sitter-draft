@@ -500,7 +500,7 @@
     },
     "_open_narrative": {
       "type": "PATTERN",
-      "value": "[^—\\t>„”\\n][^„”\\n]*"
+      "value": "[^—#\\t>„”\\n][^„”\\n]*"
     },
     "_eol": {
       "type": "STRING",
