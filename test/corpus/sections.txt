@@ -8,7 +8,8 @@ Empty section
 
 (document
   (section
-    (title)))
+    (title
+	  (tag))))
 
 
 ==============
@@ -23,7 +24,8 @@ Narrative.
 
 (document
   (section
-    (title)
+    (title
+	  (tag))
 	(narration
 	  (text))
     (dialog
@@ -44,7 +46,8 @@ Narrative in section.
   (narration
     (text))
   (section
-    (title)
+    (title
+	  (tag))
     (narration
 	  (text))))
 
@@ -61,11 +64,13 @@ Narrative.
 
 (document
   (section
-    (title)
+    (title
+	  (tag))
     (narration
 	  (text)))
   (section
-    (title)
+    (title
+	  (tag))
     (narration
 	  (text))))
 
@@ -83,7 +88,8 @@ Narrative.
 
 (document
   (section
-  (title)
+  (title
+    (tag))
   (narration
     (text))
   (group
@@ -105,7 +111,8 @@ Narrative.
 
 (document
   (section
-  (title)
+  (title
+    (tag))
   (narration
     (text))
   (group
@@ -125,7 +132,8 @@ Section beetwen comments
 (document
   (comment)
   (section
-  (title)
+  (title
+    (tag))
     (comment)))
 
 
@@ -145,7 +153,8 @@ Section with comments
   (comment)
   (comment)
   (section
-  (title)
+  (title
+    (tag))
     (comment)
     (comment)))
 

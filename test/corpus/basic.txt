@@ -11,7 +11,8 @@ Narrative.
 
 (document
   (section
-    (title)
+    (title
+	  (tag))
     (narration
 	  (text))
     (dialog

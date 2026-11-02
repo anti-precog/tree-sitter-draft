@@ -84,8 +84,25 @@
       }
     },
     "title": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "tag"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\n"
+        }
+      ]
+    },
+    "tag": {
       "type": "PATTERN",
-      "value": "[#]+[^\\n]*\\n"
+      "value": "[#]+"
     },
     "group": {
       "type": "PREC_RIGHT",
