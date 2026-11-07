@@ -188,7 +188,18 @@
   {
     "type": "title",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -218,6 +229,10 @@
   },
   {
     "type": "header",
+    "named": true
+  },
+  {
+    "type": "name",
     "named": true
   },
   {

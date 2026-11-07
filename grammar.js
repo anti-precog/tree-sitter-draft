@@ -26,13 +26,14 @@ module.exports = grammar({
         ),
       ),
 
-    title: $ => seq(
+    title: ($) => seq(
       $.tag,
-      /[^\n]*/, 
+      field("name", $.name),
       /\n/
     ),
 
-    tag: $ => /[#]+/,
+    tag: ($) => /[#]+/,
+    name: ($) =>  /[^\n]*/,
 
     // ==========================================
     // 2. GROUP BLOCK
