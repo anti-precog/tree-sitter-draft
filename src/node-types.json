@@ -28,15 +28,15 @@
       "required": false,
       "types": [
         {
-          "type": "alter",
-          "named": true
-        },
-        {
           "type": "asterix",
           "named": true
         },
         {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "context",
           "named": true
         },
         {
@@ -71,15 +71,15 @@
       "required": true,
       "types": [
         {
-          "type": "alter",
-          "named": true
-        },
-        {
           "type": "asterix",
           "named": true
         },
         {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "context",
           "named": true
         },
         {
@@ -153,15 +153,15 @@
       "required": true,
       "types": [
         {
-          "type": "alter",
-          "named": true
-        },
-        {
           "type": "asterix",
           "named": true
         },
         {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "context",
           "named": true
         },
         {
@@ -201,26 +201,16 @@
     "type": "title",
     "named": true,
     "fields": {
-      "name": {
+      "tag": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "name",
-            "named": true
+            "type": "#",
+            "named": false
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "tag",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -228,8 +218,8 @@
     "named": false
   },
   {
-    "type": "alter",
-    "named": true
+    "type": "#",
+    "named": false
   },
   {
     "type": "asterix",
@@ -240,19 +230,15 @@
     "named": true
   },
   {
+    "type": "context",
+    "named": true
+  },
+  {
     "type": "footer",
     "named": true
   },
   {
     "type": "header",
-    "named": true
-  },
-  {
-    "type": "name",
-    "named": true
-  },
-  {
-    "type": "tag",
     "named": true
   },
   {

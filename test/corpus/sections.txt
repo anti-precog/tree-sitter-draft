@@ -8,9 +8,7 @@ Empty section
 
 (document
   (section
-    (title
-	  (tag)
-	  (name))))
+    (title)))
 
 ==============================
 Single hash as section [error]
@@ -21,8 +19,7 @@ Single hash as section [error]
 ------
 
 (document
-  (ERROR
-	(tag)))
+  (ERROR))
 
 ==========================
 Seciton with space [error]
@@ -33,9 +30,7 @@ Seciton with space [error]
 ------
 
 (document
-  (ERROR
-    (tag)
-	(UNEXPECTED 'S')))
+  (ERROR))
 
 
 ==============
@@ -50,9 +45,7 @@ Narrative.
 
 (document
   (section
-    (title
-	  (tag)
-	  (name))
+    (title)
 	(narration
 	  (text))
     (dialog
@@ -73,9 +66,7 @@ Narrative in section.
   (narration
     (text))
   (section
-    (title
-	  (tag)
-	  (name))
+    (title)
     (narration
 	  (text))))
 
@@ -92,15 +83,11 @@ Narrative.
 
 (document
   (section
-    (title
-	  (tag)
-	  (name))
+    (title)
     (narration
 	  (text)))
   (section
-    (title
-	  (tag)
-	  (name))
+    (title)
     (narration
 	  (text))))
 
@@ -118,9 +105,7 @@ Narrative.
 
 (document
   (section
-  (title
-    (tag)
-	(name))
+  (title)
   (narration
     (text))
   (group
@@ -142,9 +127,7 @@ Narrative.
 
 (document
   (section
-  (title
-    (tag)
-	(name))
+  (title)
   (narration
     (text))
   (group
@@ -164,9 +147,7 @@ Section beetwen comments
 (document
   (comment)
   (section
-  (title
-    (tag)
-	(name))
+  (title)
     (comment)))
 
 
@@ -186,9 +167,7 @@ Section with comments
   (comment)
   (comment)
   (section
-  (title
-    (tag)
-	(name))
+  (title)
     (comment)
     (comment)))
 

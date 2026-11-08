@@ -13,7 +13,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.section, $.group, $.narration, $.quotation, $.dialog, $.asterix, $.comment, $.alter)),
+      repeat(choice($.section, $.group, $.narration, $.quotation, $.dialog, $.asterix, $.comment, $.context)),
 
     // ==========================================
     // 1. SECTION BLOCK
@@ -22,18 +22,16 @@ module.exports = grammar({
       prec.right(
         seq(
           $.title, // section title (# Chapter 69)
-          repeat(choice($.group, $.narration, $.quotation, $.dialog, $.asterix, $.comment, $.alter)),
+          repeat(choice($.group, $.narration, $.quotation, $.dialog, $.asterix, $.comment, $.context)),
         ),
       ),
 
     title: ($) => seq(
-      $.tag,
-      field("name", $.name),
+      field("tag", '#'),
+      field("name", token.immediate(/[^\n#\s][^\n]*/)),
       $._eol,
     ),
 
-    tag: ($) => '#',
-    name: ($) => token.immediate(/[^\n#\s][^\n#]*/),
 
     // ==========================================
     // 2. GROUP BLOCK
@@ -44,11 +42,11 @@ module.exports = grammar({
           seq(
             $.header,
             $._eol,
-            repeat(choice($.narration, $.quotation, $.comment, $.alter, $.dialog, $.asterix)),
+            repeat(choice($.narration, $.quotation, $.comment, $.context, $.dialog, $.asterix)),
             optional(seq($.footer, $._eol)),
           ),
           seq(
-            repeat(choice($.narration, $.quotation, $.comment, $.alter, $.dialog, $.asterix)),
+            repeat(choice($.narration, $.quotation, $.comment, $.context, $.dialog, $.asterix)),
             $.footer,
             $._eol,
           ),
@@ -61,13 +59,14 @@ module.exports = grammar({
     // ==========================================
     // 3. COMMENTS & SEPARATORS
     // ==========================================
-    comment: ($) => /[ \t]+[^\n]*\n/,
+    //comment: ($) => /[ \t]+[^\n]*\n/,
+    comment: ($) => /[ \t]+[^#\n][^\n]*\n/,
     asterix: ($) => /\*{1,3}\n/,
 
     // ==========================================
-    // 4. ALTERNATIVE
+    // 4. CONTEXT
     // ==========================================
-    alter: ($) => /[~]+[^\n]*\n/,
+    context: ($) => /[@]+[^\n]*\n/,
 
     // ==========================================
     // 4. PARAGRAPHS
@@ -114,7 +113,7 @@ module.exports = grammar({
     // 6. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^—~# \t>„”\n][^„”\n]*/,
+    text: ($) => /[^—@# \t>„”\n][^„”\n]*/,
 
     _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
     _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),
