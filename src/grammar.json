@@ -34,10 +34,6 @@
           {
             "type": "SYMBOL",
             "name": "comment"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "context"
           }
         ]
       }
@@ -80,10 +76,6 @@
                 {
                   "type": "SYMBOL",
                   "name": "comment"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "context"
                 }
               ]
             }
@@ -95,29 +87,30 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "tag",
-          "content": {
-            "type": "STRING",
-            "value": "#"
-          }
+          "type": "SYMBOL",
+          "name": "tag"
         },
         {
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "IMMEDIATE_TOKEN",
-            "content": {
-              "type": "PATTERN",
-              "value": "[^\\n#\\s][^\\n]*"
-            }
+            "type": "SYMBOL",
+            "name": "name"
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_eol"
+          "type": "PATTERN",
+          "value": "\\n"
         }
       ]
+    },
+    "tag": {
+      "type": "PATTERN",
+      "value": "[#]+"
+    },
+    "name": {
+      "type": "PATTERN",
+      "value": "[^\\n]*"
     },
     "group": {
       "type": "PREC_RIGHT",
@@ -152,10 +145,6 @@
                     {
                       "type": "SYMBOL",
                       "name": "comment"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "context"
                     },
                     {
                       "type": "SYMBOL",
@@ -213,10 +202,6 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "context"
-                    },
-                    {
-                      "type": "SYMBOL",
                       "name": "dialog"
                     },
                     {
@@ -249,15 +234,11 @@
     },
     "comment": {
       "type": "PATTERN",
-      "value": "[ \\t]+[^#\\n][^\\n]*\\n"
+      "value": "[ \\t]+[^\\n]*\\n"
     },
     "asterix": {
       "type": "PATTERN",
       "value": "\\*{1,3}\\n"
-    },
-    "context": {
-      "type": "PATTERN",
-      "value": "[@]+[^\\n]*\\n"
     },
     "narration": {
       "type": "SEQ",
@@ -421,7 +402,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^—@# \\t>„”\\n][^„”\\n]*"
+      "value": "[^—#\\t>„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",
