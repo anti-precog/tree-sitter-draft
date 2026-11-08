@@ -76,7 +76,8 @@ Narrative.
 (document
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (group
       (header)
       (narration
@@ -100,7 +101,8 @@ Narrative.
 	  (text)))
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (narration
 	  (text))))
 
@@ -242,7 +244,8 @@ Narrative.
 (document
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (group
       (narration
 	    (text))
@@ -264,7 +267,8 @@ Narrative.
     (text))
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
 	(group
 	  (narration
 	    (text))
