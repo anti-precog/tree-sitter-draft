@@ -37,7 +37,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "context"
+            "name": "alter"
           }
         ]
       }
@@ -83,7 +83,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "context"
+                  "name": "alter"
                 }
               ]
             }
@@ -159,7 +159,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "context"
+                      "name": "alter"
                     },
                     {
                       "type": "SYMBOL",
@@ -217,7 +217,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "context"
+                      "name": "alter"
                     },
                     {
                       "type": "SYMBOL",
@@ -259,9 +259,9 @@
       "type": "PATTERN",
       "value": "\\*{1,3}\\n"
     },
-    "context": {
+    "alter": {
       "type": "PATTERN",
-      "value": "[@]+[^\\n]*\\n"
+      "value": "[~]+[^\\n]*\\n"
     },
     "narration": {
       "type": "SEQ",
@@ -425,7 +425,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^—#\\t>„”\\n][^„”\\n]*"
+      "value": "[^—~# \\t>„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",

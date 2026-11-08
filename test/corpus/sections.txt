@@ -12,9 +12,9 @@ Empty section
 	  (tag)
 	  (name))))
 
-============================
-Single hash as section error
-============================
+==============================
+Single hash as section [error]
+==============================
 
 #
 
@@ -24,9 +24,9 @@ Single hash as section error
   (ERROR
 	(tag)))
 
-=========================
-Seciton witho space error
-=========================
+==========================
+Seciton with space [error]
+==========================
 
 # SECTION
 

@@ -28,15 +28,15 @@
       "required": false,
       "types": [
         {
+          "type": "alter",
+          "named": true
+        },
+        {
           "type": "asterix",
           "named": true
         },
         {
           "type": "comment",
-          "named": true
-        },
-        {
-          "type": "context",
           "named": true
         },
         {
@@ -71,15 +71,15 @@
       "required": true,
       "types": [
         {
+          "type": "alter",
+          "named": true
+        },
+        {
           "type": "asterix",
           "named": true
         },
         {
           "type": "comment",
-          "named": true
-        },
-        {
-          "type": "context",
           "named": true
         },
         {
@@ -153,15 +153,15 @@
       "required": true,
       "types": [
         {
+          "type": "alter",
+          "named": true
+        },
+        {
           "type": "asterix",
           "named": true
         },
         {
           "type": "comment",
-          "named": true
-        },
-        {
-          "type": "context",
           "named": true
         },
         {
@@ -228,15 +228,15 @@
     "named": false
   },
   {
+    "type": "alter",
+    "named": true
+  },
+  {
     "type": "asterix",
     "named": true
   },
   {
     "type": "comment",
-    "named": true
-  },
-  {
-    "type": "context",
     "named": true
   },
   {
