@@ -2,7 +2,7 @@
 Document structure
 ==================
 
-# CHAPTER
+#CHAPTER
 Narrative.
 — dialogue.
 *
@@ -12,7 +12,8 @@ Narrative.
 (document
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (narration
 	  (text))
     (dialog

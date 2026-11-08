@@ -67,7 +67,7 @@ Narrative.
 Group in section 
 ================
 
-# SECTION
+#SECTION
 > Group
 Narrative.
 
@@ -76,7 +76,8 @@ Narrative.
 (document
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (group
       (header)
       (narration
@@ -88,7 +89,7 @@ Group breaked by section
 
 > Group
 Narrative.
-# SECTION
+#SECTION
 Narrative.
 
 ------
@@ -100,7 +101,8 @@ Narrative.
 	  (text)))
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (narration
 	  (text))))
 
@@ -233,7 +235,7 @@ Narrative.
 Mirror group in section 
 =======================
 
-# SECTION
+#SECTION
 Narrative.
 < Group
 
@@ -242,7 +244,8 @@ Narrative.
 (document
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (group
       (narration
 	    (text))
@@ -253,7 +256,7 @@ Mirror group breaked by section
 ===============================
 
 Narrative.
-# SECTION
+#SECTION
 Narrative.
 < Group
 
@@ -264,7 +267,8 @@ Narrative.
     (text))
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
 	(group
 	  (narration
 	    (text))

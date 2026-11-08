@@ -2,21 +2,47 @@
 Empty section
 ==============
 
-# SECTION
+#SECTION
 
 ------
 
 (document
   (section
     (title
-	  (tag))))
+	  (tag)
+	  (name))))
+
+============================
+Single hash as section error
+============================
+
+#
+
+------
+
+(document
+  (ERROR
+	(tag)))
+
+=========================
+Seciton witho space error
+=========================
+
+# SECTION
+
+------
+
+(document
+  (ERROR
+    (tag)
+	(UNEXPECTED 'S')))
 
 
 ==============
 Simple section
 ==============
 
-# SECTION
+#SECTION
 Narrative.
 — dialogue
 
@@ -25,7 +51,8 @@ Narrative.
 (document
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
 	(narration
 	  (text))
     (dialog
@@ -37,7 +64,7 @@ Not all in SECTION
 ==================
 
 Narrative.
-# SECTION
+#SECTION
 Narrative in section.
 
 ------
@@ -47,7 +74,8 @@ Narrative in section.
     (text))
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (narration
 	  (text))))
 
@@ -55,9 +83,9 @@ Narrative in section.
 Multiple SECTION
 ================
 
-# SECTION
+#SECTION
 Narrative.
-# SECTION
+#SECTION
 Narrative.
 
 ------
@@ -65,12 +93,14 @@ Narrative.
 (document
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (narration
 	  (text)))
   (section
     (title
-	  (tag))
+	  (tag)
+	  (name))
     (narration
 	  (text))))
 
@@ -78,7 +108,7 @@ Narrative.
 Section with group
 ==================
 
-# SECTION
+#SECTION
 Narrative.
 > Group
 <
@@ -89,7 +119,8 @@ Narrative.
 (document
   (section
   (title
-    (tag))
+    (tag)
+	(name))
   (narration
     (text))
   (group
@@ -102,7 +133,7 @@ Narrative.
 Section with not closed group
 =============================
 
-# SECTION
+#SECTION
 Narrative.
 > Group
 Narrative.
@@ -112,7 +143,8 @@ Narrative.
 (document
   (section
   (title
-    (tag))
+    (tag)
+	(name))
   (narration
     (text))
   (group
@@ -124,7 +156,7 @@ Narrative.
 Section beetwen comments
 ========================
  comment
-# SECTION
+#SECTION
  comment
 
 ------
@@ -133,7 +165,8 @@ Section beetwen comments
   (comment)
   (section
   (title
-    (tag))
+    (tag)
+	(name))
     (comment)))
 
 
@@ -143,7 +176,7 @@ Section with comments
 =====================
  comment
  comment
-# SECTION
+#SECTION
  comment
  comment
 
@@ -154,7 +187,8 @@ Section with comments
   (comment)
   (section
   (title
-    (tag))
+    (tag)
+	(name))
     (comment)
     (comment)))
 
