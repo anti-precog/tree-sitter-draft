@@ -17,11 +17,19 @@
           "named": true
         },
         {
-          "type": "context",
+          "type": "foot_context",
+          "named": true
+        },
+        {
+          "type": "head_context",
           "named": true
         },
         {
           "type": "header",
+          "named": true
+        },
+        {
+          "type": "main_context",
           "named": true
         },
         {
@@ -101,7 +109,15 @@
     "named": true
   },
   {
-    "type": "context",
+    "type": "foot_context",
+    "named": true
+  },
+  {
+    "type": "head_context",
+    "named": true
+  },
+  {
+    "type": "main_context",
     "named": true
   },
   {

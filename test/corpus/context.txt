@@ -1,36 +1,52 @@
 ===========
-Top context
+head context
 ===========
 
-> top context
+> head context
 
 ------
 
 (document
-  (context))
+  (head_context))
 
-==============
-Bottom context
-==============
+============
+foot context
+============
 
-< bottom context
+< foot context
 
 ------
 
 (document
-  (context))
+  (foot_context))
+
+
+============
+Main context
+============
+
+>> main context
+
+------
+
+(document
+  (main_context))
+
+
 
 
 ==========
 No context
 ==========
 
+ * Comment
  > Comment
  < Comment
 
 ------
 
 (document
+  (comment)
   (comment)
   (comment))
 

@@ -6,7 +6,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.header, $.context, alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
+      repeat(choice($.header, $.main_context, $.head_context, $.foot_context, alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
 
     // ==========================================
     // 1. HEADER
@@ -27,7 +27,10 @@ module.exports = grammar({
     // ==========================================
     // 2. CONTEXT
     // ==========================================
-    context: ($) => /[<>]+[^\n]*\n/,
+
+    head_context: ($) => />[^>\n][^\n]*\n/,
+    main_context: ($) => />{2,}[^\n]*\n/,
+    foot_context: ($) => /<+[^\n]*\n/,
 
     // ==========================================
     // 3. ASTERIX
