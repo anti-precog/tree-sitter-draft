@@ -1,0 +1,36 @@
+===========
+Top context
+===========
+
+> top context
+
+------
+
+(document
+  (context))
+
+==============
+Bottom context
+==============
+
+< bottom context
+
+------
+
+(document
+  (context))
+
+
+==========
+No context
+==========
+
+ > Comment
+ < Comment
+
+------
+
+(document
+  (comment)
+  (comment))
+

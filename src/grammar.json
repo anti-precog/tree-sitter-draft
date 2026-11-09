@@ -12,6 +12,10 @@
             "name": "header"
           },
           {
+            "type": "SYMBOL",
+            "name": "context"
+          },
+          {
             "type": "ALIAS",
             "content": {
               "type": "SYMBOL",
@@ -76,6 +80,10 @@
     "comment": {
       "type": "PATTERN",
       "value": "[ \\t]+[^\\n]*\\n"
+    },
+    "context": {
+      "type": "PATTERN",
+      "value": "[<>]+[^\\n]*\\n"
     },
     "asterix": {
       "type": "PATTERN",
@@ -243,7 +251,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^—#\\t„”\\n][^„”\\n]*"
+      "value": "[^<>—#\\t„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",

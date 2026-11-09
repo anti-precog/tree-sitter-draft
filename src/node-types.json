@@ -17,6 +17,10 @@
           "named": true
         },
         {
+          "type": "context",
+          "named": true
+        },
+        {
           "type": "header",
           "named": true
         },
@@ -94,6 +98,10 @@
   },
   {
     "type": "comment",
+    "named": true
+  },
+  {
+    "type": "context",
     "named": true
   },
   {
