@@ -9,23 +9,34 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "section"
+            "name": "header"
           },
           {
-            "type": "SYMBOL",
-            "name": "group"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "narration"
+            },
+            "named": true,
+            "value": "paragraph"
           },
           {
-            "type": "SYMBOL",
-            "name": "narration"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "quotation"
+            },
+            "named": true,
+            "value": "paragraph"
           },
           {
-            "type": "SYMBOL",
-            "name": "quotation"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "dialog"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "dialog"
+            },
+            "named": true,
+            "value": "paragraph"
           },
           {
             "type": "SYMBOL",
@@ -38,52 +49,7 @@
         ]
       }
     },
-    "section": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "title"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "group"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "narration"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "quotation"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "dialog"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "asterix"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "comment"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "title": {
+    "header": {
       "type": "SEQ",
       "members": [
         {
@@ -91,146 +57,21 @@
           "name": "tag"
         },
         {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "name"
-          }
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\n"
+          "type": "SYMBOL",
+          "name": "name"
         }
       ]
     },
     "tag": {
-      "type": "PATTERN",
-      "value": "[#]+"
+      "type": "STRING",
+      "value": "#"
     },
     "name": {
-      "type": "PATTERN",
-      "value": "[^\\n]*"
-    },
-    "group": {
-      "type": "PREC_RIGHT",
-      "value": 0,
+      "type": "IMMEDIATE_TOKEN",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "header"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_eol"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "narration"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "quotation"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "comment"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "dialog"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "asterix"
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "footer"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_eol"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "narration"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "quotation"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "comment"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "dialog"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "asterix"
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "SYMBOL",
-                "name": "footer"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_eol"
-              }
-            ]
-          }
-        ]
+        "type": "PATTERN",
+        "value": "[^ \\t\\n][^\\n]*"
       }
-    },
-    "header": {
-      "type": "PATTERN",
-      "value": ">[^\\n]*"
-    },
-    "footer": {
-      "type": "PATTERN",
-      "value": "<[^\\n]*"
     },
     "comment": {
       "type": "PATTERN",
@@ -402,7 +243,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^—#\\t>„”\\n][^„”\\n]*"
+      "value": "[^—#\\t„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",
@@ -440,14 +281,14 @@
     },
     "_open_text": {
       "type": "PATTERN",
-      "value": "[^\\t>„”—\\n]+"
+      "value": "[^\\t„”—\\n]+"
     },
     "_end_text": {
       "type": "SEQ",
       "members": [
         {
           "type": "PATTERN",
-          "value": "[^\\t>„”—\\n]+"
+          "value": "[^\\t„”—\\n]+"
         },
         {
           "type": "SYMBOL",
@@ -463,23 +304,10 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "[ \\t]+"
-    },
-    {
-      "type": "PATTERN",
-      "value": "\\n"
+      "value": "\\s"
     }
   ],
-  "conflicts": [
-    [
-      "document",
-      "group"
-    ],
-    [
-      "section",
-      "group"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [],
   "inline": [],

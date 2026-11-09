@@ -1,24 +1,5 @@
 [
   {
-    "type": "dialog",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "speech",
-          "named": true
-        },
-        {
-          "type": "text",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "document",
     "named": true,
     "root": true,
@@ -36,30 +17,18 @@
           "named": true
         },
         {
-          "type": "dialog",
+          "type": "header",
           "named": true
         },
         {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "narration",
-          "named": true
-        },
-        {
-          "type": "quotation",
-          "named": true
-        },
-        {
-          "type": "section",
+          "type": "paragraph",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "group",
+    "type": "header",
     "named": true,
     "fields": {},
     "children": {
@@ -67,53 +36,18 @@
       "required": true,
       "types": [
         {
-          "type": "asterix",
+          "type": "name",
           "named": true
         },
         {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "dialog",
-          "named": true
-        },
-        {
-          "type": "footer",
-          "named": true
-        },
-        {
-          "type": "header",
-          "named": true
-        },
-        {
-          "type": "narration",
-          "named": true
-        },
-        {
-          "type": "quotation",
+          "type": "tag",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "narration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "text",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "quotation",
+    "type": "paragraph",
     "named": true,
     "fields": {},
     "children": {
@@ -122,6 +56,10 @@
       "types": [
         {
           "type": "quote",
+          "named": true
+        },
+        {
+          "type": "speech",
           "named": true
         },
         {
@@ -137,45 +75,6 @@
     "fields": {}
   },
   {
-    "type": "section",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "asterix",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "dialog",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "narration",
-          "named": true
-        },
-        {
-          "type": "quotation",
-          "named": true
-        },
-        {
-          "type": "title",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "speech",
     "named": true,
     "fields": {}
@@ -184,32 +83,6 @@
     "type": "text",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "title",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "name",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "tag",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "\n",
@@ -221,14 +94,6 @@
   },
   {
     "type": "comment",
-    "named": true
-  },
-  {
-    "type": "footer",
-    "named": true
-  },
-  {
-    "type": "header",
     "named": true
   },
   {

@@ -2,7 +2,7 @@
 Document structure
 ==================
 
-# CHAPTER
+#CHAPTER
 Narrative.
 — dialogue.
 *
@@ -10,35 +10,15 @@ Narrative.
 ------
 
 (document
-  (section
-    (title
-	  (tag)
-	  (name))
-    (narration
-	  (text))
-    (dialog
-      (speech))
-	(asterix)))
+  (header
+    (tag)
+    (name))
+  (paragraph
+    (text))
+  (paragraph
+    (speech))
+  (asterix))
 
-===============
-Group structure
-===============
-
-> Group
-Simple narrative.
- Comment.
-— dialogue.
-
-------
-
-(document
-  (group
-  (header)
-    (narration
-	  (text))
-    (comment)
-    (dialog
-      (speech))))
 
 ===================
 Simple 2 paragraphs
@@ -49,9 +29,9 @@ Narrative 2.
 ------
 
 (document
-  (narration
+  (paragraph
     (text))
-  (narration
+  (paragraph
     (text)))
 
 ====================
@@ -62,7 +42,7 @@ Narrative — inclusion — narrative.
 ------
 
 (document
-  (narration
+  (paragraph
     (text)))
 
 =========
@@ -78,21 +58,21 @@ Dialogues
 ------
 
 (document
-  (dialog
+  (paragraph
 	(speech))
-  (dialog
+  (paragraph
 	(speech)
 	(text))
-  (dialog
+  (paragraph
 	(speech)
 	(text)
 	(speech))
-  (dialog
+  (paragraph
 	(speech)
 	(text)
 	(speech)
 	(text))
-  (dialog
+  (paragraph
 	(speech)
 	(text)
 	(speech)

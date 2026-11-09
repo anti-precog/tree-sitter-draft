@@ -1,0 +1,38 @@
+==============
+Simple header
+==============
+
+#HEADER
+
+------
+
+(document
+  (header
+    (tag)
+    (name)))
+
+
+==============
+Broken header
+==============
+
+# HEADER
+
+------
+
+(document
+  (ERROR
+    (tag)
+    (UNEXPECTED 'H')))
+
+
+==================
+Not header
+==================
+
+ #HEADER
+
+------
+
+(document
+  (comment))
