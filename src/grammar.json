@@ -76,7 +76,7 @@
     },
     "tag": {
       "type": "STRING",
-      "value": "#"
+      "value": "_"
     },
     "name": {
       "type": "IMMEDIATE_TOKEN",
@@ -89,13 +89,13 @@
       "type": "PATTERN",
       "value": "[ \\t]+[^\\n]*\\n"
     },
-    "head_context": {
-      "type": "PATTERN",
-      "value": ">[^>\\n][^\\n]*\\n"
-    },
     "main_context": {
       "type": "PATTERN",
-      "value": ">{2,}[^\\n]*\\n"
+      "value": "#+[^\\n]*\\n"
+    },
+    "head_context": {
+      "type": "PATTERN",
+      "value": ">+[^\\n]*\\n"
     },
     "foot_context": {
       "type": "PATTERN",
@@ -267,7 +267,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^<>—#\\t„”\\n][^„”\\n]*"
+      "value": "[^<>—_\\t„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",

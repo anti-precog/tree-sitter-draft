@@ -2,7 +2,7 @@
 Simple header
 ==============
 
-#HEADER
+_HEADER
 
 ------
 
@@ -16,7 +16,7 @@ Simple header
 Broken header
 ==============
 
-# HEADER
+_ HEADER
 
 ------
 
@@ -30,7 +30,7 @@ Broken header
 Not header
 ==================
 
- #HEADER
+ _HEADER
 
 ------
 

@@ -25,7 +25,7 @@ foot context
 Main context
 ============
 
->> main context
+# main context
 
 ------
 
@@ -39,7 +39,7 @@ Main context
 No context
 ==========
 
- * Comment
+ # Comment
  > Comment
  < Comment
 

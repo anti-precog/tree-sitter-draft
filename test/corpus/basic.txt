@@ -2,7 +2,7 @@
 Document structure
 ==================
 
-#CHAPTER
+_CHAPTER
 Narrative.
 — dialogue.
 *

@@ -16,7 +16,7 @@ module.exports = grammar({
       $.name
     ),
 
-    tag: ($) => '#',
+    tag: ($) => '_',
     name: ($) => token.immediate(/[^ \t\n][^\n]*/),
 
     // ==========================================
@@ -28,8 +28,8 @@ module.exports = grammar({
     // 2. CONTEXT
     // ==========================================
 
-    head_context: ($) => />[^>\n][^\n]*\n/,
-    main_context: ($) => />{2,}[^\n]*\n/,
+    main_context: ($) => /#+[^\n]*\n/,
+    head_context: ($) => />+[^\n]*\n/,
     foot_context: ($) => /<+[^\n]*\n/,
 
     // ==========================================
@@ -83,7 +83,7 @@ module.exports = grammar({
     // 7. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^<>—#\t„”\n][^„”\n]*/,
+    text: ($) => /[^<>—_\t„”\n][^„”\n]*/,
 
     _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
     _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),
