@@ -1,0 +1,49 @@
+=======
+context
+=======
+
++ context
+
+------
+
+(document
+  (context))
+
+=======
+summary
+=======
+
+- summary
+
+------
+
+(document
+  (summary))
+
+
+======
+marker
+======
+
+# marker
+
+------
+
+(document
+  (marker))
+
+==========
+No context
+==========
+
+ # Comment
+ + Comment
+ - Comment
+
+------
+
+(document
+  (comment)
+  (comment)
+  (comment))
+

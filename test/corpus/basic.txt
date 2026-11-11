@@ -11,7 +11,7 @@ Narrative.
 
 (document
   (header
-    (tag)
+    (prefix)
     (name))
   (paragraph
     (text))

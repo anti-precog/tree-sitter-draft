@@ -17,11 +17,7 @@
           "named": true
         },
         {
-          "type": "foot_context",
-          "named": true
-        },
-        {
-          "type": "head_context",
+          "type": "context",
           "named": true
         },
         {
@@ -29,11 +25,15 @@
           "named": true
         },
         {
-          "type": "main_context",
+          "type": "marker",
           "named": true
         },
         {
           "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "summary",
           "named": true
         }
       ]
@@ -52,7 +52,7 @@
           "named": true
         },
         {
-          "type": "tag",
+          "type": "prefix",
           "named": true
         }
       ]
@@ -109,15 +109,11 @@
     "named": true
   },
   {
-    "type": "foot_context",
+    "type": "context",
     "named": true
   },
   {
-    "type": "head_context",
-    "named": true
-  },
-  {
-    "type": "main_context",
+    "type": "marker",
     "named": true
   },
   {
@@ -125,7 +121,11 @@
     "named": true
   },
   {
-    "type": "tag",
+    "type": "prefix",
+    "named": true
+  },
+  {
+    "type": "summary",
     "named": true
   },
   {

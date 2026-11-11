@@ -8,7 +8,7 @@ _HEADER
 
 (document
   (header
-    (tag)
+    (prefix)
     (name)))
 
 
@@ -22,7 +22,7 @@ _ HEADER
 
 (document
   (ERROR
-    (tag)
+    (prefix)
     (UNEXPECTED 'H')))
 
 
