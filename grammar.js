@@ -6,7 +6,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.header, $.context, $.summary, $.marker, alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
+      repeat(choice($.header, $.context, $.sub_context, $.markers, alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
 
     // ==========================================
     // 1. HEADER
@@ -25,25 +25,47 @@ module.exports = grammar({
     comment: ($) => /[ \t]+[^\n]*\n/,
 
     // ==========================================
-    // 2. CONTEXT
+    // 3. CONTEXT
     // ==========================================
 
-    marker: $ => /#[^\n]*\n/,
-    context: $ => /\+[^\n]*\n/,
-    summary: $ => /-[^\n]*\n/,
+    context: ($) => /\+[^\n]*\n/,
+    sub_context: ($) => /-[^\n]*\n/,
+
+
+// ==========================================
+    // 4. MARKERS
+    // ==========================================
+    markers: ($) => seq(
+      sep1($.marker, seq(',', optional(' '))),
+      '\n'
+    ),
+
+    marker: ($) => seq(
+      '@',
+      $._namespace,
+      '.',
+      choice(
+        $.name,
+        $.clear
+      )
+    ),
+
+    _namespace: $ => /[^\s,\n.]+/,
+    name: $ => /[^\s,\n.~]+/,
+    clear: $ => '~',
 
     // ==========================================
-    // 3. ASTERIX
+    // 5. ASTERIX
     // ==========================================
     asterix: ($) => /\*{1,3}\n/,
  
     // ==========================================
-    // 4. NARRATION
+    // 6. NARRATION
     // ==========================================
     narration: ($) => seq($.text, $._eol),
 
     // ==========================================
-    // 5. QUOTATION
+    // 7. QUOTATION
     // ==========================================
     quotation: ($) => seq(
       choice(
@@ -60,7 +82,7 @@ module.exports = grammar({
     ),
 
     // ==========================================
-    // 6. DIALOGS
+    // 8. DIALOGS
     // ==========================================
     dialog: ($) =>
       seq(
@@ -80,10 +102,10 @@ module.exports = grammar({
       ),
 
     // ==========================================
-    // 7. HIDDEN HELPERS
+    // 9. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^#\+\-—_\t„”\n][^„”\n]*/,
+    text: ($) => /[^@\+\-—_\t„”\n][^„”\n]*/,
 
     _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
     _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),
@@ -94,3 +116,7 @@ module.exports = grammar({
     _eol: ($) => "\n",
   },
 });
+
+function sep1(rule, separator) {
+  return seq(rule, repeat(seq(separator, rule)));
+}

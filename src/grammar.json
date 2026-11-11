@@ -17,11 +17,11 @@
           },
           {
             "type": "SYMBOL",
-            "name": "summary"
+            "name": "sub_context"
           },
           {
             "type": "SYMBOL",
-            "name": "marker"
+            "name": "markers"
           },
           {
             "type": "ALIAS",
@@ -79,27 +79,109 @@
       "value": "_"
     },
     "name": {
-      "type": "IMMEDIATE_TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[^ \\t\\n][^\\n]*"
-      }
+      "type": "PATTERN",
+      "value": "[^\\s,\\n.~]+"
     },
     "comment": {
       "type": "PATTERN",
       "value": "[ \\t]+[^\\n]*\\n"
     },
-    "marker": {
-      "type": "PATTERN",
-      "value": "#[^\\n]*\\n"
-    },
     "context": {
       "type": "PATTERN",
       "value": "\\+[^\\n]*\\n"
     },
-    "summary": {
+    "sub_context": {
       "type": "PATTERN",
       "value": "-[^\\n]*\\n"
+    },
+    "markers": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "marker"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": " "
+                          },
+                          {
+                            "type": "BLANK"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "marker"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "marker": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_namespace"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "name"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "clear"
+            }
+          ]
+        }
+      ]
+    },
+    "_namespace": {
+      "type": "PATTERN",
+      "value": "[^\\s,\\n.]+"
+    },
+    "clear": {
+      "type": "STRING",
+      "value": "~"
     },
     "asterix": {
       "type": "PATTERN",
@@ -267,7 +349,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^#\\+\\-—_\\t„”\\n][^„”\\n]*"
+      "value": "[^@\\+\\-—_\\t„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",

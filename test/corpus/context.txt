@@ -9,41 +9,28 @@ context
 (document
   (context))
 
-=======
-summary
-=======
+===========
+sub_context
+===========
 
-- summary
-
-------
-
-(document
-  (summary))
-
-
-======
-marker
-======
-
-# marker
+- sub_context
 
 ------
 
 (document
-  (marker))
+  (sub_context))
+
 
 ==========
 No context
 ==========
 
- # Comment
  + Comment
  - Comment
 
 ------
 
 (document
-  (comment)
   (comment)
   (comment))
 

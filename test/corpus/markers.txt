@@ -1,0 +1,55 @@
+=====================
+Marker line structure
+=====================
+
+@wątek.niebieski, @struktura.~
+
+------
+
+(document
+  (markers
+    (marker
+	  (name))
+	(marker
+	  (clear))))
+
+=====================
+Single marker
+=====================
+
+@wątek.niebieski
+
+------
+
+(document
+  (markers
+    (marker
+	  (name))))
+
+=====================
+Single clear
+=====================
+
+@wątek.~
+
+------
+
+(document
+  (markers
+    (marker
+	  (clear))))
+
+==========
+No markers
+==========
+
+@
+
+------
+
+(document
+  (markers))
+
+
+
+
