@@ -59,25 +59,6 @@
     }
   },
   {
-    "type": "marker",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "clear",
-          "named": true
-        },
-        {
-          "type": "name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "markers",
     "named": true,
     "fields": {},
@@ -86,7 +67,11 @@
       "required": true,
       "types": [
         {
-          "type": "marker",
+          "type": "start",
+          "named": true
+        },
+        {
+          "type": "stop",
           "named": true
         }
       ]
@@ -126,6 +111,40 @@
     "fields": {}
   },
   {
+    "type": "start",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "namespace",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stop",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "namespace",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "text",
     "named": true,
     "fields": {}
@@ -155,10 +174,6 @@
     "named": true
   },
   {
-    "type": "clear",
-    "named": true
-  },
-  {
     "type": "comment",
     "named": true
   },
@@ -171,12 +186,24 @@
     "named": true
   },
   {
+    "type": "namespace",
+    "named": true
+  },
+  {
     "type": "prefix",
     "named": true
   },
   {
     "type": "sub_context",
     "named": true
+  },
+  {
+    "type": "type",
+    "named": true
+  },
+  {
+    "type": "~",
+    "named": false
   },
   {
     "type": "—",

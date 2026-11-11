@@ -2,16 +2,17 @@
 Marker line structure
 =====================
 
-@wątek.niebieski, @struktura.~
+@wątek.niebieski, ~struktura
 
 ------
 
 (document
   (markers
-    (marker
-	  (name))
-	(marker
-	  (clear))))
+    (start
+	  (namespace)
+	  (type))
+	(stop
+	  (namespace))))
 
 =====================
 Single marker
@@ -23,21 +24,22 @@ Single marker
 
 (document
   (markers
-    (marker
-	  (name))))
+    (start
+	  (namespace)
+	  (type))))
 
 =====================
 Single clear
 =====================
 
-@wątek.~
+~wątek
 
 ------
 
 (document
   (markers
-    (marker
-	  (clear))))
+    (stop
+	  (namespace))))
 
 ==========
 No markers
@@ -48,8 +50,6 @@ No markers
 ------
 
 (document
-  (markers))
-
-
+  (ERROR))
 
 

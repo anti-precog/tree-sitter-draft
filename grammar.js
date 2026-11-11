@@ -6,7 +6,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.header, $.context, $.sub_context, $.markers, alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
+      repeat(choice($.header, $.context, $.sub_context, seq($.markers, $._eol), alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
 
     // ==========================================
     // 1. HEADER
@@ -27,32 +27,30 @@ module.exports = grammar({
     // ==========================================
     // 3. CONTEXT
     // ==========================================
-
     context: ($) => /\+[^\n]*\n/,
     sub_context: ($) => /-[^\n]*\n/,
 
-
-// ==========================================
+    // ==========================================
     // 4. MARKERS
     // ==========================================
     markers: ($) => seq(
-      sep1($.marker, seq(',', optional(' '))),
-      '\n'
+      sep1(choice($.start, $.stop), seq(',', optional(' '))),
     ),
 
-    marker: ($) => seq(
+    start: ($) => seq(
       '@',
-      $._namespace,
+      $.namespace,
       '.',
-      choice(
-        $.name,
-        $.clear
-      )
+      $.type,
     ),
 
-    _namespace: $ => /[^\s,\n.]+/,
-    name: $ => /[^\s,\n.~]+/,
-    clear: $ => '~',
+    stop: ($) => seq(
+      '~',
+      $.namespace,
+    ),
+
+    namespace: $ => /[^.@\s,\n]+/,
+    type: $ => /[^\s,\n.~]+/,
 
     // ==========================================
     // 5. ASTERIX
@@ -105,7 +103,7 @@ module.exports = grammar({
     // 9. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^@\+\-—_\t„”\n][^„”\n]*/,
+    text: ($) => /[^~@\+\-—_\t„”\n][^„”\n]*/,
 
     _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
     _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),

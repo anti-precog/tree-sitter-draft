@@ -20,8 +20,17 @@
             "name": "sub_context"
           },
           {
-            "type": "SYMBOL",
-            "name": "markers"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "markers"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_eol"
+              }
+            ]
           },
           {
             "type": "ALIAS",
@@ -79,8 +88,11 @@
       "value": "_"
     },
     "name": {
-      "type": "PATTERN",
-      "value": "[^\\s,\\n.~]+"
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^ \\t\\n][^\\n]*"
+      }
     },
     "comment": {
       "type": "PATTERN",
@@ -101,8 +113,17 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "marker"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "start"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "stop"
+                }
+              ]
             },
             {
               "type": "REPEAT",
@@ -131,21 +152,26 @@
                     ]
                   },
                   {
-                    "type": "SYMBOL",
-                    "name": "marker"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "start"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "stop"
+                      }
+                    ]
                   }
                 ]
               }
             }
           ]
-        },
-        {
-          "type": "STRING",
-          "value": "\n"
         }
       ]
     },
-    "marker": {
+    "start": {
       "type": "SEQ",
       "members": [
         {
@@ -154,34 +180,38 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_namespace"
+          "name": "namespace"
         },
         {
           "type": "STRING",
           "value": "."
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "name"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "clear"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "type"
         }
       ]
     },
-    "_namespace": {
-      "type": "PATTERN",
-      "value": "[^\\s,\\n.]+"
+    "stop": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "~"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "namespace"
+        }
+      ]
     },
-    "clear": {
-      "type": "STRING",
-      "value": "~"
+    "namespace": {
+      "type": "PATTERN",
+      "value": "[^.@\\s,\\n]+"
+    },
+    "type": {
+      "type": "PATTERN",
+      "value": "[^\\s,\\n.~]+"
     },
     "asterix": {
       "type": "PATTERN",
@@ -349,7 +379,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^@\\+\\-—_\\t„”\\n][^„”\\n]*"
+      "value": "[^~@\\+\\-—_\\t„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",
