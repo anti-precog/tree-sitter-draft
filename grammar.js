@@ -27,14 +27,13 @@ module.exports = grammar({
     // ==========================================
     // 2. CONTEXT
     // ==========================================
-
     context: ($) => seq(
-      '+',
+      '>',
       $.info
     ),
 
     sub_context: ($) => seq(
-      '>',
+      '<',
       $.info
     ),
     info: ($) => token.immediate(/ [^\n]+/),
@@ -90,7 +89,7 @@ module.exports = grammar({
     // 7. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^\+>—_\t„”\n][^„”\n]*/,
+    text: ($) => /[^<>—_\t„”\n][^„”\n]*/,
 
     _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
     _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),

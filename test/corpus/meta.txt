@@ -2,7 +2,7 @@
 context
 =======
 
-+ context
+> context
 
 ------
 
@@ -14,7 +14,7 @@ context
 sub_context
 ===========
 
-> sub_context
+< sub_context
 
 ------
 
@@ -26,7 +26,7 @@ sub_context
 No context
 ==========
 
- + Comment
+ < Comment
  > Comment
 
 ------
@@ -39,7 +39,7 @@ No context
 broken context
 ==============
 
-+context
+>context
 
 ------
 

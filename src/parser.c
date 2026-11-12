@@ -23,8 +23,8 @@ enum ts_symbol_identifiers {
   sym_prefix = 1,
   sym_name = 2,
   sym_comment = 3,
-  anon_sym_PLUS = 4,
-  anon_sym_GT = 5,
+  anon_sym_GT = 4,
+  anon_sym_LT = 5,
   sym_info = 6,
   sym_asterix = 7,
   anon_sym_u201e = 8,
@@ -58,8 +58,8 @@ static const char * const ts_symbol_names[] = {
   [sym_prefix] = "prefix",
   [sym_name] = "name",
   [sym_comment] = "comment",
-  [anon_sym_PLUS] = "+",
   [anon_sym_GT] = ">",
+  [anon_sym_LT] = "<",
   [sym_info] = "info",
   [sym_asterix] = "asterix",
   [anon_sym_u201e] = "\u201e",
@@ -93,8 +93,8 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_prefix] = sym_prefix,
   [sym_name] = sym_name,
   [sym_comment] = sym_comment,
-  [anon_sym_PLUS] = anon_sym_PLUS,
   [anon_sym_GT] = anon_sym_GT,
+  [anon_sym_LT] = anon_sym_LT,
   [sym_info] = sym_info,
   [sym_asterix] = sym_asterix,
   [anon_sym_u201e] = anon_sym_u201e,
@@ -140,11 +140,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [anon_sym_PLUS] = {
+  [anon_sym_GT] = {
     .visible = true,
     .named = false,
   },
-  [anon_sym_GT] = {
+  [anon_sym_LT] = {
     .visible = true,
     .named = false,
   },
@@ -314,8 +314,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 0:
       if (eof) ADVANCE(14);
       if (lookahead == '*') ADVANCE(5);
-      if (lookahead == '+') ADVANCE(22);
-      if (lookahead == '>') ADVANCE(26);
+      if (lookahead == '<') ADVANCE(26);
+      if (lookahead == '>') ADVANCE(22);
       if (lookahead == '_') ADVANCE(15);
       if (lookahead == 0x2014) ADVANCE(47);
       if (lookahead == 0x201d) ADVANCE(36);
@@ -329,8 +329,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         '\n', 21,
         ' ', 37,
         '*', 44,
-        '+', 24,
-        '>', 28,
+        '<', 28,
+        '>', 24,
         '_', 17,
         0x2014, 49,
         0x201d, 6,
@@ -346,7 +346,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if ((0x0b <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') ADVANCE(39);
       if (lookahead != 0 &&
-          lookahead != '+' &&
+          lookahead != '<' &&
           lookahead != '>' &&
           lookahead != '_' &&
           lookahead != 0x2014 &&
@@ -418,8 +418,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '\n') SKIP(13);
       if (lookahead == ' ') ADVANCE(37);
       if (lookahead == '*') ADVANCE(41);
-      if (lookahead == '+') ADVANCE(22);
-      if (lookahead == '>') ADVANCE(26);
+      if (lookahead == '<') ADVANCE(26);
+      if (lookahead == '>') ADVANCE(22);
       if (lookahead == '_') ADVANCE(15);
       if (lookahead == 0x2014) ADVANCE(47);
       if (lookahead == 0x201e) ADVANCE(32);
@@ -468,44 +468,44 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if ((0x0b <= lookahead && lookahead <= '\r')) ADVANCE(38);
       END_STATE();
     case 22:
-      ACCEPT_TOKEN(anon_sym_PLUS);
+      ACCEPT_TOKEN(anon_sym_GT);
       END_STATE();
     case 23:
-      ACCEPT_TOKEN(anon_sym_PLUS);
+      ACCEPT_TOKEN(anon_sym_GT);
       if (lookahead == '\n') ADVANCE(20);
       if (lookahead == 0x201d ||
           lookahead == 0x201e) ADVANCE(6);
       if (lookahead != 0) ADVANCE(45);
       END_STATE();
     case 24:
-      ACCEPT_TOKEN(anon_sym_PLUS);
+      ACCEPT_TOKEN(anon_sym_GT);
       if (lookahead == '\n') ADVANCE(20);
       if (lookahead != 0) ADVANCE(6);
       END_STATE();
     case 25:
-      ACCEPT_TOKEN(anon_sym_PLUS);
+      ACCEPT_TOKEN(anon_sym_GT);
       if (lookahead != 0 &&
           lookahead != '\n' &&
           lookahead != 0x201d &&
           lookahead != 0x201e) ADVANCE(46);
       END_STATE();
     case 26:
-      ACCEPT_TOKEN(anon_sym_GT);
+      ACCEPT_TOKEN(anon_sym_LT);
       END_STATE();
     case 27:
-      ACCEPT_TOKEN(anon_sym_GT);
+      ACCEPT_TOKEN(anon_sym_LT);
       if (lookahead == '\n') ADVANCE(20);
       if (lookahead == 0x201d ||
           lookahead == 0x201e) ADVANCE(6);
       if (lookahead != 0) ADVANCE(45);
       END_STATE();
     case 28:
-      ACCEPT_TOKEN(anon_sym_GT);
+      ACCEPT_TOKEN(anon_sym_LT);
       if (lookahead == '\n') ADVANCE(20);
       if (lookahead != 0) ADVANCE(6);
       END_STATE();
     case 29:
-      ACCEPT_TOKEN(anon_sym_GT);
+      ACCEPT_TOKEN(anon_sym_LT);
       if (lookahead != 0 &&
           lookahead != '\n' &&
           lookahead != 0x201d &&
@@ -554,8 +554,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         '\n', 21,
         ' ', 37,
         '*', 44,
-        '+', 23,
-        '>', 27,
+        '<', 27,
+        '>', 23,
         '_', 16,
         0x2014, 48,
       );
@@ -569,8 +569,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '\t') ADVANCE(37);
       if (lookahead == ' ') ADVANCE(37);
       if (lookahead == '*') ADVANCE(41);
-      if (lookahead == '+') ADVANCE(25);
-      if (lookahead == '>') ADVANCE(29);
+      if (lookahead == '<') ADVANCE(29);
+      if (lookahead == '>') ADVANCE(25);
       if (lookahead == '_') ADVANCE(18);
       if (lookahead == 0x2014) ADVANCE(50);
       if ((0x0b <= lookahead && lookahead <= '\r')) ADVANCE(38);
@@ -583,7 +583,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(sym_text);
       if (lookahead == '\t') ADVANCE(39);
       if (lookahead == '\n') ADVANCE(55);
-      if (lookahead == '+' ||
+      if (lookahead == '<' ||
           lookahead == '>' ||
           lookahead == '_' ||
           lookahead == 0x2014) ADVANCE(46);
@@ -770,8 +770,8 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(0)] = {
     [ts_builtin_sym_end] = ACTIONS(1),
     [sym_prefix] = ACTIONS(1),
-    [anon_sym_PLUS] = ACTIONS(1),
     [anon_sym_GT] = ACTIONS(1),
+    [anon_sym_LT] = ACTIONS(1),
     [sym_asterix] = ACTIONS(1),
     [anon_sym_u201e] = ACTIONS(1),
     [anon_sym_u201d] = ACTIONS(1),
@@ -793,8 +793,8 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [ts_builtin_sym_end] = ACTIONS(3),
     [sym_prefix] = ACTIONS(5),
     [sym_comment] = ACTIONS(7),
-    [anon_sym_PLUS] = ACTIONS(9),
-    [anon_sym_GT] = ACTIONS(11),
+    [anon_sym_GT] = ACTIONS(9),
+    [anon_sym_LT] = ACTIONS(11),
     [sym_asterix] = ACTIONS(7),
     [anon_sym_u201e] = ACTIONS(13),
     [sym_text] = ACTIONS(15),
@@ -815,8 +815,8 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [ts_builtin_sym_end] = ACTIONS(19),
     [sym_prefix] = ACTIONS(5),
     [sym_comment] = ACTIONS(21),
-    [anon_sym_PLUS] = ACTIONS(9),
-    [anon_sym_GT] = ACTIONS(11),
+    [anon_sym_GT] = ACTIONS(9),
+    [anon_sym_LT] = ACTIONS(11),
     [sym_asterix] = ACTIONS(21),
     [anon_sym_u201e] = ACTIONS(13),
     [sym_text] = ACTIONS(15),
@@ -837,8 +837,8 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [ts_builtin_sym_end] = ACTIONS(23),
     [sym_prefix] = ACTIONS(25),
     [sym_comment] = ACTIONS(28),
-    [anon_sym_PLUS] = ACTIONS(31),
-    [anon_sym_GT] = ACTIONS(34),
+    [anon_sym_GT] = ACTIONS(31),
+    [anon_sym_LT] = ACTIONS(34),
     [sym_asterix] = ACTIONS(28),
     [anon_sym_u201e] = ACTIONS(37),
     [sym_text] = ACTIONS(40),
@@ -853,8 +853,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(48), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -865,8 +865,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(52), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -877,8 +877,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(56), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -889,8 +889,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(60), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -901,8 +901,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(64), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -913,8 +913,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(68), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -925,8 +925,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(72), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -937,8 +937,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(76), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -949,8 +949,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(80), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -961,8 +961,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(84), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -973,8 +973,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(88), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
@@ -985,8 +985,8 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(92), 8,
       sym_prefix,
       sym_comment,
-      anon_sym_PLUS,
       anon_sym_GT,
+      anon_sym_LT,
       sym_asterix,
       anon_sym_u201e,
       sym_text,
