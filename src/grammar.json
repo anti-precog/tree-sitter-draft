@@ -17,11 +17,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "summary"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "marker"
+            "name": "sub_context"
           },
           {
             "type": "ALIAS",
@@ -89,17 +85,13 @@
       "type": "PATTERN",
       "value": "[ \\t]+[^\\n]*\\n"
     },
-    "marker": {
-      "type": "PATTERN",
-      "value": "#[^\\n]*\\n"
-    },
     "context": {
       "type": "PATTERN",
       "value": "\\+[^\\n]*\\n"
     },
-    "summary": {
+    "sub_context": {
       "type": "PATTERN",
-      "value": "-[^\\n]*\\n"
+      "value": ">[^\\n]*\\n"
     },
     "asterix": {
       "type": "PATTERN",
@@ -267,7 +259,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^#\\+\\-—_\\t„”\\n][^„”\\n]*"
+      "value": "[^\\+>—_\\t„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",

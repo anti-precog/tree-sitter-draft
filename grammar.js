@@ -6,7 +6,7 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.header, $.context, $.summary, $.marker, alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
+      repeat(choice($.header, $.context, $.sub_context, alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
 
     // ==========================================
     // 1. HEADER
@@ -28,9 +28,8 @@ module.exports = grammar({
     // 2. CONTEXT
     // ==========================================
 
-    marker: $ => /#[^\n]*\n/,
     context: $ => /\+[^\n]*\n/,
-    summary: $ => /-[^\n]*\n/,
+    sub_context: $ => />[^\n]*\n/,
 
     // ==========================================
     // 3. ASTERIX
@@ -83,7 +82,7 @@ module.exports = grammar({
     // 7. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^#\+\-—_\t„”\n][^„”\n]*/,
+    text: ($) => /[^\+>—_\t„”\n][^„”\n]*/,
 
     _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
     _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),

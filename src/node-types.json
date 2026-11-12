@@ -25,15 +25,11 @@
           "named": true
         },
         {
-          "type": "marker",
-          "named": true
-        },
-        {
           "type": "paragraph",
           "named": true
         },
         {
-          "type": "summary",
+          "type": "sub_context",
           "named": true
         }
       ]
@@ -113,10 +109,6 @@
     "named": true
   },
   {
-    "type": "marker",
-    "named": true
-  },
-  {
     "type": "name",
     "named": true
   },
@@ -125,7 +117,7 @@
     "named": true
   },
   {
-    "type": "summary",
+    "type": "sub_context",
     "named": true
   },
   {
