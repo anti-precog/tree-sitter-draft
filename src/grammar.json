@@ -86,12 +86,37 @@
       "value": "[ \\t]+[^\\n]*\\n"
     },
     "context": {
-      "type": "PATTERN",
-      "value": "\\+[^\\n]*\\n"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "info"
+        }
+      ]
     },
     "sub_context": {
-      "type": "PATTERN",
-      "value": ">[^\\n]*\\n"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ">"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "info"
+        }
+      ]
+    },
+    "info": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": " [^\\n]+"
+      }
     },
     "asterix": {
       "type": "PATTERN",

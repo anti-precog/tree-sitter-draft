@@ -28,8 +28,16 @@ module.exports = grammar({
     // 2. CONTEXT
     // ==========================================
 
-    context: $ => /\+[^\n]*\n/,
-    sub_context: $ => />[^\n]*\n/,
+    context: ($) => seq(
+      '+',
+      $.info
+    ),
+
+    sub_context: ($) => seq(
+      '>',
+      $.info
+    ),
+    info: ($) => token.immediate(/ [^\n]+/),
 
     // ==========================================
     // 3. ASTERIX

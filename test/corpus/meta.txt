@@ -7,7 +7,8 @@ context
 ------
 
 (document
-  (context))
+  (context
+    (info)))
 
 ===========
 sub_context
@@ -18,7 +19,8 @@ sub_context
 ------
 
 (document
-  (sub_context))
+  (sub_context
+    (info)))
 
 ==========
 No context
@@ -32,4 +34,17 @@ No context
 (document
   (comment)
   (comment))
+
+==============
+broken context
+==============
+
++context
+
+------
+
+(document
+  (ERROR
+    (name)))
+
 

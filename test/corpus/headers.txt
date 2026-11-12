@@ -23,7 +23,7 @@ _ HEADER
 (document
   (ERROR
     (prefix)
-    (UNEXPECTED 'H')))
+    (info)))
 
 
 ==================
