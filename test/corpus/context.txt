@@ -1,0 +1,79 @@
+=======
+context
+=======
+
+-- context --
+
+------
+
+(document
+  (context
+    (info)))
+
+===========
+sub_context
+===========
+
+-- sub_context
+
+------
+
+(document
+  (sub_context
+    (info)))
+
+======================
+sub_context with label
+======================
+
+-- sub_context [label]
+
+------
+
+(document
+  (sub_context
+    (info)
+	(label)))
+
+========================
+sub_context without info
+========================
+
+-- [label]
+
+------
+
+(document
+  (sub_context
+	(label)))
+
+
+
+
+==========
+No context
+==========
+
+ -- Comment
+ -- Comment --
+
+------
+
+(document
+  (comment)
+  (comment))
+
+==============
+broken context
+==============
+
+--context --
+
+------
+
+(document
+  (ERROR
+    (UNEXPECTED 'c'))
+  (comment))
+
+

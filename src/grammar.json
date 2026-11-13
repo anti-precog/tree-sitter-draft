@@ -78,7 +78,7 @@
       "type": "IMMEDIATE_TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "[^ \\t\\n][^\\n]*"
+        "value": "[^\\- \\t\\n][^\\n]*"
       }
     },
     "comment": {
@@ -90,11 +90,19 @@
       "members": [
         {
           "type": "STRING",
-          "value": ">"
+          "value": "--"
         },
         {
           "type": "SYMBOL",
           "name": "info"
+        },
+        {
+          "type": "STRING",
+          "value": "--"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eol"
         }
       ]
     },
@@ -103,11 +111,35 @@
       "members": [
         {
           "type": "STRING",
-          "value": "<"
+          "value": "--"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "info"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "label"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
-          "name": "info"
+          "name": "_eol"
         }
       ]
     },
@@ -115,8 +147,28 @@
       "type": "IMMEDIATE_TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": " [^\\n]+"
+        "value": " [^\\[\\]\\-\\n]+"
       }
+    },
+    "label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^\\[\\]\\n]+"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "asterix": {
       "type": "PATTERN",
@@ -284,7 +336,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^<>—_\\t„”\\n][^„”\\n]*"
+      "value": "[^-—_\\t„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",

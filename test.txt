@@ -1,0 +1,38 @@
+test pinia
+
+> to jest nagłówke
+
+[to jest kontest] tstlkhkjhf 
+
+
+
+[*] a to jest kontkest tylko uktyt
+
+@konteskt
+
+ctx: test
+
+test
+
+ ctx: test
+
+::test
+
+tst::test
+
+::to jest ukryte
+> test hdkfhdsfj [widac]
+
+< testkjd sgkjf g [scena]
+
+---
+
+:q
+:
+
+
+
+
+
+
+

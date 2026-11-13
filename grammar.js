@@ -25,7 +25,7 @@ module.exports = grammar({
     header: ($) => seq($.prefix, $.name),
 
     prefix: ($) => "_",
-    name: ($) => token.immediate(/[^ \t\n][^\n]*/),
+    name: ($) => token.immediate(/[^\- \t\n][^\n]*/),
 
     // ==========================================
     // 2. COMMENT
@@ -35,10 +35,12 @@ module.exports = grammar({
     // ==========================================
     // 2. CONTEXT
     // ==========================================
-    context: ($) => seq(">", $.info),
+    context: ($) => seq("--", $.info, "--", $._eol),
 
-    sub_context: ($) => seq("<", $.info),
-    info: ($) => token.immediate(/ [^\n]+/),
+    sub_context: ($) => seq("--", optional($.info), optional($.label), $._eol),
+
+    info: ($) => token.immediate(/ [^\[\]\-\n]+/),
+    label: ($) => seq("[", token.immediate(/[^\[\]\n]+/), "]"),
 
     // ==========================================
     // 3. ASTERIX
@@ -81,7 +83,7 @@ module.exports = grammar({
     // 7. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^<>—_\t„”\n][^„”\n]*/,
+    text: ($) => /[^-—_\t„”\n][^„”\n]*/,
 
     _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
     _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),

@@ -70,6 +70,11 @@
     }
   },
   {
+    "type": "label",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "paragraph",
     "named": true,
     "fields": {},
@@ -107,11 +112,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
           "type": "info",
+          "named": true
+        },
+        {
+          "type": "label",
           "named": true
         }
       ]
@@ -127,11 +136,15 @@
     "named": false
   },
   {
-    "type": "<",
+    "type": "--",
     "named": false
   },
   {
-    "type": ">",
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
