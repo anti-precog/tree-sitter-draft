@@ -6,17 +6,25 @@ module.exports = grammar({
     // 0. MAIN DOCUMENT ROOT
     // ==========================================
     document: ($) =>
-      repeat(choice($.header, $.context, $.sub_context, alias($.narration, $.paragraph), alias($.quotation, $.paragraph), alias($.dialog, $.paragraph), $.asterix, $.comment)),
+      repeat(
+        choice(
+          $.header,
+          $.context,
+          $.sub_context,
+          alias($.narration, $.paragraph),
+          alias($.quotation, $.paragraph),
+          alias($.dialog, $.paragraph),
+          $.asterix,
+          $.comment,
+        ),
+      ),
 
     // ==========================================
     // 1. HEADER
     // ==========================================
-    header: ($) => seq(
-      $.prefix,
-      $.name
-    ),
+    header: ($) => seq($.prefix, $.name),
 
-    prefix: ($) => '_',
+    prefix: ($) => "_",
     name: ($) => token.immediate(/[^ \t\n][^\n]*/),
 
     // ==========================================
@@ -27,22 +35,16 @@ module.exports = grammar({
     // ==========================================
     // 2. CONTEXT
     // ==========================================
-    context: ($) => seq(
-      '>',
-      $.info
-    ),
+    context: ($) => seq(">", $.info),
 
-    sub_context: ($) => seq(
-      '<',
-      $.info
-    ),
+    sub_context: ($) => seq("<", $.info),
     info: ($) => token.immediate(/ [^\n]+/),
 
     // ==========================================
     // 3. ASTERIX
     // ==========================================
     asterix: ($) => /\*{1,3}\n/,
- 
+
     // ==========================================
     // 4. NARRATION
     // ==========================================
@@ -51,19 +53,15 @@ module.exports = grammar({
     // ==========================================
     // 5. QUOTATION
     // ==========================================
-    quotation: ($) => seq(
-      choice(
-        seq($.text, alias($._open_quote, $.quote)),
-        alias($._open_quote, $.quote)
-      ),
-      repeat(
+    quotation: ($) =>
+      seq(
         choice(
-          $.text,
-          alias($._open_quote, $.quote)
-        )
+          seq($.text, alias($._open_quote, $.quote)),
+          alias($._open_quote, $.quote),
+        ),
+        repeat(choice($.text, alias($._open_quote, $.quote))),
+        $._eol,
       ),
-      $._eol
-    ),
 
     // ==========================================
     // 6. DIALOGS
@@ -71,17 +69,11 @@ module.exports = grammar({
     dialog: ($) =>
       seq(
         repeat(
-          seq(
-            alias($._open_speech, $.speech),
-            alias($._open_text, $.text),
-          ),
+          seq(alias($._open_speech, $.speech), alias($._open_text, $.text)),
         ),
         choice(
           alias($._end_speech, $.speech),
-          seq(
-            alias($._open_speech, $.speech),
-            alias($._end_text, $.text),
-          ),
+          seq(alias($._open_speech, $.speech), alias($._end_text, $.text)),
         ),
       ),
 

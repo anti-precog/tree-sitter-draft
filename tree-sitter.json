@@ -6,9 +6,7 @@
       "camelcase": "Draft",
       "title": "Draft",
       "scope": "source.draft",
-      "file-types": [
-        "draft"
-      ],
+      "file-types": ["draft"],
       "injection-regex": "^draft$",
       "class-name": "TreeSitterDraft"
     }
