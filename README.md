@@ -13,38 +13,6 @@ A TreeSitter grammar for [Draft](https://github.com/anti-precog/draft.nvim).
 - support full formating text in [draft.nvim](https://github.com/anti-precog/draft.nvim) plugin.
 - necessary for outline.nvim [external provider](https://github.com/anti-precog/outline-draft-provider.nvim)
 
-# Structure
-
-```
-==================        ===============
-Section structure         Group structure
-==================        ===============
-
-# CHAPTER                 > Group
-Paragraph.                Simple paragraph.
-— dialogue.                Comment.
-                          — dialogue.
-------                    ------
-
-(document                 (document
-  (section                  (group
-    (title)                 (header)
-    (narrative)               (narrative)
-    (dialog                   (comment)
-      (speech))))             (dialog
-                                (speech))))
-```
-
-# Section
-> group header
-
-Paragraph.
-— dialog
-    comment
-
-< group footer
-```
-
 # Setup for nvim
 There are two common ways to deliver parser to your nvim configuration:
 1. manualy copy a `draft.so` file to nvim configuration path e.g. `.config/nvim/parser/draft.so`
