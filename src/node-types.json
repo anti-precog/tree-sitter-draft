@@ -75,6 +75,25 @@
     "fields": {}
   },
   {
+    "type": "marker",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "namespace",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "paragraph",
     "named": true,
     "fields": {},
@@ -82,6 +101,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "marker",
+          "named": true
+        },
         {
           "type": "quote",
           "named": true
@@ -140,6 +163,10 @@
     "named": false
   },
   {
+    "type": "@",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -164,7 +191,15 @@
     "named": true
   },
   {
+    "type": "namespace",
+    "named": true
+  },
+  {
     "type": "prefix",
+    "named": true
+  },
+  {
+    "type": "value",
     "named": true
   },
   {

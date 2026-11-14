@@ -20,6 +20,14 @@
             "name": "sub_context"
           },
           {
+            "type": "SYMBOL",
+            "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "asterix"
+          },
+          {
             "type": "ALIAS",
             "content": {
               "type": "SYMBOL",
@@ -45,14 +53,6 @@
             },
             "named": true,
             "value": "paragraph"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "asterix"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "comment"
           }
         ]
       }
@@ -84,6 +84,43 @@
     "comment": {
       "type": "PATTERN",
       "value": "[ \\t]+[^\\n]*\\n"
+    },
+    "marker": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "namespace"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "value"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eol"
+        }
+      ]
+    },
+    "namespace": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_-]+[:]"
+    },
+    "value": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_-]+"
     },
     "context": {
       "type": "SEQ",
@@ -182,8 +219,17 @@
           "name": "text"
         },
         {
-          "type": "SYMBOL",
-          "name": "_eol"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_eol"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "marker"
+            }
+          ]
         }
       ]
     },
@@ -244,8 +290,17 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_eol"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_eol"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "marker"
+            }
+          ]
         }
       ]
     },
@@ -282,6 +337,24 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_open_speech"
+                  },
+                  "named": true,
+                  "value": "speech"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "marker"
+                }
+              ]
+            },
+            {
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
@@ -289,6 +362,38 @@
               },
               "named": true,
               "value": "speech"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_open_speech"
+                  },
+                  "named": true,
+                  "value": "speech"
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_open_text"
+                      },
+                      "named": true,
+                      "value": "text"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "marker"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "type": "SEQ",
@@ -326,7 +431,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^„”\\n]+"
+          "value": "[^@„”\\n]+"
         },
         {
           "type": "STRING",
@@ -336,7 +441,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^-—_\\t„”\\n][^„”\\n]*"
+      "value": "[^-@—_\\t„”\\n][^@„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",
@@ -347,7 +452,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^„”—\\n]+"
+          "value": "[^@„”—\\n]+"
         },
         {
           "type": "STRING",
@@ -364,7 +469,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^„”—\\n]+"
+          "value": "[^@„”—\\n]+"
         },
         {
           "type": "SYMBOL",
@@ -374,14 +479,14 @@
     },
     "_open_text": {
       "type": "PATTERN",
-      "value": "[^\\t„”—\\n]+"
+      "value": "[^\\t@„”—\\n]+"
     },
     "_end_text": {
       "type": "SEQ",
       "members": [
         {
           "type": "PATTERN",
-          "value": "[^\\t„”—\\n]+"
+          "value": "[^\\t@„”—\\n]+"
         },
         {
           "type": "SYMBOL",

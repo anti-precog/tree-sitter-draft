@@ -1,0 +1,109 @@
+============
+Simple Quote
+============
+
+„quote”@tag
+
+------
+
+(document
+  (paragraph
+    (quote)
+	(tag)))
+
+
+====================
+Quote with narrative
+====================
+
+„quote” narrative.@tag
+
+------
+
+(document
+  (paragraph
+	(quote)
+    (text)
+	(tag)))
+
+
+====================
+Narrative with quote
+====================
+
+Narrative „quote”@tag
+
+------
+
+(document
+  (paragraph
+	(text)
+    (quote)
+	(tag)))
+
+============
+Quote inside
+============
+
+Narrative „quote” narrative.@tag
+
+------
+
+(document
+  (paragraph
+	(text)
+    (quote)
+	(text)
+	(tag)))
+
+======================
+Mulitple quotes inside
+======================
+
+Narrative „quote” narrative „quote” narrative.@tag
+
+------
+
+(document
+  (paragraph
+	(text)
+    (quote)
+	(text)
+    (quote)
+	(text)
+	(tag)))
+
+===========================
+Quote inside and on the end
+===========================
+
+Narrative „quote” narrative „quote”@tag
+
+------
+
+(document
+  (paragraph
+	(text)
+    (quote)
+	(text)
+    (quote)
+	(tag)))
+
+================
+Narrative inside
+================
+
+„quote” narrative „quote”@tag
+
+------
+
+(document
+  (paragraph
+	(quote)
+    (text)
+	(quote)
+	(tag)))
+
+
+
+

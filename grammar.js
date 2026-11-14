@@ -11,11 +11,11 @@ module.exports = grammar({
           $.header,
           $.context,
           $.sub_context,
+          $.comment,
+          $.asterix,
           alias($.narration, $.paragraph),
           alias($.quotation, $.paragraph),
           alias($.dialog, $.paragraph),
-          $.asterix,
-          $.comment,
         ),
       ),
 
@@ -31,6 +31,15 @@ module.exports = grammar({
     // 2. COMMENT
     // ==========================================
     comment: ($) => /[ \t]+[^\n]*\n/,
+
+    // ==========================================
+    // 2. MARKER
+    // ==========================================
+    //marker: ($) => /[@]+[^ \n\t]*\n/,
+    marker: ($) => seq("@", optional($.namespace), $.value, $._eol),
+
+    namespace: ($) => /[a-zA-Z0-9_-]+[:]/,
+    value: ($) => /[a-zA-Z0-9_-]+/,
 
     // ==========================================
     // 2. CONTEXT
@@ -50,7 +59,7 @@ module.exports = grammar({
     // ==========================================
     // 4. NARRATION
     // ==========================================
-    narration: ($) => seq($.text, $._eol),
+    narration: ($) => seq($.text, choice($._eol, $.marker)),
 
     // ==========================================
     // 5. QUOTATION
@@ -62,7 +71,7 @@ module.exports = grammar({
           alias($._open_quote, $.quote),
         ),
         repeat(choice($.text, alias($._open_quote, $.quote))),
-        $._eol,
+        choice($._eol, $.marker),
       ),
 
     // ==========================================
@@ -74,7 +83,12 @@ module.exports = grammar({
           seq(alias($._open_speech, $.speech), alias($._open_text, $.text)),
         ),
         choice(
+          seq(alias($._open_speech, $.speech), $.marker),
           alias($._end_speech, $.speech),
+          seq(
+            alias($._open_speech, $.speech),
+            seq(alias($._open_text, $.text), $.marker),
+          ),
           seq(alias($._open_speech, $.speech), alias($._end_text, $.text)),
         ),
       ),
@@ -82,14 +96,14 @@ module.exports = grammar({
     // ==========================================
     // 7. HIDDEN HELPERS
     // ==========================================
-    _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^-—_\t„”\n][^„”\n]*/,
+    _open_quote: ($) => seq("„", /[^@„”\n]+/, "”"),
+    text: ($) => /[^-@—_\t„”\n][^@„”\n]*/,
 
-    _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
-    _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),
+    _open_speech: ($) => seq("—", /[^@„”—\n]+/, "—"),
+    _end_speech: ($) => seq("—", /[^@„”—\n]+/, $._eol),
 
-    _open_text: ($) => /[^\t„”—\n]+/,
-    _end_text: ($) => seq(/[^\t„”—\n]+/, $._eol),
+    _open_text: ($) => /[^\t@„”—\n]+/,
+    _end_text: ($) => seq(/[^\t@„”—\n]+/, $._eol),
 
     _eol: ($) => "\n",
   },
