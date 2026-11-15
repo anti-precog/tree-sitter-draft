@@ -9,15 +9,11 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "group"
+          },
+          {
+            "type": "SYMBOL",
             "name": "header"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "context"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "sub_context"
           },
           {
             "type": "ALIAS",
@@ -53,9 +49,73 @@
           {
             "type": "SYMBOL",
             "name": "comment"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "sub_context"
           }
         ]
       }
+    },
+    "group": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "context"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "header"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "narration"
+                },
+                "named": true,
+                "value": "paragraph"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "quotation"
+                },
+                "named": true,
+                "value": "paragraph"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "dialog"
+                },
+                "named": true,
+                "value": "paragraph"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "asterix"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "comment"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "sub_context"
+              }
+            ]
+          }
+        }
+      ]
     },
     "header": {
       "type": "SEQ",
@@ -83,7 +143,7 @@
     },
     "comment": {
       "type": "PATTERN",
-      "value": "[ \\t]+[^\\n]*\\n"
+      "value": "[\\/\\/]+[^\\n]*\\n"
     },
     "context": {
       "type": "SEQ",
@@ -336,7 +396,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^-—_\\t„”\\n][^„”\\n]*"
+      "value": "[^-—_\\t\\/„”\\n][^„”\\n]*"
     },
     "_open_speech": {
       "type": "SEQ",
@@ -400,7 +460,11 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "group"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

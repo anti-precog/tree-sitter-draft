@@ -1,6 +1,7 @@
 module.exports = grammar({
   name: "draft",
 
+  conflicts: ($) => [[$.group]],
   rules: {
     // ==========================================
     // 0. MAIN DOCUMENT ROOT
@@ -8,14 +9,30 @@ module.exports = grammar({
     document: ($) =>
       repeat(
         choice(
+          $.group,
           $.header,
-          $.context,
-          $.sub_context,
           alias($.narration, $.paragraph),
           alias($.quotation, $.paragraph),
           alias($.dialog, $.paragraph),
           $.asterix,
           $.comment,
+          $.sub_context,
+        ),
+      ),
+
+    group: ($) =>
+      seq(
+        $.context,
+        repeat1(
+          choice(
+            $.header,
+            alias($.narration, $.paragraph),
+            alias($.quotation, $.paragraph),
+            alias($.dialog, $.paragraph),
+            $.asterix,
+            $.comment,
+            $.sub_context,
+          ),
         ),
       ),
 
@@ -23,22 +40,19 @@ module.exports = grammar({
     // 1. HEADER
     // ==========================================
     header: ($) => seq($.prefix, $.name),
-
     prefix: ($) => "_",
     name: ($) => token.immediate(/[^\- \t\n][^\n]*/),
 
     // ==========================================
     // 2. COMMENT
     // ==========================================
-    comment: ($) => /[ \t]+[^\n]*\n/,
+    comment: ($) => /[\/\/]+[^\n]*\n/,
 
     // ==========================================
     // 2. CONTEXT
     // ==========================================
     context: ($) => seq("--", $.info, "--", $._eol),
-
     sub_context: ($) => seq("--", optional($.info), optional($.label), $._eol),
-
     info: ($) => token.immediate(/ [^\[\]\-\n]+/),
     label: ($) => seq("[", token.immediate(/[^\[\]\n]+/), "]"),
 
@@ -68,6 +82,7 @@ module.exports = grammar({
     // ==========================================
     // 6. DIALOGS
     // ==========================================
+
     dialog: ($) =>
       seq(
         repeat(
@@ -83,14 +98,11 @@ module.exports = grammar({
     // 7. HIDDEN HELPERS
     // ==========================================
     _open_quote: ($) => seq("„", /[^„”\n]+/, "”"),
-    text: ($) => /[^-—_\t„”\n][^„”\n]*/,
-
+    text: ($) => /[^-—_\t\/„”\n][^„”\n]*/,
     _open_speech: ($) => seq("—", /[^„”—\n]+/, "—"),
     _end_speech: ($) => seq("—", /[^„”—\n]+/, $._eol),
-
     _open_text: ($) => /[^\t„”—\n]+/,
     _end_text: ($) => seq(/[^\t„”—\n]+/, $._eol),
-
     _eol: ($) => "\n",
   },
 });

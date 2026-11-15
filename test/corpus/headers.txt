@@ -35,4 +35,5 @@ Not header
 ------
 
 (document
-  (comment))
+  (paragraph
+    (text)))

@@ -84,8 +84,8 @@ Dialogues
 Comments
 ========
 
-	Comment
- Comment
+// Comment
+//Comment
 
 ------
 

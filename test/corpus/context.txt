@@ -1,14 +1,34 @@
-=======
-context
-=======
+=============
+empty context
+=============
+
+-- context --
+narraction
+
+------
+
+(document
+  (group
+    (context
+      (info))
+	(paragraph
+	  (text))))
+
+
+
+===================
+empty context error
+===================
 
 -- context --
 
 ------
 
 (document
-  (context
-    (info)))
+  (group
+    (context
+      (info))
+        (MISSING comment)))
 
 ===========
 sub_context
@@ -54,14 +74,16 @@ sub_context without info
 No context
 ==========
 
- -- Comment
- -- Comment --
+ -- no context
+ -- no context --
 
 ------
 
 (document
-  (comment)
-  (comment))
+  (paragraph
+    (text))
+  (paragraph
+    (text)))
 
 ==============
 broken context
@@ -74,6 +96,6 @@ broken context
 (document
   (ERROR
     (UNEXPECTED 'c'))
-  (comment))
+  (sub_context))
 
 
